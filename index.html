@@ -1,0 +1,376 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keyword" content="">
+    <meta name="description" content=".">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font-awesome cli  -->
+    <link rel="stylesheet"  type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- bootstrap-5 -->
+     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./Styles/index.css">
+    <title>Kurosaw | Home</title>
+</head>
+<body>
+    <main class="container">
+        <header>
+            <nav class="navbar navbar-expand-lg"> <!---  bg-body-tertiary -->
+                <div class="container-fluid">
+                  <a class="navbar-brand nav-link" href="./index.html">Kurosaw</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <!-- <span class="navbar-toggler-icon"></span> -->
+                    <i class="fa-solid fa-bars"></i>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="./index.html">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="./catalog.html">Catalog</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="./news.html">News</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="./collections.html">Collections</a>
+                      </li>
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button title="btn" class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
+                    <div class="buttons flex ms-4 gap-3">
+                        <button type="button" class="btn btn-dark Login-btn">Login</button>
+                        <button type="button" class="btn btn-light">Get Started</button>
+                    </div>
+                  </div>
+                </div>
+            </nav>
+            <hr style="width: 100vw;translate: -8%;">
+            <section class="hero-section">
+                <div class="hero-content">
+                    <div class="hero-Cover">
+                        <img src="./main/Eximg.gif" alt="" id="HeaderCover">
+                    </div>
+                   <div class="hero-card mt-5">
+                        <h1 class="hero-title">Chansaw Man</h1>
+                        <p class="hero-preview">Denji has a simple dream -- to live happy and peaceful life,spending time with a girl </p>
+                        <div class="her-btns">
+                            <button type="button" class="btn mx-2 btn-dark Login-btn">Learn more</button>
+                            <button type="button" class="btn mx-2 btn-light"><i class="fa-regular fa-bookmark"></i> to watch</button>
+                        </div>
+                   </div>
+                </div>
+            </section>
+            <section class="special-section">
+                <h1 class="section-title orangered">Special For You :</h1>
+                <div class="carousel-countainer relative">
+                    <!-- /* the arrows */ -->
+                    <div class="arrows-holder flex-between">
+                        <i class="fa-solid flex-center justify-content-center arrow fa-arrow-left"></i>
+                        <i class="fa-solid flex-center justify-content-center arrow fa-arrow-right"></i>
+                    </div>
+                    <div class="carousel-cards-holder flex-center gap-3 pb-3">
+                        <div class="card">
+                            <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                            <img src="./imgs/home/special/To Your Eternity.jpg" alt="" class="AnimeCover">
+                            <h5 class="AnimeTitle">To Your Eternity</h6>
+                            <span class="AnimeDate">2021,Adventure</span>
+                            <div class="after-card">
+                                <video src="./main/video-preview.mp4" muted loop autoplay class="AnimeCover"></video>
+                                <div class="likes-btns flex-between">
+                                    <!-- <span class="attitude"><i class="fa-solid fa-thumbs-up"></i></span> -->
+                                    <span class="attitude"><i class="fa-regular fa-thumbs-up"></i></span>
+                                    <!-- <span class="attitude"><i class="fa-solid fa-thumbs-down"></i></span> -->
+                                    <span class="attitude"><i class="fa-regular fa-thumbs-down"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                            <img src="./imgs/home/special/spirited_a_way.jpg" alt="" class="AnimeCover">
+                            <h5 class="AnimeTitle">Spirited a Way</h6>
+                            <span class="AnimeDate">2001,Adventure</span>
+                            <!-- <div class="after-card">
+                                <video src="./main/video-preview.mp4" muted loop autoplay class="AnimeCover"></video>
+                                <div class="likes-btns flex-between">
+                                    <span class="attitude"><i class="fa fa-regular fa-thumbs-up"></i></span>
+                                    <span class="attitude"><i class="fa fa-regular fa-thumbs-down"></i></span>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="card">
+                            <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                            <img src="./imgs/home/special/Tokyo Revengers.jpg" alt="" class="AnimeCover">
+                            <h5 class="AnimeTitle">Tokyo Revengers</h6>
+                            <span class="AnimeDate">2021,Action</span>
+                            <!-- <div class="after-card">
+                                <video src="./main/video-preview.mp4" muted loop autoplay class="AnimeCover"></video>
+                                <div class="likes-btns flex-between">
+                                    <span class="attitude"><i class="fa fa-regular fa-thumbs-up"></i></span>
+                                    <span class="attitude"><i class="fa fa-regular fa-thumbs-down"></i></span>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="card">
+                            <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                            <img src="./imgs/home/special/Haikyuu!!.jpg" alt="" class="AnimeCover">
+                            <h5 class="AnimeTitle">Haikyuu!!</h6>
+                            <span class="AnimeDate">2014,Sports</span>
+                            <!-- <div class="after-card">
+                                <video src="./main/video-preview.mp4" muted loop autoplay class="AnimeCover"></video>
+                                <div class="likes-btns flex-between">
+                                    <span class="attitude"><i class="fa fa-regular fa-thumbs-up"></i></span>
+                                    <span class="attitude"><i class="fa fa-regular fa-thumbs-down"></i></span>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="card">
+                            <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                            <img src="./imgs/home/special/Tower of God.jpeg" alt="" class="AnimeCover">
+                            <h5 class="AnimeTitle">Tower Of God</h6>
+                            <span class="AnimeDate">2020,Action</span>
+                            <!-- <div class="after-card">
+                                <video src="./main/video-preview.mp4" muted loop autoplay class="AnimeCover"></video>
+                                <div class="likes-btns flex-between">
+                                    <span class="attitude"><i class="fa fa-regular fa-thumbs-up"></i></span>
+                                    <span class="attitude"><i class="fa fa-regular fa-thumbs-down"></i></span>
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="card">
+                            <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                            <img src="./imgs/home/special/goldenKamuy.webp" alt="" class="AnimeCover">
+                            <h5 class="AnimeTitle">Golden Kamuy</h6>
+                            <span class="AnimeDate">2018,Adventure</span>
+                            <!-- <div class="after-card">
+                                <video src="./main/video-preview.mp4" muted loop autoplay class="AnimeCover"></video>
+                                <div class="likes-btns flex-between">
+                                    <span class="attitude"><i class="fa fa-regular fa-thumbs-up"></i></span>
+                                    <span class="attitude"><i class="fa fa-regular fa-thumbs-down"></i></span>
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </header>
+        <section class="collection mb-2">
+            <h1 class="section-title orangered">Collections :</h1>
+            <div class="CollectionCountainer row ">
+                <div class="collection-card p-3 col-lg-3">
+                    <h5 class="collection-title text-center">the best Mystical Anime</h5>
+                    <div class="Cards">
+                        <div class="Card"><img src="./imgs/Catalog/appare_ranman.jpeg" height="10rem" width="2rem" alt="" class="card-cover"></div>
+                        <div class="Card"><img src="./imgs/Catalog/appare_ranman.jpeg" height="10rem" width="2rem" alt="" class="card-cover"></div>
+                        <div class="Card"><img src="./imgs/Catalog/appare_ranman.jpeg" height="10rem" width="2rem" alt="" class="card-cover"></div>
+                    </div>
+                </div>
+                <div class="collection-card p-3 col-lg-3">
+                    <h5 class="collection-title text-center">20 Top Romance Anime</h5>
+                    <div class="Cards">
+                        <div class="Card"><img src="./imgs/Catalog/appare_ranman.jpeg" height="10rem" width="2rem" alt="" class="card-cover"></div>
+                        <div class="Card"><img src="./imgs/Catalog/appare_ranman.jpeg" height="10rem" width="2rem" alt="" class="card-cover"></div>
+                        <div class="Card"><img src="./imgs/Catalog/appare_ranman.jpeg" height="10rem" width="2rem" alt="" class="card-cover"></div>
+                    </div>
+                </div>
+                <div class="collection-card p-3 col-lg-3">
+                    <h5 class="collection-title text-center">the best Classic Anime</h5>
+                    <div class="Cards">
+                        <div class="Card"><img src="./imgs/Catalog/appare_ranman.jpeg" height="10rem" width="2rem" alt="" class="card-cover"></div>
+                        <div class="Card"><img src="./imgs/Catalog/appare_ranman.jpeg" height="10rem" width="2rem" alt="" class="card-cover"></div>
+                        <div class="Card"><img src="./imgs/Catalog/appare_ranman.jpeg" height="10rem" width="2rem" alt="" class="card-cover"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="trending-section py-3">
+            <h1 class="section-title orangered">Trending Content :</h1>
+            <div class="carousel-countainer">
+                <!-- /* the arrows */ -->
+                <div class="arrows-holder flex-between">
+                    <i class="fa-solid flex-center justify-content-center arrow fa-arrow-left"></i>
+                    <i class="fa-solid flex-center justify-content-center arrow fa-arrow-right"></i>
+                </div>
+                <div class="carousel-cards-holder flex-center gap-3 flex-center gap-3 pb-3">
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/trending/SpyXFamily.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Spy X Family</h6>
+                        <span class="AnimeDate">2022,Comedy</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/trending/mobpSycho1000.webp" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Mob Psycho 1000</h6>
+                        <span class="AnimeDate">2022,Action</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/trending/bokunehero.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Bokunehero</h6>
+                        <span class="AnimeDate">2022,Action</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/trending/yofokachi.jpeg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Yofokachi</h6>
+                        <span class="AnimeDate">2022,Comedy</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/trending/cyberpunkEdgerunners.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Cyber Punk Edgerunners</h6>
+                        <span class="AnimeDate">2022,Action</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/trending/BleachSennen.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Bleach Sennen</h6>
+                        <span class="AnimeDate">2022,Action</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="popular-section py-3">
+            <h1 class="section-title orangered">Most Popular :</h1>
+            <div class="carousel-countainer">
+                <div class="cards-holder flex-center gap-3 flex-center gap-3 pb-3">
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/fallmetalAlchemistBrotherhood.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">fallmetal Alchemist Brotherhood</h6>
+                        <span class="AnimeDate">2009,Action</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/Kaguya-smaLoveiswar.jpeg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Kaguya-sama Love is war</h6>
+                        <span class="AnimeDate">2022,Comedy</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/steins-gate.webp" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Steins-Gate.</h6>
+                        <span class="AnimeDate">2011,Drama</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/Gintama4.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Gintama 4.</h6>
+                        <span class="AnimeDate">2015,Comedy</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/ShingekiNokyojin.webp" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Gintama 4.</h6>
+                        <span class="AnimeDate">2019,Action</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/Gintama2.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Gintama 2.</h6>
+                        <span class="AnimeDate">2011,Comedy</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/fruitsBasket.jpe" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">fruits Basket.</h6>
+                        <span class="AnimeDate">2021,Romance</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/hunterXhunter.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Hunter X Hunter.</h6>
+                        <span class="AnimeDate">2011,Adventure</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/Gintama the Very final.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Gintama the Very final.</h6>
+                        <span class="AnimeDate">2021,Comedy</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/GingaEiyuuDensetsu.webp" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Ginga Eiyuu Densetsu.</h6>
+                        <span class="AnimeDate">1988,Drama</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/Gintama3.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Gintama 3.</h6>
+                        <span class="AnimeDate">2012,Comedy</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/Gintama5.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Gintama 5.</h6>
+                        <span class="AnimeDate">2017,Comedy</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/Koi no katachi.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Koi no katachi.</h6>
+                        <span class="AnimeDate">2016,Drama</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/Violet_Evergarden.webp" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Violet Evergarden.</h6>
+                        <span class="AnimeDate">2020,Drama</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/Sangatsu_no_Lion.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">3-gatsu No Lion.</h6>
+                        <span class="AnimeDate">2017,Drama</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/clannadafterstory.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Clannad After Story.</h6>
+                        <span class="AnimeDate">2008,Drama</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/Gintama.jpeg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Gintama.</h6>
+                        <span class="AnimeDate">2006,Comedy</span>
+                    </div>
+                    <div class="Card">
+                        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+                        <img src="./imgs/home/popular/GintamaFinalChapterposter.jpg" alt="" class="AnimeCover">
+                        <h5 class="AnimeTitle">Gintama.</h6>
+                        <span class="AnimeDate">2006,Comedy</span>
+                    </div>
+                </div>
+            </div>
+            <div class="d-grid gap-2">
+                <button class="btn btn-light" type="button">Show More</button>
+            </div>
+        </section>
+        <footer>
+            <hr style="width: 100vw;translate: -8%;">
+            <div class="row">
+                <div class="col-lg-6 footer-text flex-end">
+                    <a href="#" class="footer-logo"><h4 class="logo">Kurosaw.com</h4></a>
+                    <ul class="flex-center gap-4">
+                        <a class="icon-link text-decoration-none" href="./about.html"><li class="footer-link">Terms & Privecy</li></a>
+                        <a class="icon-link text-decoration-none" href="./about.html"><li class="footer-link">Contact</li></a>
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-icons gap-5">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-discord"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
+</body>
+</html>
