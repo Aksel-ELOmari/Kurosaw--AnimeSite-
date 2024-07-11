@@ -9,7 +9,7 @@
     <!-- bootstrap-5 -->
      <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
     <link rel="stylesheet" href="./Styles/index.css">
-    <title>Kurosaw | Home</title>
+    <title>Kurosaw | Regester</title>
 </head>
 <body>
     <main class="container-fluid regester-main">
@@ -29,7 +29,7 @@
                         <input type="text" placeholder="Ayoub Elomari" name="user-name" id="user-name">
                     </div>
                     <div class="input-card mb-2">
-                        <div class="flex-center justify-content-between"><label for="user-password d-none">Password</label> <span class="forget-btn d-none" style="cursor: pointer;">Forgot Password?</span></div>
+                        <div class="flex-center justify-content-between"><label for="user-password d-none">Password</label> <a href="#" class="forget-btn text-decoration-none" style="cursor: pointer;">Forgot Password?</a></div>
                         <div class="position-relative">
                             <input type="password" placeholder="enter your password" name="user-password" id="user-password">
                             <i class="fa-regular fa-eye position-absolute"></i>
@@ -73,6 +73,7 @@
             let alerts = document.querySelectorAll('.Sing-alert');
             alerts.forEach(alert => alert.classList.add('d-none'));
             document.querySelector('.terms-alert').classList.toggle('d-none');
+            document.querySelector('.forget-btn').classList.toggle('d-none');
         }
     </script>
 </body>
