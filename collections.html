@@ -48,12 +48,66 @@
             </nav>
             <hr style="width: 100vw;translate: -8%;">
         </header>
-        <section class="catalog-countainer mb-4">
-            <div class="catalog-hedaer flex-between">
-               <h1 class="catalog-title h1">Featured Collections</h1>
-               <button type="button" class="btn btn-light fw-3"><i class="fa-solid fa-plus" style="scale: .8;color: #000;"></i> Create new</button>
+        <section class="collections-countainer mb-4">
+            <div class="collections-header  flex-between">
+               <h1 class="collections-title h1">Featured Collections</h1>
+               <button type="button" class="btn btn-light fw-3"  onclick="ToggleCreater()"><i class="fa-solid fa-plus" style="scale: .8;color: #000;"></i> Create new</button>
             </div>
         </section>
+        <scetion class="collections-creater d-none">
+            <div class="hide-creater-section flex-center justify-content-center" onclick="ToggleCreater()">
+                <i class="fa-solid fa-x"></i>
+            </div>
+            <div class="main-card collection-create-holder flex-center justify-content-center flex-column gap-2 d-none">
+                <h2 class="fw-bolder text-center Sing-title">Create Collection</h2>
+                <div class="login-mini-card py-2">
+                    <div class="input-card collection-name  mb-2">
+                        <label for="user-name" style="width: 100%;">Title </label>
+                        <input type="text" placeholder="Collection Name" name="user-name" id="user-name">
+                    </div>
+                    <div class="input-card collection-desc mb-2">
+                        <div class="flex-center justify-content-between"><label for="collection-desc">Description </label></div>
+                        <div class="position-relative">
+                            <input type="input" placeholder="enter your Collection's description" name="collection-desc" id="textarea">
+                        </div>
+                    </div>
+                    <div class="checkbox-field mb-2 flex-center justify-content-between">
+                        <input title="collection check-box" checked type="checkbox" name="Personal" id="collecton-check">
+                        <label for="collecton-check">Keep This Collection Personal?</label>
+                    </div>
+                    <button type="button" class="btn btn-light btn-lg btn-block create-lg-btn" onclick="ToggleCreater()">Create</button>
+                </div>
+            </div>
+            <div class="main-card seave-create-holder flex-center justify-content-center flex-column gap-2">
+                <h2 class="fw-bolder text-center Sing-title">Choose Collection</h2>
+                <div class="my-2">
+                    <button type="button" class="btn btn-light btn-lg fw-4" onclick="CreateCollection()"><i class="fa-solid fa-plus" style="scale: .8;color: #000;"></i> Create Collection</button>
+                </div>
+                <div class="collections-cards flex-center justify-content-center flex-column">
+                    <a href="./collection.html" title="link" class="text-decoration-none collection flex-center justify-content-between w-100 my-2">
+                        <div class="card-text">
+                            <h5 class="fw-5 collection-title">The Best Mystical Anime</h5>
+                            <p class="items-count"><span>12</span> Titles</p>
+                        </div>
+                        <img src="./imgs/Profile/heightSchool.jpg" alt="" class="coolection-cover ms-3">
+                    </a>
+                    <a href="./collection.html" title="link" class="text-decoration-none collection flex-center justify-content-between w-100 my-2">
+                        <div class="card-text">
+                            <h5 class="fw-5 collection-title">My Top Anime Tier</h5>
+                            <p class="items-count"><span>11</span> Titles</p>
+                        </div>
+                        <img src="./imgs/Profile/tokyuRvengers.jpg" alt="" class="coolection-cover ms-3">
+                    </a>
+                    <a href="./collection.html" title="link" class="text-decoration-none collection flex-center justify-content-between w-100 my-2">
+                        <div class="card-text">
+                            <h5 class="fw-5 collection-title">The Best Slice Of Life</h5>
+                            <p class="items-count"><span>20</span> Titles</p>
+                        </div>
+                        <img src="./imgs/Profile/118484.jpg" alt="" class="coolection-cover ms-3">
+                    </a>
+                </div>
+            </div>
+        </scetion>
         <div class="main-body">
           <div class="collections-holder">
               <div class="CollectionCountainer row my-3">
@@ -83,7 +137,6 @@
                 </div>
 
               </div>
-
               <!-- start arow collection -->
               <div class="CollectionCountainer row my-3">
                 <div class="collection-card p-3 col-lg-3">
@@ -113,7 +166,6 @@
 
               </div>
               <!-- end arow collection -->
-
               <!-- start arow collection -->
               <div class="CollectionCountainer row my-3">
                 <div class="collection-card p-3 col-lg-3">
@@ -150,15 +202,15 @@
         </div>
         <footer>
           <hr style="width: 100vw;translate: -8%;">
-            <div class="row">
-                <div class="col-lg-6 footer-text flex-end">
+            <div class="footer-body">
+                <div class="footer-text flex-end">
                     <a href="#" class="footer-logo"><h4 class="logo">Kurosaw.com</h4></a>
                     <ul class="flex-center gap-4">
                         <a class="icon-link text-decoration-none" href="./about.html"><li class="footer-link">Terms & Privecy</li></a>
                         <a class="icon-link text-decoration-none" href="./about.html"><li class="footer-link">Contact</li></a>
                     </ul>
                 </div>
-                <div class="col-lg-6 col-icons gap-5">
+                <div class="col-icons gap-5">
                     <i class="fa-brands fa-facebook-f"></i>
                     <i class="fa-brands fa-discord"></i>
                     <i class="fa-brands fa-youtube"></i>
@@ -168,6 +220,25 @@
         </footer>
     </main>
 
+    <style>
+        
+    </style>
+    <script>
+        function CreateCollection()
+        {
+            let Creater = document.querySelector('.collection-create-holder');
+            Creater.classList.toggle('d-none');
+            console.log('hello there');
+            let Seaver = document.querySelector('.seave-create-holder');
+            Seaver.classList.toggle('d-none');
+        }
+        function ToggleCreater()
+        {
+            let CreaterSection =  document.querySelector('.collections-creater');
+            CreaterSection.classList.toggle('d-none');
+            console.log('toggle the creater collections section !!')
+        }
+    </script>
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
 </body>
 </html>

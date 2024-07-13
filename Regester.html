@@ -24,12 +24,12 @@
                         <label for="user-email" style="width: 100%;">Email</label>
                         <input type="email" placeholder="12l23u@gmail.com" name="user-email" id="user-email">
                     </div>
-                    <div class="input-card mb-2">
+                    <div class="input-card name-input-card mb-2">
                         <label for="user-name" style="width: 100%;">User name</label>
                         <input type="text" placeholder="Ayoub Elomari" name="user-name" id="user-name">
                     </div>
-                    <div class="input-card mb-2">
-                        <div class="flex-center justify-content-between"><label for="user-password d-none">Password</label> <a href="#" class="forget-btn text-decoration-none" style="cursor: pointer;">Forgot Password?</a></div>
+                    <div class="input-card password-input-card mb-2">
+                        <div class="flex-center justify-content-between"><label for="user-password d-none">Password</label> <a href="#" class="forget-btn text-decoration-none" style="cursor: pointer;" onclick="resetpassword()">Forgot Password?</a></div>
                         <div class="position-relative">
                             <input type="password" placeholder="enter your password" name="user-password" id="user-password">
                             <i class="fa-regular fa-eye position-absolute"></i>
@@ -37,6 +37,7 @@
                     </div>
                     <button type="button" class="btn btn-light btn-lg btn-block login-lg-btn">Login</button>
                     <button type="button" class="btn btn-light btn-lg btn-block singup-lg-btn d-none">Sing Up</button>
+                    <button type="button" class="btn btn-light btn-lg btn-block reset-lg-btn d-none">Reset Password</button>
                 </div>
                 <p class="Sing-alert login-alert">Already have an acount ?!<span class="login-btn" style="color: green;cursor: pointer;" onclick="showLogingbar()">Log in</span></p>
                 <p class="Sing-alert singUp-alert d-none">Don't have an acount?!<span class="Singup-btn" onclick="showSingupBar()" style="color: green;cursor: pointer;">Sing Up</span></p>
@@ -44,7 +45,6 @@
             </div>
         </section>
     </main>
-
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
     <script>
         function showLogingbar() {
@@ -73,6 +73,27 @@
             let alerts = document.querySelectorAll('.Sing-alert');
             alerts.forEach(alert => alert.classList.add('d-none'));
             document.querySelector('.terms-alert').classList.toggle('d-none');
+            document.querySelector('.forget-btn').classList.toggle('d-none');
+        }
+        
+        function resetpassword()
+        {
+            document.querySelector('.Sing-title').innerHTML = 'Forgot Password';
+            let Allmethods = document.querySelectorAll('.login-method');
+            Allmethods.forEach(method => method.style.display = 'none');
+
+            let Allinputs = document.querySelectorAll('.input-card');
+            Allinputs.forEach(input =>{input.classList.toggle('d-none')})
+
+            let Emailinput = document.querySelector('.email-input-card');
+            Emailinput.classList.remove('d-none');
+            let singup_btn = document.querySelector('.singup-lg-btn');
+            singup_btn.classList.add('d-none');
+            let login_btn = document.querySelector('.login-lg-btn');
+            login_btn.classList.add('d-none');
+            document.querySelector('.reset-lg-btn').classList.toggle('d-none');
+            let alerts = document.querySelectorAll('.Sing-alert');
+            alerts.forEach(alert => alert.classList.add('d-none'));
             document.querySelector('.forget-btn').classList.toggle('d-none');
         }
     </script>

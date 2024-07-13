@@ -41,13 +41,13 @@ body::-webkit-scrollbar{
     width: 8px;
     border-radius: 20px;
     background: #000;
-
 }
 body::-webkit-scrollbar-thumb{
     width: 8px;
     border-radius: 20px;
     background: #fff;
 }
+
 nav
 {
     background: transparent !important;
@@ -477,9 +477,69 @@ form button:hover{color: #ffffff !important;}
     .main-card{
         width:100vw;
     }
+   
 }
 
+
+.collections-creater
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 100%;
+    background: #000;
+    z-index: 100;
+}
+#textarea
+{
+    border: solid 1px #fff;
+    height: 8rem;
+    min-width: 100%;
+}
+.checkbox-field{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+.checkbox-field input[type="checkbox"]{
+    height: .9rem;
+    cursor: pointer;
+}
+.checkbox-field label{
+    white-space: nowrap;
+}
   
+.collections-cards
+{
+    min-width: 100%;
+    max-width: max-content;
+}
+.collections-cards .collection img{height: 100%;border-radius: 15px;}
+.collections-cards .collection
+{
+    height: 4rem;
+    min-width: 100%;
+}
+.collections-cards .collection h5{white-space: nowrap;}
+.items-count{color: gray;}
+.hide-creater-section i:hover
+{
+    color: #000;
+}
+.hide-creater-section
+{
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    height: 2rem;
+    width: 2rem;
+    background: #ffffff60;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
 
 
 
@@ -488,11 +548,14 @@ form button:hover{color: #ffffff !important;}
 
 footer{margin-top: 5rem;}
 .footer-logo{text-decoration: none !important;}
+.footer-body,
 .footer-text
 {
     display: flex;
     align-items: center;
-    justify-content:center;
 }
+.footer-body{justify-content: space-between;}
+@media (max-width:425px){.footer-body{flex-direction: column;}}
+.footer-text{justify-content: center;}
 .footer-text li{list-style: none !important; white-space: nowrap;}
 .col-icons li{margin:0 1rem;}
