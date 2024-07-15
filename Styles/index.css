@@ -55,6 +55,7 @@ nav
     padding-bottom: 1.4rem;
     z-index: 100 !important;
 }
+nav input{color: var(--Text-color) !important;}
 .nav-link
 {
     color: #fff;
