@@ -540,6 +540,56 @@ form button:hover{color: #ffffff !important;}
     cursor: pointer;
 }
 
+/* ! Styling the Preview Card page */
+.hero-bg-cover
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40vh;
+    width: 100%;
+}
+.hero-bg-cover img 
+{
+    object-fit: cover;
+    filter: brightness(20%);
+}
+.trailer-btn
+{
+    position: absolute;
+    bottom: 1.4rem;
+    right: 2.4rem;
+    z-index: 60 !important;
+}
+.Collections-btns
+{
+    min-width: 100% !important;
+    display: flex;align-items: center;
+    justify-content: space-between;
+    gap: 10rem;
+} 
+.Collections-btns button {white-space: nowrap;}
+.hero-body
+{
+    margin-top: 40vh;
+    background:var(--bg-color,#000);
+}
+
+@media (max-width:768px)
+{
+    .anime-cover img{height: 10rem;width: 6.44rem;}
+    .Collections-btns
+    {
+        flex-direction: column;
+        display: flex;align-items: center;
+        justify-content:center;
+        gap: 2rem;
+    } 
+   .Collections-btns button {margin-top:.2rem}
+   .Collections-btns .add-coll{margin: 0;}
+   .hero-body{translate: 0 50%;gap: .6rem;}
+}
+
 
 
 
