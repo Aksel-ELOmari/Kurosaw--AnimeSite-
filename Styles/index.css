@@ -7,20 +7,6 @@ html,*{padding: 0;margin: 0;}
 }
 /* Star Global Variables */
 .fa-solid{color: var(--Text-color);}
-.colred{color: var(--main-color);}
-.flex,
-.flex-column,
-.flex-center,
-.flex-between,
-.flex-around,
-.flex-evenly{display: flex;align-items: center;}
-.flex-between{justify-content: space-between;}
-.flex-around{justify-content: space-around;}
-.flex-evenly{justify-content: space-evenly;}
-.flex-column{flex-direction: column;}
-
-a{text-align: none;color: var(--Text-color);}
-.orangred{color: var(--Orangered);}
 .scroller-y::-webkit-scrollbar{background: transparent;width: 6px;border-radius: 20px;}
 .scroller-y::-webkit-scrollbar-thumb{background: transparent;width: 6px;border-radius: 20px;}
 .scroller-x::-webkit-scrollbar{background: transparent;height: 6px;border-radius: 20px;}
@@ -80,7 +66,7 @@ form button:hover{color: #ffffff !important;}
 {
     height: 100vh;
     height: 100dvh;
-    margin-top:0rem;
+    margin-bottom:100vh; /*! incase some thein happend to the hero section delet this line */
 }
 .hero-card
 {
@@ -99,7 +85,6 @@ form button:hover{color: #ffffff !important;}
 }
 }
 .News-main .hero-card{width: 40rem;}
-
 #HeaderCover{
     position: absolute;
     top: 0;
@@ -110,9 +95,9 @@ form button:hover{color: #ffffff !important;}
     object-fit: cover;
     filter: brightness(40%);
 }
-.carousel-cards-holder{overflow-x: scroll !important;}
+.carousel-cards-holder{overflow-x: scroll !important;display: flex;gap: .6rem;}
 .cards-holder{flex-wrap: wrap;}
-.carousel-countainer{position:relative;}
+.carousel-countainer{position:relative;display: flex;flex-wrap: wrap;}
 .arrows-holder
 {
     position: absolute;
@@ -135,11 +120,12 @@ form button:hover{color: #ffffff !important;}
     transition: .3s linear;
 }
 .carousel-cards-holder::-webkit-scrollbar{display: none;}
-.card
+.carousel-cards-holder .card{min-width: 10rem;}
+.card,.CharacterCard,.CronolgyCard
 {
     position: relative;
     height: 14rem;
-    min-width: 10rem;
+    width: 10rem;
     background: transparent !important;
     border-radius: 12px;
     overflow: hidden;
@@ -176,9 +162,9 @@ form button:hover{color: #ffffff !important;}
 .special-section{margin-top: -20%;}
 @media (max-width:320px) {
     .catalog-main .card,
-    .card{
-        height: 9rem;
-        width: 5rem;
+    .card,.CronolgyCard{
+        height: 9rem !important;
+        width: 5rem !important;
     }
     .carousel-cards-holder .card{min-width: 5rem;}
    .card h5{font-size: .9rem !important;}
@@ -481,7 +467,6 @@ form button:hover{color: #ffffff !important;}
    
 }
 
-
 .collections-creater
 {
     position: fixed;
@@ -541,6 +526,11 @@ form button:hover{color: #ffffff !important;}
 }
 
 /* ! Styling the Preview Card page */
+.hero-section{height: fit-content;}
+.hero-body
+{
+    margin-top: 20vh;
+}
 .hero-bg-cover
 {
     position: absolute;
@@ -559,7 +549,7 @@ form button:hover{color: #ffffff !important;}
     position: absolute;
     bottom: 1.4rem;
     right: 2.4rem;
-    z-index: 60 !important;
+    z-index: 100 !important;
 }
 .Collections-btns
 {
@@ -569,12 +559,6 @@ form button:hover{color: #ffffff !important;}
     gap: 10rem;
 } 
 .Collections-btns button {white-space: nowrap;}
-.hero-body
-{
-    margin-top: 40vh;
-    background:var(--bg-color,#000);
-}
-
 @media (max-width:768px)
 {
     .anime-cover img{height: 10rem;width: 6.44rem;}
@@ -587,8 +571,71 @@ form button:hover{color: #ffffff !important;}
     } 
    .Collections-btns button {margin-top:.2rem}
    .Collections-btns .add-coll{margin: 0;}
-   .hero-body{translate: 0 50%;gap: .6rem;}
+   .hero-body{gap: .6rem;margin-top: 70%;}
 }
+.RelationsSection .card
+{
+  height: 14rem;
+  width: 10rem;
+}
+.ReviewsSection
+{
+  max-width: 100%;
+}
+  @media (min-width:768px){
+      .ReviewsSection{width: 70%;}.choosen-coll button{width: max-content;}
+  }
+@media (max-width:320px){
+  .hero-body,.choosen-coll
+  {flex-direction: column;}
+}
+.user-profile
+{
+  height: 3rem !important;
+  max-height: 3rem !important;
+  border-radius: 50%;
+  align-self: baseline;
+}
+#addingreview-section
+{
+    background: #000000ce;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 100 !important;
+}
+.add-review-card
+{
+    position: relative;
+    border: solid 1px #fff;
+    background: #000;
+    border-radius: 12px;
+}
+.exit-btn
+{
+    position: absolute;
+    top: .6rem;
+    right: 1rem;
+    cursor: pointer;
+}
+.add-review-card form
+{
+   display: flex;
+   align-items: start;
+   justify-content: space-between;
+   flex-direction: column;
+}
+.add-review-card form textarea
+{
+    width: 100%;
+    color: #fff;
+    background: transparent !important;
+    padding: 1rem;
+}
+
+
 
 
 
