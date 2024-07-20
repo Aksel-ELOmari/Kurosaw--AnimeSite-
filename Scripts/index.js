@@ -78,3 +78,13 @@ function toggleSections(btn){
         }
     })
 }
+
+    const preview_buttons = document.querySelectorAll('.preview-toggle-btn');
+    preview_buttons.forEach(btn =>{
+        btn.classList.remove('btn-light');
+        btn.addEventListener('click',()=>{
+            preview_buttons.forEach(btn =>{btn.classList.remove('btn-light');btn.classList.add('btn-secondary');})
+            btn.classList.remove('btn-secondary');
+            btn.classList.add('btn-light');
+        });
+    })

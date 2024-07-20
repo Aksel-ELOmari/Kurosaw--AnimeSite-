@@ -6,6 +6,21 @@ html,*{padding: 0;margin: 0;}
     --bg-color:#1d1b1b;
 }
 /* Star Global Variables */
+.flex,
+.flex-between,
+.flex-around,
+.flex-evenly,
+.flex-center,
+.flex-column,
+.flex-wrap
+.flex{display: flex;align-items: center;}
+.flex-column{flex-direction: column;}
+.flex-center{justify-content:center;}
+.flex-between{justify-content:space-between;}
+.flex-around{justify-content:space-around;}
+.flex-evenly{justify-content:space-evenly;}
+.flex-wrap{flex-wrap: wrap;}
+
 .fa-solid{color: var(--Text-color);}
 .scroller-y::-webkit-scrollbar{background: transparent;width: 6px;border-radius: 20px;}
 .scroller-y::-webkit-scrollbar-thumb{background: transparent;width: 6px;border-radius: 20px;}
@@ -592,7 +607,7 @@ form button:hover{color: #ffffff !important;}
 .user-profile
 {
   height: 3rem !important;
-  max-height: 3rem !important;
+  max-width: 3rem !important;
   border-radius: 50%;
   align-self: baseline;
 }

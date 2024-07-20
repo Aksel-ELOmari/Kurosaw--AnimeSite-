@@ -96,15 +96,15 @@
         </header>
         <section class="main-section">
            <div class="countainers-holder">
-              <div class="countainers-holder-header flex-center gap-1 mb-5" style="display: flex;align-items: center;">
-                    <div class="btn-lg mx-1"><button type="button" title="toggle-btn" onclick="toggleSections(this)" data-target="overview-section" class="btn btn-secondary">Overview</button></div>
-                    <div class="btn-lg mx-1"><button type="button" title="toggle-btn" onclick="toggleSections(this)" data-target="relations-section" class="btn btn-secondary">Relations</button></div>
-                    <div class="btn-lg mx-1"><button type="button" title="toggle-btn" onclick="toggleSections(this)" data-target="characters-section" class="btn btn-secondary">Characters</button></div>
-                    <div class="btn-lg mx-1"><button type="button" title="toggle-btn" onclick="toggleSections(this)" data-target="stuffs-section" class="btn btn-secondary">Stuffs</button></div>
-                    <div class="btn-lg mx-1"><button type="button" title="toggle-btn" onclick="toggleSections(this)" data-target="reviews-section" class="btn btn-secondary">Reviews</button></div>
+              <div class="countainers-holder-header flex flex-wrap gap-1 mb-5">
+                    <div class="btn-lg mx-1"><button type="button" title="toggle-btn" onclick="toggleSections(this)" data-target="overview-section" class="preview-toggle-btn btn btn-secondary">Overview</button></div>
+                    <div class="btn-lg mx-1"><button type="button" title="toggle-btn" onclick="toggleSections(this)" data-target="relations-section" class="preview-toggle-btn btn btn-secondary">Relations</button></div>
+                    <div class="btn-lg mx-1"><button type="button" title="toggle-btn" onclick="toggleSections(this)" data-target="characters-section" class="preview-toggle-btn btn btn-secondary">Characters</button></div>
+                    <div class="btn-lg mx-1"><button type="button" title="toggle-btn" onclick="toggleSections(this)" data-target="stuffs-section" class="preview-toggle-btn btn btn-secondary">Stuffs</button></div>
+                    <div class="btn-lg mx-1"><button type="button" title="toggle-btn" onclick="toggleSections(this)" data-target="reviews-section" class="preview-toggle-btn btn btn-secondary">Reviews</button></div>
               </div>  <!--  here to put the toggle buttons  -->
               <!-- Start Overview -->
-              <div class="PreviewSection OverviewSection  mb-2" data-name="overview-section">
+              <div class="PreviewSection OverviewSection mb-2" data-name="overview-section">
                   <div class="row">
                       <div class="col-lg-4 col-sm-12 mb-4 Details">
                           <h3 class="h5 fw-bold">Details</h3>
@@ -336,7 +336,7 @@
                         <div class="user-review flex gap-3 mb-4">
                             <img src="./imgs/home/popular/fruitsBasket.jpe" alt=""  class="user-profile">
                             <div class="review-body mt-2">
-                                <div class="review-header flex-center">
+                                <div class="review-header flex">
                                     <h6 class="user-name h5 me-2">VioletDeGrace</h6>
                                     <span class="released-date">12 October 2022</span>
                                 </div>
@@ -353,7 +353,7 @@
                         <div class="user-review flex gap-3 mb-4">
                             <img src="./imgs/home/popular/fruitsBasket.jpe" alt="" class="user-profile">
                             <div class="review-body mt-2">
-                                <div class="review-header flex-center">
+                                <div class="review-header flex">
                                     <h6 class="user-name h5 me-2">Morishin</h6>
                                     <span class="released-date">3 October 2022</span>
                                 </div>
