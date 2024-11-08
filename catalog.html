@@ -1,281 +1,509 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="keyword" content="">
-    <meta name="description" content=".">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="keyword" content="" />
+    <meta name="description" content="." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- font-awesome cli  -->
-    <link rel="stylesheet"  type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <!-- bootstrap-5 -->
-     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="./Styles/index.css">
+    <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="./Styles/index.css" />
     <title>Kurosaw | Catalog</title>
-</head>
-<body>
+  </head>
+  <body>
     <main class="container catalog-main">
-        <header>
-            <nav class="navbar navbar-expand-lg"> <!---  bg-body-tertiary -->
-                <div class="container-fluid">
-                  <a class="navbar-brand nav-link" href="./index.html">Kurosaw</a>
-                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                    <!-- <span class="navbar-toggler-icon"></span> -->
-                    <i class="fa-solid fa-bars"></i>
+      <header>
+        <nav class="navbar navbar-expand-lg">
+          <!---  bg-body-tertiary -->
+          <div class="container-fluid">
+            <a class="navbar-brand nav-link" href="./index.html">Kurosaw</a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarText"
+              aria-controls="navbarText"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <!-- <span class="navbar-toggler-icon"></span> -->
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" href="./index.html"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="./catalog.html">Catalog</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./news.html">News</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="./collections.html">Collections</a>
+                </li>
+              </ul>
+              <form class="d-flex" role="search">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  aria-label="Search"
+                />
+                <button title="btn" class="btn" type="submit">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </form>
+              <div class="buttons flex ms-4 gap-3">
+                <a type="link" title="Regester" href="Regester.html"
+                  ><button type="button" class="btn btn-dark Login-btn">
+                    Login
+                  </button></a
+                >
+                <a type="link" title="Regester" href="Regester.html"
+                  ><button type="button" class="btn btn-light">
+                    Get Started
+                  </button></a
+                >
+              </div>
+            </div>
+          </div>
+        </nav>
+        <hr style="width: 100vw; translate: -8%" />
+      </header>
+      <section class="catalog-countainer mb-4">
+        <div class="catalog-hedaer flex-between">
+          <h1 class="catalog-title h1">Catalog</h1>
+          <div class="filter">
+            <div class="dropdown">
+              <button
+                class="btn btn-transparent active border-0 fw-1 dropdown-toggle"
+                type="button"
+                id="dropdownMenuButton1"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Sort by
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Date</a></li>
+                <li><a class="dropdown-item" href="#">Title</a></li>
+                <li><a class="dropdown-item" href="#">Genre</a></li>
+                <li><a class="dropdown-item" href="#">Countrey</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-2 catalog-column">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseOne"
+                  >
+                    Year
                   </button>
-                  <div class="collapse navbar-collapse" id="navbarText">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                      <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./index.html">Home</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link active" href="./catalog.html">Catalog</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="./news.html">News</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="./collections.html">Collections</a>
-                      </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button title="btn" class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-                    <div class="buttons flex ms-4 gap-3">
-                      <a type="link" title="Regester" href="Regester.html"><button type="button" class="btn btn-dark Login-btn">Login</button></a>
-                      <a type="link" title="Regester" href="Regester.html"><button type="button" class="btn btn-light">Get Started</button></a>
+                </h2>
+                <div
+                  id="flush-collapseOne"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="flush-headingOne"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body years-accordion-body flex gap-2">
+                    <div class="year-card">2020</div>
+                    <i class="fa-solid fa-minus"></i>
+                    <div class="year-card">2022</div>
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseTwo"
+                  >
+                    Season
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseTwo"
+                  class="accordion-collapse collapse show"
+                  aria-labelledby="flush-headingTwo"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    <div class="season collaps flex gap-3">
+                      <input
+                        type="checkbox"
+                        name="season"
+                        title="input-radio"
+                        id=""
+                      />
+                      <span class="season-name fw-5">Winter</span>
+                    </div>
+                    <div class="season collaps flex gap-3">
+                      <input
+                        type="checkbox"
+                        checked
+                        name="season"
+                        title="input-radio"
+                        id=""
+                      />
+                      <span class="season-name fw-5">Spring</span>
+                    </div>
+                    <div class="season collaps flex gap-3">
+                      <input
+                        type="checkbox"
+                        name="season"
+                        title="input-radio"
+                        id=""
+                      />
+                      <span class="season-name fw-5">Summer</span>
+                    </div>
+                    <div class="season collaps flex gap-3">
+                      <input
+                        type="checkbox"
+                        name="season"
+                        title="input-radio"
+                        id=""
+                      />
+                      <span class="season-name fw-5">Fall</span>
                     </div>
                   </div>
                 </div>
-            </nav>
-            <hr style="width: 100vw;translate: -8%;">
-        </header>
-        <section class="catalog-countainer mb-4">
-            <div class="catalog-hedaer flex-between">
-               <h1 class="catalog-title h1">Catalog</h1>
-               <div class="filter">
-                  <div class="dropdown">
-                    <button class="btn btn-transparent active border-0 fw-1 dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Sort by</button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                      <li><a class="dropdown-item" href="#">Date</a></li>
-                      <li><a class="dropdown-item" href="#">Title</a></li>
-                      <li><a class="dropdown-item" href="#">Genre</a></li>
-                      <li><a class="dropdown-item" href="#">Countrey</a></li>
-                    </ul>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-              <div class="col-lg-2 catalog-column">
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingOne">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Year
-                      </button>
-                    </h2>
-                    <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body years-accordion-body flex gap-2">
-                          <div class="year-card">2020</div>
-                          <i class="fa-solid fa-minus"></i>
-                          <div class="year-card">2022</div>
-                      </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseThree"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseThree"
+                  >
+                    Genres
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseThree"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="flush-headingThree"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body">
+                    <div class="genre collaps flex gap-3">
+                      <input
+                        type="checkbox"
+                        name="season"
+                        title="input-radio"
+                        id=""
+                      />
+                      <span class="season-name fw-5">Fantasy</span>
                     </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingTwo">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                        Season
-                      </button>
-                    </h2>
-                    <div id="flush-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body">
-                        <div class="season collaps flex gap-3">
-                           <input type="checkbox" name="season" title="input-radio" id="">
-                           <span class="season-name fw-5">Winter</span>
-                        </div>
-                        <div class="season collaps flex gap-3">
-                            <input type="checkbox" checked name="season" title="input-radio" id="">
-                            <span class="season-name fw-5">Spring</span>
-                        </div>
-                        <div class="season collaps flex gap-3">
-                            <input type="checkbox" name="season" title="input-radio" id="">
-                            <span class="season-name fw-5">Summer</span>
-                        </div>
-                        <div class="season collaps flex gap-3">
-                            <input type="checkbox" name="season" title="input-radio" id="">
-                            <span class="season-name fw-5">Fall</span>
-                        </div>
-                      </div>
+                    <div class="genre collaps flex gap-3">
+                      <input
+                        type="checkbox"
+                        checked
+                        name="season"
+                        title="input-radio"
+                        id=""
+                      />
+                      <span class="season-name fw-5">Comedy</span>
                     </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThree">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                        Genres
-                      </button>
-                    </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body">
-                        <div class="genre collaps flex gap-3">
-                           <input type="checkbox" name="season" title="input-radio" id="">
-                           <span class="season-name fw-5">Fantasy</span>
-                        </div>
-                        <div class="genre collaps flex gap-3">
-                            <input type="checkbox" checked name="season" title="input-radio" id="">
-                            <span class="season-name fw-5">Comedy</span>
-                        </div>
-                        <div class="genre collaps flex gap-3">
-                            <input type="checkbox" name="season" title="input-radio" id="">
-                            <span class="season-name fw-5">Adventure</span>
-                        </div>
-                        <div class="genre collaps flex gap-3">
-                            <input type="checkbox" name="season" title="input-radio" id="">
-                            <span class="season-name fw-5">Sports</span>
-                        </div>
+                    <div class="genre collaps flex gap-3">
+                      <input
+                        type="checkbox"
+                        name="season"
+                        title="input-radio"
+                        id=""
+                      />
+                      <span class="season-name fw-5">Adventure</span>
+                    </div>
+                    <div class="genre collaps flex gap-3">
+                      <input
+                        type="checkbox"
+                        name="season"
+                        title="input-radio"
+                        id=""
+                      />
+                      <span class="season-name fw-5">Sports</span>
+                    </div>
 
-                        <div class="viewAll mt-2">
-                          <span class="view-all-btn">View All <i class="fa-solid fa-angle-up" style="rotate: 180deg;"></i></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFor">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFor" aria-expanded="false" aria-controls="flush-collapseFor">
-                        Studio
-                      </button>
-                    </h2>
-                    <div id="flush-collapseFor" class="accordion-collapse collapse" aria-labelledby="flush-headingFor" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body"></div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingFive">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-                        Format
-                      </button>
-                    </h2>
-                    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body"></div>
-                    </div>
-                  </div>
-                  <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingSix">
-                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                       Airing Status
-                      </button>
-                    </h2>
-                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-                      <div class="accordion-body"></div>
+                    <div class="viewAll mt-2">
+                      <span class="view-all-btn"
+                        >View All
+                        <i
+                          class="fa-solid fa-angle-up"
+                          style="rotate: 180deg"
+                        ></i
+                      ></span>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-10 catalog-column position-relative">
-                <div class="cards-holder flex-center gap-3 flex-center gap-3 pb-3">
-                  <div class="card">
-                      <img src="./imgs/home/popular/Kaguya-smaLoveiswar.jpeg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">Kaguya-sama Love is war</h6>
-                      <span class="AnimeDate">2020,Comedy</span>
-                  </div>
-                  <div class="card">
-                    <img src="./imgs/Catalog/Otome_Game.jpeg" alt="" class="AnimeCover">
-                    <h5 class="AnimeTitle">Otome_Game.</h6>
-                    <span class="AnimeDate">2020,Comedy</span>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFor">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFor"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseFor"
+                  >
+                    Studio
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseFor"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="flush-headingFor"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body"></div>
                 </div>
-                  <div class="card">
-                      <img src="./imgs/Catalog/kakushigoto.jpeg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">kakushigoto.</h6>
-                      <span class="AnimeDate">2020,Comedy</span>
-                  </div>
-                  <div class="card">
-                      <img src="./imgs/Catalog/Princess Connect.jpeg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">Gintama 4.</h6>
-                      <span class="AnimeDate">2020,Comedy</span>
-                  </div>
-                  <div class="card">
-                      <img src="./imgs/Catalog/appare_ranman.jpeg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">Appare-Ranman !.</h6>
-                      <span class="AnimeDate">2020,Comedy</span>
-                  </div>
-                  <div class="card">
-                      <img src="./imgs/Catalog/Tsugu Tsugumomo.jpeg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">Tsugu Tsugumomo.</h6>
-                      <span class="AnimeDate">2020,Action</span>
-                  </div>
-                  <div class="card">
-                      <img src="./imgs/Catalog/nami_yo_kiitekure.jpg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">Nami Yo kiitekure.</h6>
-                      <span class="AnimeDate">2020,Comedy</span>
-                  </div>
-                  <div class="card">
-                      <img src="./imgs/Catalog/Houkago_taibou.jpeg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">Houkago Teibou.</h6>
-                      <span class="AnimeDate">2020,Comedy</span>
-                  </div>
-                  <div class="card">
-                      <img src="./imgs/Catalog/jashin_chan_dropkin.jpeg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">Jashin Chan Dropkin.</h6>
-                      <span class="AnimeDate">2020,Comedy</span>
-                  </div>
-                  <div class="card">
-                      <img src="./imgs/Catalog/gai_to_kyouryuu.jpeg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">Gai To Kyouryuu.</h6>
-                      <span class="AnimeDate">2020,Comedy</span>
-                  </div>
-                  <div class="card">
-                      <img src="./imgs/Catalog/major_2nd.jpeg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">Major 2nd.</h6>
-                      <span class="AnimeDate">2020,Comedy</span>
-                  </div>
-                  <div class="card">
-                      <img src="./imgs/Catalog/Bessatso_Olympia.jpg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">Bessatso Olympia.</h6>
-                      <span class="AnimeDate">2020,Comedy</span>
-                  </div>
-                  <div class="card">
-                      <img src="./imgs/Catalog/Kumatta_jisan.jpeg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">Komatta Jiisan.</h6>
-                      <span class="AnimeDate">2020,Comedy</span>
-                  </div>
-                  <div class="card">
-                      <img src="./imgs/Catalog/yarou_nanaana.jpg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">Yarou Nanaana.</h6>
-                      <span class="AnimeDate">2020,Adventure</span>
-                  </div>
-                  <div class="card">
-                      <img src="./imgs/Catalog/hakuchaw_daimaou.jpg" alt="" class="AnimeCover">
-                      <h5 class="AnimeTitle">Hakuchaw Daimaou.</h6>
-                      <span class="AnimeDate">2020,Comedy</span>
-                  </div>
               </div>
-                <!-- see more btn -->
-                  <div class="d-grid gap-2 seemore-btn">
-                      <button class="btn btn-light" type="button">Show More</button>
-                  </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFive">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFive"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseFive"
+                  >
+                    Format
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseFive"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="flush-headingFive"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body"></div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingSix">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseSix"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseSix"
+                  >
+                    Airing Status
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseSix"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="flush-headingSix"
+                  data-bs-parent="#accordionFlushExample"
+                >
+                  <div class="accordion-body"></div>
+                </div>
               </div>
             </div>
-        </section>
-        <footer>
-          <hr style="width: 100vw;translate: -8%;">
-            <div class="footer-body">
-                <div class="footer-text flex-end">
-                    <a href="#" class="footer-logo"><h4 class="logo">Kurosaw.com</h4></a>
-                    <ul class="flex-center gap-4">
-                      <a class="icon-link text-decoration-none" href="./about.html"><li class="footer-link">Terms & Privecy</li></a>
-                      <a class="icon-link text-decoration-none" href="./about.html"><li class="footer-link">Contact</li></a>
-                    </ul>
-                </div>
-                <div class="col-icons gap-5">
-                    <i class="fa-brands fa-facebook-f"></i>
-                    <i class="fa-brands fa-discord"></i>
-                    <i class="fa-brands fa-youtube"></i>
-                    <i class="fa-brands fa-instagram"></i>
-                </div>
+          </div>
+          <div class="col-lg-10 catalog-column position-relative">
+            <div class="cards-holder flex-center gap-3 flex-center gap-3 pb-3">
+              <div class="card">
+                <img
+                  src="./imgs/home/popular/Kaguya-smaLoveiswar.jpeg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Kaguya-sama Love is war</h5>
+                <span class="AnimeDate">2020,Comedy</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/Otome_Game.jpeg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Otome_Game.</h5>
+                <span class="AnimeDate">2020,Comedy</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/kakushigoto.jpeg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">kakushigoto.</h5>
+                <span class="AnimeDate">2020,Comedy</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/Princess Connect.jpeg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Gintama 4.</h5>
+                <span class="AnimeDate">2020,Comedy</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/appare_ranman.jpeg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Appare-Ranman !.</h5>
+                <span class="AnimeDate">2020,Comedy</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/Tsugu Tsugumomo.jpeg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Tsugu Tsugumomo.</h5>
+                <span class="AnimeDate">2020,Action</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/nami_yo_kiitekure.jpg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Nami Yo kiitekure.</h5>
+                <span class="AnimeDate">2020,Comedy</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/Houkago_taibou.jpeg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Houkago Teibou.</h5>
+                <span class="AnimeDate">2020,Comedy</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/jashin_chan_dropkin.jpeg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Jashin Chan Dropkin.</h5>
+                <span class="AnimeDate">2020,Comedy</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/gai_to_kyouryuu.jpeg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Gai To Kyouryuu.</h5>
+                <span class="AnimeDate">2020,Comedy</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/major_2nd.jpeg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Major 2nd.</h5>
+                <span class="AnimeDate">2020,Comedy</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/Bessatso_Olympia.jpg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Bessatso Olympia.</h5>
+                <span class="AnimeDate">2020,Comedy</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/Kumatta_jisan.jpeg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Komatta Jiisan.</h5>
+                <span class="AnimeDate">2020,Comedy</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/yarou_nanaana.jpg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Yarou Nanaana.</h5>
+                <span class="AnimeDate">2020,Adventure</span>
+              </div>
+              <div class="card">
+                <img
+                  src="./imgs/Catalog/hakuchaw_daimaou.jpg"
+                  alt=""
+                  class="AnimeCover"
+                />
+                <h5 class="AnimeTitle">Hakuchaw Daimaou.</h5>
+                <span class="AnimeDate">2020,Comedy</span>
+              </div>
             </div>
-        </footer>
+            <!-- see more btn -->
+            <div class="d-grid gap-2 seemore-btn">
+              <button class="btn btn-light" type="button">Show More</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer>
+        <hr style="width: 100vw; translate: -8%" />
+        <div class="footer-body">
+          <div class="footer-text flex-end">
+            <a href="#" class="footer-logo"
+              ><h4 class="logo">Kurosaw.com</h4></a
+            >
+            <ul class="flex-center gap-4">
+              <a class="icon-link text-decoration-none" href="./about.html"
+                ><li class="footer-link">Terms & Privecy</li></a
+              >
+              <a class="icon-link text-decoration-none" href="./about.html"
+                ><li class="footer-link">Contact</li></a
+              >
+            </ul>
+          </div>
+          <div class="col-icons gap-5">
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-discord"></i>
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-instagram"></i>
+          </div>
+        </div>
+      </footer>
     </main>
 
-    <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
-</body>
+    <script src="./Scripts/main.js" type="module"></script>
+    <script src="./bootstrap-5.3.3-dist/js/bootstrap.js" type="module"></script>
+  </body>
 </html>

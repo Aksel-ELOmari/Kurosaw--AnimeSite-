@@ -1,72 +1,87 @@
-import firebase from './firebase/app';
-import {assignClick,inistializeNavButtons} from './utitlise.js';
-import {googleSigning,facebookSigning,signOut} from '../firebaseAutontication.js';
-inistializeNavButtons();
-assignClick('google-btn',googleSigning);
-assignClick('facebook-btn',facebookSigning);
-assignClick('singout-btn',signOut);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Import the functions you need from the SDKs you need
-// import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-// import { getDatabase,ref,set,get,child } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js";
-// import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
-// const firebaseConfig = {
-//     apiKey: "AIzaSyDZok_WgqUha5O0zjbZbMwTGVma0WM38RQ",
-//     authDomain: "pharma-28f84.firebaseapp.com",
-//     projectId: "pharma-28f84",
-//     storageBucket: "pharma-28f84.appspot.com",
-//     messagingSenderId: "682071014272",
-//     appId: "1:682071014272:web:84123a5c2cf8b73baa9f65",
-//     measurementId: "G-LT7XYC3P23"
-// };
-// // Initialize Firebase
-// const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
-
-// // get the ref from the database service
-// const db = getDatabase(app);
-// const submit_btn = document.getElementById('submit-btn');
-// submit_btn.addEventListener('click',(e)=>{
-//     e.preventDefault();
-//     set(ref(db,'Users/' + document.getElementById('name ').value + document.getElementById('lastName').value),
-//     {
-//        userName:document.getElementById('name').value,
-//        userlastName:document.getElementById('lastName').value,
-//        userEmail:document.getElementById('userEmail').value,
-//        userPhone:document.getElementById('userPhone').value, 
-//        userMessage:document.getElementById('ContactText').value, // User Message
-//     })
-//     set(ref(db,'Emails/' + document.getElementById('name').value),
-//     {
-//        userName:document.getElementById('name').value,
-//        userEmail:document.getElementById('userEmail').value
-//     })
-//     prompt('the data was sent successfully !!!!');
-// })
+const firebaseConfig = {
+  apiKey: "AIzaSyA6Vhr8XE6aeBZJpsLtV1qi0xaYw9PpYZk",
+  authDomain: "kurosaw-88c68.firebaseapp.com",
+  databaseURL: "https://kurosaw-88c68-default-rtdb.firebaseio.com",
+  projectId: "kurosaw-88c68",
+  storageBucket: "kurosaw-88c68.appspot.com",
+  messagingSenderId: "524642879718",
+  appId: "1:524642879718:web:02c73576a25b6cfd375327",
+  measurementId: "G-0QHJXCRCSW",
+};
+// Import Firebase modules using full paths
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-analytics.js";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  FacebookAuthProvider,
+  signInWithPopup,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  collection,
+} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import {
+  getStorage,
+  ref,
+  getDownloadURL,
+} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js";
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+const db = getFirestore(app);
+const storage = getStorage(app);
+//! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
+// Calling this func to make changes whene the user is in;
+export default function isUserIn() {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const uid = user.uid;
+      console.log("the user loged in ", uid);
+    } else {
+      console.log("the user is singned out", uid);
+    }
+  });
+}
+export function CreateCard(item, placeholder) {
+  const Card = document.createElement("div");
+  Card.classList.add("Card");
+  // Card.setAttribute('data-id',);
+  Card.innerHTML = `
+        <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
+        <img src="./imgs/home/popular/Kaguya-smaLoveiswar.jpeg" alt="" class="AnimeCover" />
+        <h5 class="AnimeTitle">Kaguya-sama Love is war</h5>
+        <span class="AnimeDate">2022,Comedy</span>
+  `;
+  placeholder.append(Card);
+}
+//? ################### Start Save Animes to Firebase Collections ##############
+export async function SaveToCollection(anime_id, CollName) {
+  console.log("Save anime to collection exported from main.js");
+  const item = document.getElementById("anime_id");
+  const animeName = item.querySelector(".AnimeTitle").innerText;
+  const AnimeDate = item.querySelector(".AnimeDate").innerText;
+  const rateScore = item.querySelector(".rate-score").innerText;
+  const animeCover = document.querySelector(".AnimeCover").src;
+  try {
+    const item = {
+      id: anime_id,
+      name: animeName,
+      AnimeDate: AnimeDate,
+      rateScore: rateScore,
+      animeCover: animeCover,
+    };
+    await addDoc(collection(db, CollName), item);
+    console.log(`${animeName} added to collection successfully!`);
+  } catch (error) {
+    console.error(error);
+  }
+}
+//? ################### End Save Animes to Firebase Collections ##############

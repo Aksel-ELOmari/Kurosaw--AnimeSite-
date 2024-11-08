@@ -1,0 +1,26 @@
+{
+  "name": "kurosaw-animesite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "parcel ./index.html --no-cache",
+    "build": "parcel build ./index.html --dist-dir build",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "firebase": "^11.0.1"
+  },
+  "devDependencies": {
+    "assert": "^2.1.0",
+    "buffer": "^6.0.3",
+    "path-browserify": "^1.0.1",
+    "prettier": "^3.3.3",
+    "process": "^0.11.10",
+    "util": "^0.12.5"
+  }
+}
