@@ -16,8 +16,50 @@
     <!-- bootstrap-5 -->
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css" />
     <link rel="stylesheet" href="./Styles/index.css" />
+    <link rel="stylesheet" href="./Styles/customize.css" />
     <title>Kurosaw | Profile</title>
   </head>
+  <style>
+    .offcanvas_profile.top-user-cover {
+      height: 5rem;
+      width: 5rem;
+      padding: 0.1rem;
+      border: solid 2px #fff;
+    }
+    .offcanvas-doc.active {
+      border-bottom: solid 1px #fff;
+    }
+    #searchOffcanvas {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    #searchOffcanvas input {
+      min-width: 90%;
+      padding: 0.4rem 0.6rem;
+      background: transparent;
+      color: var(--text-color), #fff;
+      border-radius: 16px;
+      border: solid 1px #fff;
+    }
+    #searchOffcanvas input:focus {
+      border: solid 2px green;
+    }
+    .offDocs-nav {
+      overflow: scroll hidden;
+    }
+    .offcanvas .nav-tab.active {
+      background: #fff;
+      color: #000;
+    }
+    .offcanvas .nav-tab {
+      padding: 0.5rem 1rem;
+      border: solid 1px #fff;
+      border-radius: 2rem;
+      transition: linear 0.5s both;
+      cursor: pointer;
+    }
+  </style>
   <body>
     <main class="container user-main">
       <header>
@@ -65,35 +107,13 @@
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
               </form>
-              <div class="corner flex ms-4 gap-3">
-                <div class="dropdown">
-                  <button
-                    class="btn btn-transprent show dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton2"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    My Library
-                  </button>
-                  <ul
-                    class="dropdown-menu dropdown-menu-dark"
-                    aria-labelledby="dropdownMenuButton2"
-                  >
-                    <li><a class="dropdown-item active" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Separated link</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="nav-bar-profile">
+              <div
+                class="corner-profile corner flex ms-4 mt-2 gap-3"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasWithBothOptions"
+                aria-controls="offcanvasWithBothOptions"
+              >
+                <div class="nav-bar-profile cursor-pointer">
                   <img
                     src="./imgs/Profile/Profile-img.jpg"
                     alt=""
@@ -104,6 +124,221 @@
             </div>
           </div>
         </nav>
+        <!-- /********** offcanvas********/ -->
+        <section class="offcanvases_container">
+          <div
+            class="offcanvas offcanvas-start bg-dark text-white open"
+            data-bs-scroll="true"
+            tabindex="-1"
+            id="offcanvasWithBothOptions"
+            aria-labelledby="offcanvasWithBothOptionsLabel"
+          >
+            <div class="offcanvas_main-container container py-4">
+              <div class="top-offcanvas mb-4">
+                <div class="d-flex align-center flex-column">
+                  <img
+                    src="./imgs/Profile/Profile-img.jpg"
+                    alt=""
+                    class="offcanvas_profile top-user-cover"
+                  />
+                  <div class="user-name mt-2 fw-bold"></div>
+                </div>
+              </div>
+              <div class="middel-offcanvas">
+                <div class="offcanvas-documents">
+                  <div class="offcanvas-docs">
+                    <div
+                      class="offcanvas-doc ps-2 active cursor-pointer d-flex mb-2 gap-3"
+                      data-name="LatestContent"
+                      data-bs-toggle="offcanvas"
+                      data-bs-target="#my-docs-offcanvas"
+                      aria-controls="offcanvasWithBothOptions"
+                      data-target="my-docs-offcanvas"
+                    >
+                      <i class="fa-solid fa-fire"></i>
+                      <p class="doc-main">Latest Content</p>
+                    </div>
+                    <div
+                      class="offcanvas-doc ps-2 cursor-pointer d-flex mb-2 gap-3"
+                      data-name="MoviesListes"
+                      data-bs-toggle="offcanvas"
+                      data-bs-target="#my-docs-offcanvas"
+                      aria-controls="offcanvasWithBothOptions"
+                      data-target="my-docs-offcanvas"
+                    >
+                      <i class="fa-solid fa-film"></i>
+                      <p class="doc-main">Movies Listes</p>
+                    </div>
+                    <div
+                      class="offcanvas-doc ps-2 cursor-pointer d-flex mb-2 gap-3"
+                      data-name="SeriesListes"
+                      data-bs-toggle="offcanvas"
+                      data-bs-target="#my-docs-offcanvas"
+                      aria-controls="offcanvasWithBothOptions"
+                      data-target="my-docs-offcanvas"
+                    >
+                      <i class="fa-solid fa-tv"></i>
+                      <p class="doc-main">Series Listes</p>
+                    </div>
+                    <div
+                      class="offcanvas-doc ps-2 cursor-pointer d-flex mb-2 gap-3"
+                      data-name="MostTrending"
+                      data-bs-toggle="offcanvas"
+                      data-bs-target="#my-docs-offcanvas"
+                      aria-controls="offcanvasWithBothOptions"
+                      data-target="my-docs-offcanvas"
+                    >
+                      <i class="fa-solid fa-chart-simple"></i>
+                      <p class="doc-main">Most Trending</p>
+                    </div>
+                    <div
+                      class="offcanvas-doc ps-2 cursor-pointer d-flex mb-2 gap-3"
+                      data-name="MyCollections"
+                      data-bs-toggle="offcanvas"
+                      data-bs-target="#my-docs-offcanvas"
+                      aria-controls="offcanvasWithBothOptions"
+                      data-target="my-docs-offcanvas"
+                    >
+                      <i class="fa-solid fa-bars-progress"></i>
+                      <p class="doc-main">My Collections</p>
+                    </div>
+                    <div
+                      class="offcanvas-doc ps-2 cursor-pointer d-flex mb-2 gap-3"
+                      data-name="Settings"
+                      data-bs-toggle="offcanvas"
+                      data-bs-target="#my-docs-offcanvas"
+                      aria-controls="offcanvasWithBothOptions"
+                      data-target="my-docs-offcanvas"
+                    >
+                      <i class="fa-solid fa-gear"></i>
+                      <div class="doc-main">Settings</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="last-offcanvas mt-4">
+                <div class="About_Us">
+                  <div class="cursor-pointer flex mb-2 align-center gap-3">
+                    <i class="fa-solid fa-rocket"></i>
+                    <a
+                      href="https://aksel-elomari.github.io/Portfolio/"
+                      rel="noopener"
+                      target="_blank"
+                      class="text-decoration-none doc-main"
+                      >Our Apps</a
+                    >
+                  </div>
+                  <div class="Social_links">
+                    <h4 class="colored mb-2 fw-400">Follow Us On :</h4>
+                    <div class="social_link d-flex align-items-center gap-2">
+                      <span
+                        class="link-inner cursor-pointer"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Facebook"
+                      >
+                        <i class="fa-brands fa-facebook-f"></i>
+                      </span>
+                      <span
+                        class="link-inner cursor-pointer"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="Instagram"
+                      >
+                        <i class="fa-brands fa-instagram"></i>
+                      </span>
+                      <span
+                        class="link-inner cursor-pointer"
+                        data-bs-toggle="tooltip"
+                        data-bs-placement="top"
+                        title="You Tube"
+                      >
+                        <i class="fa-brands fa-youtube"></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="offcanvas my-docs-offcanvas offcanvas-start bg-dark text-light p-3"
+            data-bs-scroll="true"
+            tabindex="-1"
+            id="my-docs-offcanvas"
+            aria-labelledby="moffcanvasWithBothOptionsLabel"
+          >
+            <div class="top-offcanvas mb-4 offcanvas-nav">
+              <nav class="d-flex align-items-center justify-content-between">
+                <div
+                  class="leavOffCanvas_btn cursor-pointer"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#my-docs-offcanvas"
+                  aria-controls="offcanvasWithBothOptions"
+                  data-target="my-docs-offcanvas"
+                >
+                  <i class="fa-solid fa-door-open"></i>
+                </div>
+                <div class="myoffcanvasDocName">Movies Lists</div>
+                <ldiv
+                  class="search-icon cursor-pointer"
+                  data-target="docs_search-field"
+                  ><i class="fa-solid fa-magnifying-glass"></i
+                ></ldiv>
+              </nav>
+              <!-- search filed offcanvas -->
+              <div class="docs_search-field d-none" id="docs_search-field">
+                <form id="searchOffcanvas">
+                  <input
+                    type="search"
+                    name="searchDocVal"
+                    id="searchDocVal"
+                    placeholder="tape to search ."
+                  />
+                  <label for="searchDocVal" title="search" class="searchDoc_btn"
+                    ><i class="fa-solid fa-magnifying-glass"></i
+                  ></label>
+                </form>
+                <!-- <div class="DocsSearchResults"></div> -->
+              </div>
+            </div>
+            <div class="Docs-offcanvas-body mx-2">
+              <div class="Offcanvas_inner" id="Offcanvas_inner">
+                <div
+                  class="offcanvasDoc-placeholder d-none"
+                  data-name="LatestContent"
+                >
+                  <!-- incase your docs has nav tabs to toggle some cards -->
+                  <nav
+                    class="offDocs-nav scroller-x d-flex align-items-center gap-2 py-2 overfllow-scroll"
+                  >
+                    <div class="nav-tab">active</div>
+                  </nav>
+                </div>
+                <div
+                  class="offcanvasDoc-placeholder d-none"
+                  data-name="MoviesListes"
+                ></div>
+                <div
+                  class="offcanvasDoc-placeholder d-none"
+                  data-name="SeriesListes"
+                ></div>
+                <div
+                  class="offcanvasDoc-placeholder d-none"
+                  data-name="MostTrending"
+                ></div>
+                <div
+                  class="offcanvasDoc-placeholder d-none"
+                  data-name="MyCollections"
+                ></div>
+                <div
+                  class="offcanvasDoc-placeholder d-none"
+                  data-name="Settings"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </section>
         <hr style="width: 100vw; translate: -8%" />
         <section class="user-section">
           <div class="user-Cover">
@@ -267,13 +502,6 @@
               />
               <h5 class="AnimeTitle">Haikyuu!!</h5>
               <span class="AnimeDate">2014,Sports</span>
-              <!-- <div class="after-card">
-                          <video src="./main/video-preview.mp4" muted loop autoplay class="AnimeCover"></video>
-                          <div class="likes-btns flex-between">
-                              <span class="attitude"><i class="fa fa-regular fa-thumbs-up"></i></span>
-                              <span class="attitude"><i class="fa fa-regular fa-thumbs-down"></i></span>
-                          </div>
-                      </div> -->
             </div>
             <div class="card">
               <span class="rate-score"
@@ -286,13 +514,6 @@
               />
               <h5 class="AnimeTitle">Tower Of God</h5>
               <span class="AnimeDate">2020,Action</span>
-              <!-- <div class="after-card">
-                            <video src="./main/video-preview.mp4" muted loop autoplay class="AnimeCover"></video>
-                            <div class="likes-btns flex-between">
-                                <span class="attitude"><i class="fa fa-regular fa-thumbs-up"></i></span>
-                                <span class="attitude"><i class="fa fa-regular fa-thumbs-down"></i></span>
-                            </div>
-                        </div> -->
             </div>
             <div class="card">
               <span class="rate-score"
@@ -317,13 +538,6 @@
               />
               <h5 class="AnimeTitle">Golden Kamuy</h5>
               <span class="AnimeDate">2018,Adventure</span>
-              <!-- <div class="after-card">
-                              <video src="./main/video-preview.mp4" muted loop autoplay class="AnimeCover"></video>
-                              <div class="likes-btns flex-between">
-                                  <span class="attitude"><i class="fa fa-regular fa-thumbs-up"></i></span>
-                                  <span class="attitude"><i class="fa fa-regular fa-thumbs-down"></i></span>
-                              </div>
-                          </div> -->
             </div>
             <div class="Card">
               <span class="rate-score"
@@ -346,7 +560,7 @@
         <div class="footer-body">
           <div class="footer-text flex-end">
             <a href="#" class="footer-logo"
-              ><h4 class="logo">Kurosaw.com</h4></a
+              ><h4 class="logo">Anime_4U.com</h4></a
             >
             <ul class="flex-center gap-4">
               <a class="icon-link text-decoration-none" href="./about.html"
@@ -367,6 +581,35 @@
       </footer>
     </main>
 
+    <script>
+      const myOffcanvasDocsIn = document.querySelectorAll(
+        ".offcanvasDoc-placeholder",
+      );
+      const OffcanvasDocs = document.querySelectorAll(".offcanvas-doc");
+      OffcanvasDocs.forEach((el) => {
+        if (el)
+          el.addEventListener("click", () => {
+            myOffcanvasDocsIn.forEach((it) => {
+              if (
+                it &&
+                it.getAttribute("data-name" == el.getAttribute("data-name"))
+              ) {
+                const target = it;
+                const targetName = it.getAttribute("data-name");
+                target.classList.toggle("d-none");
+                const offDocName = document.querySelector(
+                  ".myoffcanvasDocName",
+                );
+                if (offDocName) {
+                  offDocName.innerHTML = "";
+                  offDocName.innerHTML = targetName;
+                }
+                console.log(targetName);
+              }
+            });
+          });
+      });
+    </script>
     <script src="./Scripts/main.js" type="module"></script>
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.js" type="module"></script>
     <script

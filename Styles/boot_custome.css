@@ -1,0 +1,68 @@
+:root {
+  --style-main-color: green;
+  --style-light-main-color: rgba(0, 128, 0, 0.801);
+}
+.my_offcanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: var(--bg-color), #000 !important;
+  z-index: 100;
+}
+.my_offcanvas .my_offcanvas_btn {
+  position: absolute;
+  top: 1rem;
+  height: 2rem;
+  width: 2rem;
+  background: #ffffff60;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.my_offcanvas .my_offcanvas_R_btn {
+  right: 1rem;
+}
+.my_offcanvas .my_offcanvas_L_btn {
+  left: 1rem;
+}
+.review-main-card {
+  border:
+    solid 1px var(--text-color),
+    #fff;
+}
+.item-status{
+  all: unset;
+  border: solid 1px var(--bg-color);
+  background: var(--text-color);
+  padding: .7vh 1.25vw;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.item-status:hover{ border: solid 1px var(--text-color);background: var(--bg-color);}
+.item-status i {position: inherit !important;border: none;scale: 1 !important;}
+/* customizing the style of the btns */
+.like-btn.item-status.active {
+  --style-light-main-color: rgba(194, 12, 12, 0.808)!important;
+  --style-main-color: red!important;
+  background-color: var(--style-light-main-color)!important;
+  box-shadow: 0 0 3vw var(--style-main-color)!important;
+}
+.like-btn.item-status.active i {
+  color: red !important;
+}
+.save-btn.item-status.active {
+  --style-main-color: green!important;
+  --style-light-main-color: rgba(0, 128, 0, 0.801)!important;
+  background-color: var(--style-light-main-color)!important;
+  box-shadow: 0 0 3vw var(--style-main-color)!important;
+}
+.save-btn.item-status.active i {
+  color: green!important;
+}
+

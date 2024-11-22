@@ -16,15 +16,16 @@
     <!-- bootstrap-5 -->
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css" />
     <link rel="stylesheet" href="./Styles/index.css" />
-    <title>Kurosaw | Collections</title>
+    <link rel="stylesheet" href="./Styles/customize.css" />
+    <title>Anime_4U | Collections</title>
   </head>
   <body>
     <main class="container collections-main">
       <header>
         <nav class="navbar navbar-expand-lg">
           <!---  bg-body-tertiary -->
-          <div class="container-flid">
-            <a class="navbar-brand nav-link" href="./index.html">Kurosaw</a>
+          <div class="container-fluid">
+            <a class="navbar-brand nav-link" href="./index.html">Anime_4U</a>
             <button
               class="navbar-toggler"
               type="button"
@@ -66,7 +67,7 @@
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
               </form>
-              <div class="buttons flex ms-4 gap-3">
+              <div class="corner-btns buttons flex ms-4 gap-3">
                 <a type="link" title="Regester" href="./Regester.html"
                   ><button type="button" class="btn btn-dark Login-btn">
                     Login
@@ -78,37 +79,43 @@
                   </button></a
                 >
               </div>
+              <div class="corner-profile corner d-none flex ms-4 gap-3">
+                <div class="nav-bar-profile">
+                  <img
+                    src="./imgs/Profile/Profile-img.jpg"
+                    alt=""
+                    class="top-user-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </nav>
         <hr style="width: 100vw; translate: -8%" />
       </header>
-      <section class="Collections_lab">
+      <section>
         <div class="collections-header mb-4 flex-between">
           <h1 class="collections-title h1">Featured Collections</h1>
           <button
             type="button"
-            class="btn btn-light fw-3"
-            onclick="ToggleCreater()"
+            class="btn btn-light fw-3 createNewColl-btn"
+            data-target="Collections_lab"
           >
             <i class="fa-solid fa-plus" style="scale: 0.8; color: #000"></i>
             Create new
           </button>
         </div>
-        <div class="collections-creater d-none">
-          <div
-            class="hide-creater-section flex-center justify-content-center"
-            onclick="ToggleCreater()"
-          >
+        <div class="Collections_lab d-none">
+          <div class="ex-Coll-btn flex-center justify-content-center">
             <i class="fa-solid fa-x"></i>
           </div>
-          <div class="collections_shower">
+          <div class="go_back_btn flex-center justify-content-center">
+            <i class="fa-solid fa-arrow-left"></i>
+          </div>
+          <div class="Collections_lab_inner">
             <div
-              class="main-card collection-create-holder flex-center justify-content-center flex-column gap-2 d-none"
+              class="main-card NewCollections_lab flex-center justify-content-center flex-column gap-2 d-none"
             >
-              <h2 class="fw-bolder text-center Sing-title">
-                Create Collection
-              </h2>
               <form action="" id="newCollection-form" class="py-2">
                 <div class="input-card collection-name mb-2">
                   <label for="Collection-name" style="width: 100%"
@@ -153,12 +160,12 @@
                   value="Create"
                   class="btn btn-light btn-lg btn-block create-lg-btn"
                   id="newCollection-btn"
-                  onsubmit="CreateCollection()"
+                  onsubmit="createCollection()"
                 />
               </form>
             </div>
             <div
-              class="main-card seave-create-holder flex-center justify-content-center flex-column gap-2"
+              class="main-card SaveCollections_lab flex-center justify-content-center flex-column gap-2"
             >
               <h2 class="fw-bolder text-center Sing-title">
                 Choose Collection
@@ -166,8 +173,7 @@
               <div class="my-2">
                 <button
                   type="button"
-                  class="btn btn-light btn-lg fw-4"
-                  onclick="CollectionCreaterTogller()"
+                  class="btn btn-light OpenNewCollLab btn-lg fw-4"
                 >
                   <i
                     class="fa-solid fa-plus"
@@ -176,13 +182,14 @@
                   Create new Collection
                 </button>
               </div>
+              <!-- ################ Column Collections ################ -->
               <div
                 class="collections-cards flex-center justify-content-center flex-column"
               >
                 <div
                   title="collection Card"
                   class="collection flex-center justify-content-between w-100 my-2"
-                  data-name="first collection"
+                  data-collection-name=" The Best Mystical Anime"
                   data-id=""
                 >
                   <div class="card-text">
@@ -200,7 +207,7 @@
                 <div
                   title="collection Card"
                   class="collection flex-center justify-content-between w-100 my-2"
-                  data-name="first collection"
+                  data-collection-name="My Top Anime Tier"
                   data-id=""
                 >
                   <div class="card-text">
@@ -216,7 +223,7 @@
                 <div
                   title="collection Card"
                   class="collection flex-center justify-content-between w-100 my-2"
-                  data-name="first collection"
+                  data-collection-name="The Best Slice Of Life"
                   data-id=""
                 >
                   <div class="card-text">
@@ -228,7 +235,7 @@
                   <img
                     src="./imgs/Profile/118484.jpg"
                     alt=""
-                    class="coolection-cover ms-3"
+                    class="collection-cover ms-3"
                   />
                 </div>
               </div>
@@ -236,7 +243,6 @@
           </div>
         </div>
       </section>
-      <!--! ##################### -->
       <section class="main-body">
         <div class="collections-holder">
           <div class="CollectionCountainer row my-3" id="colletion_inner">
@@ -249,39 +255,41 @@
                 the best Mystical Anime
               </h5>
               <div class="Cards">
-                  <div class="Card">
-                    <img
-                      src="./imgs/Catalog/appare_ranman.jpeg"
-                      height="10rem"
-                      width="2rem"
-                      alt=""
-                      class="card-cover"
-                    />
-                  </div>
-                  <div class="Card">
-                    <img
-                      src="./imgs/Catalog/appare_ranman.jpeg"
-                      height="10rem"
-                      width="2rem"
-                      alt=""
-                      class="card-cover"
-                    />
-                  </div>
-                  <div class="Card">
-                    <img
-                      src="./imgs/Catalog/appare_ranman.jpeg"
-                      height="10rem"
-                      width="2rem"
-                      alt=""
-                      class="card-cover"
-                    />
-                  </div>
+                <div class="Card">
+                  <img
+                    src="./imgs/Catalog/appare_ranman.jpeg"
+                    height="10rem"
+                    width="2rem"
+                    alt=""
+                    class="card-cover"
+                  />
+                </div>
+                <div class="Card">
+                  <img
+                    src="./imgs/Catalog/appare_ranman.jpeg"
+                    height="10rem"
+                    width="2rem"
+                    alt=""
+                    class="card-cover"
+                  />
+                </div>
+                <div class="Card">
+                  <img
+                    src="./imgs/Catalog/appare_ranman.jpeg"
+                    height="10rem"
+                    width="2rem"
+                    alt=""
+                    class="card-cover"
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="d-grid gap-2">
-          <button class="btn btn-light" type="button">Show More</button>
+          <button class="btn btn-light" type="button" id="showMoreColl-btn">
+            Show More
+          </button>
         </div>
       </section>
       <footer>
@@ -289,7 +297,7 @@
         <div class="footer-body">
           <div class="footer-text flex-end">
             <a href="#" class="footer-logo"
-              ><h4 class="logo">Kurosaw.com</h4></a
+              ><h4 class="logo">Anime_4U.com</h4></a
             >
             <ul class="flex-center gap-4">
               <a class="icon-link text-decoration-none" href="./about.html"
@@ -309,34 +317,8 @@
         </div>
       </footer>
     </main>
-    <script>
-      function CollectionCreaterTogller() {
-        let Creater = document.querySelector(".collection-create-holder");
-        Creater.classList.toggle("d-none");
-        let Seaver = document.querySelector(".seave-create-holder");
-        Seaver.classList.toggle("d-none");
-      }
-      function ToggleCreater() {
-        let CreaterSection = document.querySelector(".collections-creater");
-        CreaterSection.classList.toggle("d-none");
-        console.log("toggle the creater collections section !!");
-      }
-
-      function CreateCard(placeholder) {
-        const Card = document.createElement("div");
-        Card.classList.add("Card");
-        // Card.setAttribute('data-id',);
-        Card.innerHTML = `
-            <span class="rate-score">8.4 <i class="fa-solid fa-star"></i></span>
-            <img src="./imgs/home/popular/Kaguya-smaLoveiswar.jpeg" alt="" class="AnimeCover" />
-            <h5 class="AnimeTitle">Kaguya-sama Love is war</h5>
-            <span class="AnimeDate">2022,Comedy</span>
-        `;
-        placeholder.append(Card);
-      }
-    </script>
     <script src="./Scripts/Collections.js" type="module"></script>
-    <script src="./Scripts/index.js" type="module"></script>
+    <script src="./Scripts/main.js" type="module"></script>
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.js" type="module"></script>
   </body>
 </html>

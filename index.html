@@ -16,7 +16,10 @@
     <!-- bootstrap-5 -->
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css" />
     <link rel="stylesheet" href="./Styles/index.css" />
-    <title>Kurosaw | Home</title>
+    <link rel="stylesheet" href="./Styles/customize.css" />
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+
+    <title>Anime_4U | Home</title>
   </head>
   <body>
     <main class="container">
@@ -67,23 +70,10 @@
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
               </form>
-              <div class="buttons flex ms-4 gap-3">
+              <div class="corner-btns buttons flex ms-4 gap-3">
                 <a type="link" title="Regester" href="./Regester.html"
-                  ><button
-                    type="button"
-                    class="btn btn-dark Login-btn"
-                    id="nav_Login-btn"
-                  >
+                  ><button type="button" class="btn btn-dark Login-btn">
                     Login
-                  </button></a
-                >
-                <a type="link" title="Regester" href="./Regester.html"
-                  ><button
-                    type="button"
-                    class="btn btn-dark LogOut-btn d-none"
-                    id="nav_logOut-btn"
-                  >
-                    Log Out
                   </button></a
                 >
                 <a type="link" title="Regester" href="./Regester.html"
@@ -92,14 +82,23 @@
                   </button></a
                 >
               </div>
+              <div class="corner-profile corner d-none flex ms-4 gap-3">
+                <div class="nav-bar-profile">
+                  <img
+                    src="./imgs/Profile/Profile-img.jpg"
+                    alt=""
+                    class="top-user-cover"
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </nav>
         <hr style="width: 100vw; translate: -8%" />
         <section class="hero-section">
-          <div class="hero-content">
+          <div class="hero-content" id="main_card_holder">
             <div class="hero-Cover">
-              <img src="./main/Eximg.gif" alt="" id="HeaderCover" />
+              <img src="./imgs/Eximg.gif" alt="" id="HeaderCover" />
             </div>
             <div class="hero-card mt-5">
               <h1 class="hero-title">Chansaw Man</h1>
@@ -125,123 +124,14 @@
             <div class="arrows-holder flex-between">
               <i
                 class="fa-solid flex-center justify-content-center arrow fa-arrow-left"
+                  data-parentName="special-section"
               ></i>
               <i
                 class="fa-solid flex-center justify-content-center arrow fa-arrow-right"
+                  data-parentName="special-section"
               ></i>
             </div>
-            <div class="carousel-cards-holder flex-center gap-3 pb-3">
-              <div class="card" data-id="special-1">
-                <span class="rate-score"
-                  >8.4 <i class="fa-solid fa-star"></i
-                ></span>
-                <img
-                  src="./imgs/home/special/To Your Eternity.jpg"
-                  alt=""
-                  class="AnimeCover"
-                />
-                <h5 class="AnimeTitle">To Your Eternity</h5>
-                <span class="AnimeDate">2021,Adventure</span>
-                <div class="after-card">
-                  <video
-                    src="./main/video-preview.mp4"
-                    muted
-                    loop
-                    autoplay
-                    class="AnimeCover"
-                  ></video>
-                  <div
-                    class="attitudes d-flex align-center justify-content-between"
-                  >
-                    <span class="attitude like-btn" data-parent-id="special-1" data-class="like-btn" data-styled-class="liked-btn"
-                      ><i class="fa-solid fa-heart"></i
-                    ></span>
-                    <span class="attitude save-btn" data-parent-id="special-1" data-class="save-btn" data-styled-class="saved-btn"
-                      ><i class="fa-solid fa-bookmark"></i
-                    ></span>
-                  </div>
-                </div>
-              </div>
-              <div class="card" data-id="special-2">
-                <span class="rate-score"
-                  >8.4 <i class="fa-solid fa-star"></i
-                ></span>
-                <img
-                  src="./imgs/home/special/spirited_a_way.jpg"
-                  alt=""
-                  class="AnimeCover"
-                />
-                <h5 class="AnimeTitle">Spirited a Way</h5>
-                <span class="AnimeDate">2001,Adventure</span>
-                <div class="after-card">
-                  <video
-                    src="./main/video-preview.mp4"
-                    muted
-                    loop
-                    autoplay
-                    class="AnimeCover"
-                  ></video>
-                  <div
-                    class="attitudes d-flex align-center justify-content-between"
-                  >
-                    <span class="attitude like-btn" data-parent-id="special-2" data-class="like-btn" data-styled-class="liked-btn"
-                      ><i class="fa-solid fa-heart"></i
-                    ></span>
-                    <span class="attitude save-btn" data-parent-id="special-2" data-class="save-btn" data-styled-class="saved-btn"
-                      ><i class="fa-solid fa-bookmark"></i
-                    ></span>
-                  </div>
-                </div>
-              </div>
-              <div class="card" data-id="special-3">
-                <span class="rate-score"
-                  >8.4 <i class="fa-solid fa-star"></i
-                ></span>
-                <img
-                  src="./imgs/home/special/Tokyo Revengers.jpg"
-                  alt=""
-                  class="AnimeCover"
-                />
-                <h5 class="AnimeTitle">Tokyo Revengers</h5>
-                <span class="AnimeDate">2021,Action</span>
-              </div>
-              <div class="card" data-id="special-4">
-                <span class="rate-score"
-                  >8.4 <i class="fa-solid fa-star"></i
-                ></span>
-                <img
-                  src="./imgs/home/special/Haikyuu!!.jpg"
-                  alt=""
-                  class="AnimeCover"
-                />
-                <h5 class="AnimeTitle">Haikyuu!!</h5>
-                <span class="AnimeDate">2014,Sports</span>
-              </div>
-              <div class="card" data-id="special-5">
-                <span class="rate-score"
-                  >8.4 <i class="fa-solid fa-star"></i
-                ></span>
-                <img
-                  src="./imgs/home/special/Tower of God.jpeg"
-                  alt=""
-                  class="AnimeCover"
-                />
-                <h5 class="AnimeTitle">Tower Of God</h5>
-                <span class="AnimeDate">2020,Action</span>
-              </div>
-              <div class="card" data-id="special-6">
-                <span class="rate-score"
-                  >8.4 <i class="fa-solid fa-star"></i
-                ></span>
-                <img
-                  src="./imgs/home/special/goldenKamuy.webp"
-                  alt=""
-                  class="AnimeCover"
-                />
-                <h5 class="AnimeTitle">Golden Kamuy</h5>
-                <span class="AnimeDate">2018,Adventure</span>
-              </div>
-            </div>
+            <div class="carousel-cards-holder flex-center gap-3 pb-3"></div>
           </div>
         </section>
       </header>
@@ -355,313 +245,25 @@
           <div class="arrows-holder flex-between">
             <i
               class="fa-solid flex-center justify-content-center arrow fa-arrow-left"
+                data-parentName="trending-section"
             ></i>
             <i
               class="fa-solid flex-center justify-content-center arrow fa-arrow-right"
+                data-parentName="trending-section"
             ></i>
           </div>
-          <div
-            class="carousel-cards-holder flex-center gap-3 flex-center gap-3 pb-3"
-          >
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/trending/SpyXFamily.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Spy X Family</h5>
-              <span class="AnimeDate">2022,Comedy</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/trending/mobpSycho1000.webp"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Mob Psycho 1000</h5>
-              <span class="AnimeDate">2022,Action</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/trending/bokunehero.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Bokunehero</h5>
-              <span class="AnimeDate">2022,Action</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/trending/yofokachi.jpeg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Yofokachi</h5>
-              <span class="AnimeDate">2022,Comedy</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/trending/cyberpunkEdgerunners.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Cyber Punk Edgerunners</h5>
-              <span class="AnimeDate">2022,Action</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/trending/BleachSennen.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Bleach Sennen</h5>
-              <span class="AnimeDate">2022,Action</span>
-            </div>
-          </div>
+          <div class="carousel-cards-holder flex-center gap-3 flex-center gap-3 pb-3"></div>
         </div>
       </section>
       <section class="popular-section py-3">
         <h1 class="section-title orangered">Most Popular :</h1>
         <div class="carousel-countainer">
-          <div class="cards-holder flex-center gap-3 flex-center gap-3 pb-3">
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/fallmetalAlchemistBrotherhood.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">fallmetal Alchemist Brotherhood</h5>
-              <span class="AnimeDate">2009,Action</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/Kaguya-smaLoveiswar.jpeg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Kaguya-sama Love is war</h5>
-              <span class="AnimeDate">2022,Comedy</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/steins-gate.webp"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Steins-Gate.</h5>
-              <span class="AnimeDate">2011,Drama</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/Gintama4.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Gintama 4.</h5>
-              <span class="AnimeDate">2015,Comedy</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/ShingekiNokyojin.webp"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Gintama 4.</h5>
-              <span class="AnimeDate">2019,Action</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/Gintama2.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Gintama 2.</h5>
-              <span class="AnimeDate">2011,Comedy</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/fruitsBasket.jpe"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">fruits Basket.</h5>
-              <span class="AnimeDate">2021,Romance</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/hunterXhunter.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Hunter X Hunter.</h5>
-              <span class="AnimeDate">2011,Adventure</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/Gintama the Very final.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Gintama the Very final.</h5>
-              <span class="AnimeDate">2021,Comedy</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/GingaEiyuuDensetsu.webp"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Ginga Eiyuu Densetsu.</h5>
-              <span class="AnimeDate">1988,Drama</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/Gintama3.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Gintama 3.</h5>
-              <span class="AnimeDate">2012,Comedy</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/Gintama5.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Gintama 5.</h5>
-              <span class="AnimeDate">2017,Comedy</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/Koi no katachi.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Koi no katachi.</h5>
-              <span class="AnimeDate">2016,Drama</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/Violet_Evergarden.webp"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Violet Evergarden.</h5>
-              <span class="AnimeDate">2020,Drama</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/Sangatsu_no_Lion.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">3-gatsu No Lion.</h5>
-              <span class="AnimeDate">2017,Drama</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/clannadafterstory.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Clannad After Story.</h5>
-              <span class="AnimeDate">2008,Drama</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/Gintama.jpeg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Gintama.</h5>
-              <span class="AnimeDate">2006,Comedy</span>
-            </div>
-            <div class="Card" data-id="Anime-02">
-              <span class="rate-score"
-                >8.4 <i class="fa-solid fa-star"></i
-              ></span>
-              <img
-                src="./imgs/home/popular/GintamaFinalChapterposter.jpg"
-                alt=""
-                class="AnimeCover"
-              />
-              <h5 class="AnimeTitle">Gintama.</h5>
-              <span class="AnimeDate">2006,Comedy</span>
-            </div>
-          </div>
+          <div
+            class="cards-holder flex-center gap-3 flex-center gap-3 pb-3"
+          ></div>
         </div>
         <div class="d-grid gap-2">
-          <button class="btn btn-light" type="button">Show More</button>
+          <button class="btn btn-light show-more-btn" type="button">Show More</button>
         </div>
       </section>
       <footer>
@@ -669,7 +271,7 @@
         <div class="footer-body">
           <div class="footer-text">
             <a href="#" class="footer-logo"
-              ><h4 class="logo">Kurosaw.com</h4></a
+              ><h4 class="logo">Anime_4U.com</h4></a
             >
             <ul class="flex-center gap-4">
               <a class="icon-link text-decoration-none" href="./about.html"
@@ -690,8 +292,18 @@
       </footer>
     </main>
 
+    <script type="module">
+      // Local Importing
+      import { fetchAnimes, TMDB ,MainURL} from "../Scripts/App_api.js";
+      const special_holder = document.querySelector(".special-section .carousel-cards-holder");
+      const trending_holder = document.querySelector(".trending-section .carousel-cards-holder");
+      const popular_holder = document.querySelector(".popular-section .cards-holder");
+      fetchAnimes(TMDB.Disc_api, special_holder);
+      fetchAnimes(TMDB.Top_api, trending_holder);
+      fetchAnimes(TMDB.Pop_api, popular_holder);
+
+    </script>
     <script src="./Scripts/main.js" type="module"></script>
-    <script src="./Scripts/index.js" type="module"></script>
     <script type="module" src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
   </body>
 </html>

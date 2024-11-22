@@ -1,0 +1,74 @@
+@media (max-width: 425px) {
+  .footer-body {
+    flex-direction: column;
+  }
+}
+@media (max-width: 320px) {
+  .main-card {
+    width: 100vw;
+  }
+  .catalog-main .card,
+  .user-main .card {
+    height: 9rem;
+    max-width: 5rem;
+    width: 5rem !important;
+    transform: scaleX(0.4);
+    transform: scaleY(0.7);
+  }
+  .like-btn i {
+    left: 2.6rem;
+  }
+  .save-btn i {
+    right: -1.7rem;
+  }
+  .catalog-main .card,
+  .card {
+    height: 9rem;
+    width: 5rem;
+  }
+  .carousel-cards-holder .card {
+    min-width: 5rem;
+  }
+  .card h5 {
+    font-size: 0.9rem !important;
+  }
+  .card span {
+    font-size: 0.6rem !important;
+  }
+  .footer-link {
+    font-size: 0.8rem;
+  }
+}
+@media (max-width: 375px) {
+  .hero-card {
+    left: 2%;
+  }
+}
+@media (max-width: 768px) {
+  .News-main .row {
+    flex-direction: column;
+  }
+}
+@media (max-width: 992px) {
+  nav {
+    -webkit-backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(20px) !important;
+  }
+  nav .corner {
+    margin-top: 0.1rem;
+  }
+}
+
+/*  Customizing the preview page  */
+
+/* @@@@@@@@@@@@@@' Media Screen Unites '@@@@@@@@@@@@ */
+@media screen and (max-width: 992px) {
+}
+@media screen and (max-width: 600px) {
+}
+@media screen and (max-width: 992px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 425px) {
+}

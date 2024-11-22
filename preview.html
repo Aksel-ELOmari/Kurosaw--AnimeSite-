@@ -14,173 +14,391 @@
       referrerpolicy="no-referrer"
     />
     <!-- bootstrap-5 -->
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css" />
     <link rel="stylesheet" href="./Styles/index.css" />
+    <link rel="stylesheet" href="./Styles/customize.css" />
+    <link rel="stylesheet" href="./Styles/boot_custome.css" />
+    <script
+      defer
+      src="https://unpkg.com/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    ></script>
     <title>Anime_4U | Preview</title>
   </head>
-  <style>
-    .fa-star{color: yellow !important;}
-    .attitude.watched-btn i{color: green !important;}
-    .watch-later-btn.fa-bookmark{position: relative !important;}
-  </style>
   <body>
-    <main class="container preview-main">
-      <header>
-        <nav class="navbar navbar-expand-lg">
-          <!---  bg-body-tertiary -->
-          <div class="container-fluid">
-            <a class="navbar-brand nav-link" href="./index.html">Anime_4U</a>
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarText"
-              aria-controls="navbarText"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <!-- <span class="navbar-toggler-icon"></span> -->
-              <i class="fa-solid fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link" aria-current="page" href="./index.html"
-                    >Home</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./catalog.html">Catalog</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./news.html">News</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="./collections.html">Collections</a>
-                </li>
-              </ul>
-              <form class="d-flex" role="search">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <button title="btn" class="btn" type="submit">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-              </form>
-              <div class="corner flex ms-4 gap-3">
-                <div class="dropdown">
-                  <button
-                    class="btn btn-transprent show dropdown-toggle"
-                    type="button"
-                    id="dropdownMenuButton2"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false"
-                  >
-                    My Library
-                  </button>
-                  <ul
-                    class="dropdown-menu dropdown-menu-dark"
-                    aria-labelledby="dropdownMenuButton2"
-                  >
-                    <li><a class="dropdown-item active" href="#">Action</a></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Another action</a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li>
-                      <a class="dropdown-item" href="#">Separated link</a>
-                    </li>
-                  </ul>
-                </div>
-                <div class="nav-bar-profile">
-                  <img
-                    src="./imgs/Profile/Profile-img.jpg"
-                    alt=""
-                    class="top-user-cover"
+    <style>
+      /* Styling the Overview Page */
+      .line-clamp {
+        --max-lines: 10 !important;
+        font-weight: 500 !important;
+        display: -webkit-box !important;
+        overflow: hidden !important;
+        -webkit-box-orient: vertical !important;
+        -webkit-line-clamp: var(--max-lines) !important;
+      }
+      .hero-section {
+        position: relative;
+        top: -15vh;
+      }
+      .hero-backdropCover img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: -100 !important;
+        object-fit: cover;
+        max-height: 100vh;
+        width: 100vw !important;
+        opacity: 0.3;
+      }
+      .hero-section {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+      }
+      .hero-buttons_inner button {
+        white-space: nowrap !important;
+      }
+      /* // add to collections btn (.createNewColl-btn) */
+      .hero-buttons_inner button.createNewColl-btn {
+        margin-left: 20rem;
+        word-break: keep-all;
+      }
+      .hero-buttons_inner {
+        gap: 1rem;
+      }
+      .watch-trailer-btn {
+        position: absolute;
+        top: 50%;
+        right: 0%;
+      }
+      .animeCover img {
+        max-height: 50vh;
+        max-width: 16vw;
+        border-radius: 12px;
+      }
+      /* ---------------------------- */
+      .tooltaps-cards-section {
+        translate: 0 -20%;
+        background: linear-gradient(
+          to top,
+          var(--bg-color, #000) 50%,
+          #000,
+          transparent
+        ) !important;
+      }
+    </style>
+    <style data-name="styleCustomize">
+      @media screen and (max-width: 768px) {
+        /* // add to collections btn (.createNewColl-btn) */
+        .hero-buttons_inner button {
+          white-space: nowrap !important;
+        }
+        .hero-buttons_inner button.createNewColl-btn {
+          margin-left: 10rem;
+        }
+        .hero-buttons_inner {
+          gap: 0.7rem;
+        }
+      }
+      @media (max-width: 425px) {
+        p,
+        a,
+        h6,
+        h5,
+        span,
+        div,
+        .btn {
+          font-size: 1.5vh !important;
+        }
+        .watch-trailer-btn {
+          position: absolute;
+          top: 45% !important;
+          font-size: 0.5vw !important;
+        }
+        #mainAnimeTitle {
+          font-size: 4vh;
+        }
+        .hero-backdropCover img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          z-index: -100 !important;
+          object-fit: cover;
+          max-height: 100vh;
+          width: 100vw !important;
+          opacity: 0.3;
+        }
+        .animeCover img {
+          height: 30vh;
+          min-width: 25vw;
+          border-radius: 12px;
+        }
+        .hero-body_inner {
+          display: flex;
+          align-items: center;
+          gap: 1rem !important;
+        }
+        .anime-overview {
+          width: 50% !important;
+        }
+        /* ---------------------------- */
+        .hero-buttons_inner button.createNewColl-btn {
+          margin-left: 0.8rem;
+        }
+        .hero-buttons_inner {
+          gap: 0.7rem;
+        }
+        .anime-dethails {
+          margin: 0 !important;
+        }
+        .anime-genres {
+          margin: 0 !important;
+        }
+        .tooltaps-cards-section {
+          margin-top: -30%;
+        }
+        footer * {
+          font-size: 4vw;
+        }
+      }
+      @media (max-width: 375px) {
+        p,
+        a,
+        h6,
+        h5,
+        span,
+        div,
+        .btn {
+          font-size: 1vh !important;
+        }
+        .watch-trailer-btn {
+          position: absolute;
+          top: 45% !important;
+          font-size: 0.5vw !important;
+        }
+        #mainAnimeTitle {
+          font-size: 4vh;
+        }
+        .anime-overview {
+          width: 90% !important;
+        }
+        .hero-backdropCover img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          z-index: -100 !important;
+          object-fit: cover;
+          max-height: 100vh;
+          width: 100vw !important;
+          opacity: 0.3;
+        }
+        .tooltaps-cards-section {
+          margin-top: -40%;
+        }
+        /* // add to collections btn (.createNewColl-btn) */
+        .hero-buttons_inner button.createNewColl-btn {
+          margin-left: 0.8rem;
+        }
+        .hero-buttons_inner {
+          gap: 0.4rem;
+        }
+      }
+      @media (max-width: 320px) {
+        .animeCover img {
+          max-height: 50vh;
+          min-width: 20vw;
+          border-radius: 12px;
+        }
+        footer * {
+          font-size: 4vw;
+        }
+        footer .logo {
+          font-size: 5vw;
+        }
+      }
+    </style>
+    <main id="maini-body" class="view-327">
+      <seaction class="header-secition">
+        <div class="hero-backdropCover">
+          <img src="./imgs/Eximg.gif" alt="" />
+        </div>
+        <header id="header" class="container">
+          <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+              <a class="navbar-brand nav-link" href="./index.html">Anime_4U</a>
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarText"
+                aria-controls="navbarText"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <i class="fa-solid fa-bars"></i>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="./index.html"
+                      >Home</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./catalog.html">Catalog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./news.html">News</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./collections.html"
+                      >Collections</a
+                    >
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <input
+                    class="form-control me-2"
+                    type="search"
+                    placeholder="Search"
+                    aria-label="Search"
                   />
+                  <button title="btn" class="btn" type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </form>
+
+                <div class="corner-btns buttons flex ms-4 gap-3">
+                  <a type="link" title="Regester" href="./Regester.html"
+                    ><button type="button" class="btn btn-dark Login-btn">
+                      Login
+                    </button></a
+                  >
+                  <a type="link" title="Regester" href="./Regester.html"
+                    ><button type="button" class="btn btn-light">
+                      Get Started
+                    </button></a
+                  >
+                </div>
+                <div class="corner-profile corner d-none  flex ms-4 gap-3">
+                  <div class="nav-bar-profile">
+                    <img
+                      src="./imgs/Profile/Profile-img.jpg"
+                      alt=""
+                      class="top-user-cover"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </nav>
-        <hr style="width: 100vw; translate: -8%" />
-        <div class="hero-section mb-5">
-          <div class="hero-bg-cover z-n1 p-absolute top-0 left-0 h-50 w-100">
-            <img
-              src="./imgs/home/special/goldenKamuy.webp"
-              alt=""
-              class="p-absolute top-0 left-0 h-100 w-100"
-            />
-            <a type="link" title="Regester" href="#" class="trailer-btn z-5"
-              ><button type="button" class="btn btn-light">
-                Watch Trailer
-              </button></a
-            >
-          </div>
-          <div class="hero-body flex-between">
-            <div class="flex mb-4 gap-3" style="width: max-content">
-              <div class="anime-cover">
-                <img
-                  src="./imgs/home/special/To Your Eternity.jpg"
-                  alt=""
-                  class="rounded-3"
-                  id="anime-poster"
-                />
-              </div>
-              <div class="">
-                <h2 class="anime-title h1 fw-bolder">To Your Eternity</h2>
-                <p class="anime-score">
-                  <i class="fa-solid fa-star me-1"></i> 8.38
-                </p>
-                <div class="choosen-coll flex">
-                  <button
-                    type="button"
-                    class="attitude btn grow-1 me-2 coll-btn btn-dark my-1"
-                  >
-                  <i class="fa-solid fa-eye me-1"></i>
-                    Watching
-                  </button>
-                  <button
-                    type="button"
-                    class="attitude watch-later-btn btn grow-1 me-2 coll-btn btn-dark my-1"
-                  >
-                  <i class="fa-regular fa-bookmark me-1"></i>
-                    To Watch
-                  </button>
-                  <button
-                    type="button"
-                    class="attitude watched-btn btn grow-1 me-2 coll-btn btn-dark my-1"
-                  >
-                  <i class="fa-solid fa-check me-1"></i>
-                    Watched
-                  </button>
-                </div>
-              </div>
-            </div>
-            <!--  add new collection button -->
-            <div class="add-coll">
-              <button type="button" class="btn coll-btn btn-dark fw-3">
-                <i class="fa-solid fa-plus" style="scale: 0.8; color: #000"></i>
-                Add To Collection
+          </nav>
+          <hr style="width: 100vw; translate: -8%" />
+          <div class="hero-section h-100 w-100">
+            <div class="watch-trailer-btn">
+              <button
+                type="button"
+                class="btn btn-light watchTrailer_btn"
+                title="watch trailer"
+              >
+                watch trailer
               </button>
             </div>
+            <div class="hero-body" id="MainAnimeHolder">
+              <div class="hero-body_inner flex align-items-center gap-5">
+                <div class="animeCover">
+                  <img
+                    src="./imgs/Catalog/appare_ranman.jpeg"
+                    alt=""
+                    id="main-img"
+                  />
+                </div>
+                <div class="hero-content">
+                  <h1 class="h1 animeTitle my-3 fw-bolder" id="mainAnimeTitle">
+                    The Wild Robot
+                  </h1>
+                  <div
+                    class="anime-dethails d-flex align-items-center gap-2 flex-wrap"
+                  >
+                    <span class="anime-data anime-rate">8.5(2771)</span>
+                    <span class="anime-data anime-date">2024 09 12</span>
+                    <span class="anime-data anime-type">Movie</span>
+                  </div>
+                  <div
+                    class="anime-genres d-flex align-items-center gap-2 flex-wrap"
+                  >
+                    <span class="anime-genre special-btn">Family</span>
+                    <span class="anime-genre special-btn">Animation</span>
+                    <span class="anime-genre special-btn">Science Fiction</span>
+                  </div>
+                  <p class="anime-overview fw-400 w-50">
+                    After a shipwreck, an intelligent robot called Roz is
+                    stranded on an uninhabited island. To survive the harsh
+                    environment, Roz bonds with the island's animals and cares
+                    for an orphaned baby goose.
+                  </p>
+                  <div class="hero-buttons">
+                    <div class="hero-buttons_inner d-flex align-items-center">
+                      <button
+                        type="button"
+                        title="btn"
+                        class="liked-btn attitude"
+                        onclick=""
+                      >
+                        Like
+                      </button>
+                      <button
+                        type="button"
+                        title="btn"
+                        class="saved-btn attitude"
+                        onclick=""
+                      >
+                        Save
+                      </button>
+                      <button
+                        type="button"
+                        title="btn"
+                        class="attitude"
+                      >
+                        Watch later
+                      </button>
+                      <button
+                        type="button"
+                        title="btn"
+                        class="btn btn-light createNewColl-btn"
+                      >
+                        Add To Collection
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </header>
-      <section class="main-section">
+        </header>
+      </seaction>
+      <section class="tooltaps-cards-section container">
         <div class="countainers-holder">
           <div class="countainers-holder-header flex flex-wrap gap-1 mb-5">
             <div class="btn-lg mx-1">
               <button
                 type="button"
                 title="toggle-btn"
-                onclick="toggleSections(this)"
                 data-target="overview-section"
                 class="preview-toggle-btn btn btn-secondary"
               >
@@ -191,18 +409,16 @@
               <button
                 type="button"
                 title="toggle-btn"
-                onclick="toggleSections(this)"
-                data-target="relations-section"
+                data-target="special-section"
                 class="preview-toggle-btn btn btn-secondary"
               >
-                Relations
+                 Specials
               </button>
             </div>
             <div class="btn-lg mx-1">
               <button
                 type="button"
                 title="toggle-btn"
-                onclick="toggleSections(this)"
                 data-target="characters-section"
                 class="preview-toggle-btn btn btn-secondary"
               >
@@ -213,18 +429,6 @@
               <button
                 type="button"
                 title="toggle-btn"
-                onclick="toggleSections(this)"
-                data-target="stuffs-section"
-                class="preview-toggle-btn btn btn-secondary"
-              >
-                Stuffs
-              </button>
-            </div>
-            <div class="btn-lg mx-1">
-              <button
-                type="button"
-                title="toggle-btn"
-                onclick="toggleSections(this)"
                 data-target="reviews-section"
                 class="preview-toggle-btn btn btn-secondary"
               >
@@ -232,14 +436,13 @@
               </button>
             </div>
           </div>
-          <!--  here to put the toggle buttons  -->
           <!-- Start Overview -->
           <div
             class="PreviewSection OverviewSection mb-2"
             data-name="overview-section"
           >
             <div class="row">
-              <div class="col-lg-4 col-sm-12 mb-4 Details">
+              <div class="Details w-90">
                 <h3 class="h5 fw-bold">Details</h3>
                 <div class="flex-center gap-3 w-100 justify-content-between">
                   Type <span class="data-text">Tv Show</span>
@@ -274,210 +477,158 @@
                   Duration <span class="data-text">25 min.</span>
                 </div>
               </div>
-              <div class="col-lg-8 col-sm-12 mb-4 Description">
-                <h3 class="h5 fw-bold">Description</h3>
-                <p class="anime-description">
-                  An Orb,Known only as it,is cast to Earth to be observed from
-                  afar. Capable of changing forms from beings whose reflections
-                  it captures, it first becomes a rock and then, due to the
-                  rising temperature.moss
-                  <br />
-                  <br />
-                  it does not move untile one snowy day,a wolf it death's door
-                  barely crosses by. when it tackes the animal's form, it
-                  attains awareness of its consciousness and starts to wander
-                  with an unclear destination in mind.Soon, it Comes across the
-                  wolf's master--a young boy waiting for his tribe to return
-                  from a paradise abundant with fish and fruit in the
-                  south.Although the boy is lonly, he still hopes those whom he
-                  holds dear in his memorises have not forgotten him and that he
-                  will reunite with them one day.
-                  <br />
-                  <br />
-                  The Boy wants to explore new surrondings and decides to
-                  abandon his home with it to find the paradise using the traces
-                  his tribe left behind. However, with a heavily injured body
-                  and sight of his elder comrades, what will become of the boy?
-                  <br />
-                  <br />
-                  Fumestu no Anata e illustrates the story of an immortal being
-                  experiencing humanity,meeting all types of poeple in many
-                  places throughtout time.
-                </p>
-              </div>
             </div>
-            <!-- Start Carousel Special Cards -->
-            <div class="specialforyou">
-              <h1 class="section-title orangered h3">Special For You :</h1>
-              <div class="carousel-countainer relative">
-                <!-- /* the arrows */ -->
-                <div class="arrows-holder flex-between">
-                  <i
-                    class="fa-solid flex-center justify-content-center arrow fa-arrow-left"
-                  ></i>
-                  <i
-                    class="fa-solid flex-center justify-content-center arrow fa-arrow-right"
-                  ></i>
-                </div>
-                <div class="carousel-cards-holder flex-center gap-3 pb-3">
-                  <div class="card">
-                    <span class="rate-score"
-                      >8.4 <i class="fa-solid fa-star"></i
-                    ></span>
-                    <img
-                      src="./imgs/home/special/To Your Eternity.jpg"
-                      alt=""
-                      class="AnimeCover"
-                    />
-                    <h5 class="AnimeTitle">To Your Eternity</h5>
-                    <span class="AnimeDate">2021,Adventure</span>
-                    <div class="after-card">
-                      <video
-                        src="./main/video-preview.mp4"
-                        muted
-                        loop
-                        autoplay
-                        class="AnimeCover"
-                      ></video>
-                      <div class="likes-btns flex-between">
-                        <span class="attitude"
-                          ><i class="fa-regular fa-thumbs-up"></i
-                        ></span>
-                        <span class="attitude"
-                          ><i class="fa-regular fa-thumbs-down"></i
-                        ></span>
-                      </div>
+            <!-- Start Carousel Similar Cards -->
+            <div
+            class="SimilarSection mb-2">
+            <h2 class="title h3">Similar Content :</h2>
+            <div class="carousel-countainer relative">
+              <!-- /* the arrows */ -->
+              <div class="arrows-holder flex-between">
+                <i
+                  class="fa-solid flex-center justify-content-center arrow fa-arrow-left"
+                 data-parentname="SimilarSection"
+                ></i>
+                <i
+                  class="fa-solid flex-center justify-content-center arrow fa-arrow-right"
+                 data-parentname="SimilarSection"
+                ></i>
+              </div>
+              <div class="carousel-cards-holder flex-center gap-3 pb-3">
+                    <div class="card CronolgyCard">
+                          <span class="rate-score"
+                            >8.4 <i class="fa-solid fa-star"></i
+                          ></span>
+                          <img
+                            src="./imgs/home/special/Tower of God.jpeg"
+                            alt=""
+                            class="AnimeCover"
+                          />
+                          <h5 class="AnimeTitle">Tower Of God</h5>
+                          <span class="AnimeDate">2020,Action</span>
                     </div>
-                  </div>
-                  <div class="card">
-                    <span class="rate-score"
-                      >8.4 <i class="fa-solid fa-star"></i
-                    ></span>
-                    <img
-                      src="./imgs/home/special/spirited_a_way.jpg"
-                      alt=""
-                      class="AnimeCover"
-                    />
-                    <h5 class="AnimeTitle">Spirited a Way</h5>
-                    <span class="AnimeDate">2001,Adventure</span>
-                  </div>
-                  <div class="card">
-                    <span class="rate-score"
-                      >8.4 <i class="fa-solid fa-star"></i
-                    ></span>
-                    <img
-                      src="./imgs/home/special/Tokyo Revengers.jpg"
-                      alt=""
-                      class="AnimeCover"
-                    />
-                    <h5 class="AnimeTitle">Tokyo Revengers</h5>
-                    <span class="AnimeDate">2021,Action</span>
-                    <!-- <div class="after-card">
-                                    <video src="./main/video-preview.mp4" muted loop autoplay class="AnimeCover"></video>
-                                    <div class="likes-btns flex-between">
-                                        <span class="attitude"><i class="fa fa-regular fa-thumbs-up"></i></span>
-                                        <span class="attitude"><i class="fa fa-regular fa-thumbs-down"></i></span>
-                                    </div>
-                                </div> -->
-                  </div>
-                  <div class="card">
-                    <span class="rate-score"
-                      >8.4 <i class="fa-solid fa-star"></i
-                    ></span>
-                    <img
-                      src="./imgs/home/special/Haikyuu!!.jpg"
-                      alt=""
-                      class="AnimeCover"
-                    />
-                    <h5 class="AnimeTitle">Haikyuu!!</h5>
-                    <span class="AnimeDate">2014,Sports</span>
-                    <!-- <div class="after-card">
-                                    <video src="./main/video-preview.mp4" muted loop autoplay class="AnimeCover"></video>
-                                    <div class="likes-btns flex-between">
-                                        <span class="attitude"><i class="fa fa-regular fa-thumbs-up"></i></span>
-                                        <span class="attitude"><i class="fa fa-regular fa-thumbs-down"></i></span>
-                                    </div>
-                                </div> -->
-                  </div>
-                  <div class="card">
-                    <span class="rate-score"
-                      >8.4 <i class="fa-solid fa-star"></i
-                    ></span>
-                    <img
-                      src="./imgs/home/special/Tower of God.jpeg"
-                      alt=""
-                      class="AnimeCover"
-                    />
-                    <h5 class="AnimeTitle">Tower Of God</h5>
-                    <span class="AnimeDate">2020,Action</span>
-                    <!-- <div class="after-card">
-                                    <video src="./main/video-preview.mp4" muted loop autoplay class="AnimeCover"></video>
-                                    <div class="likes-btns flex-between">
-                                        <span class="attitude"><i class="fa fa-regular fa-thumbs-up"></i></span>
-                                        <span class="attitude"><i class="fa fa-regular fa-thumbs-down"></i></span>
-                                    </div>
-                                </div> -->
-                  </div>
-                  <div class="card">
-                    <span class="rate-score"
-                      >8.4 <i class="fa-solid fa-star"></i
-                    ></span>
-                    <img
-                      src="./imgs/home/special/goldenKamuy.webp"
-                      alt=""
-                      class="AnimeCover"
-                    />
-                    <h5 class="AnimeTitle">Golden Kamuy</h5>
-                    <span class="AnimeDate">2018,Adventure</span>
-                    <!-- <div class="after-card">
-                                    <video src="./main/video-preview.mp4" muted loop autoplay class="AnimeCover"></video>
-                                    <div class="likes-btns flex-between">
-                                        <span class="attitude"><i class="fa fa-regular fa-thumbs-up"></i></span>
-                                        <span class="attitude"><i class="fa fa-regular fa-thumbs-down"></i></span>
-                                    </div>
-                                </div> -->
-                  </div>
-                </div>
+                    <div class="card CronolgyCard">
+                      <span class="rate-score"
+                        >8.4 <i class="fa-solid fa-star"></i
+                      ></span>
+                      <img
+                        src="./imgs/home/special/Tower of God.jpeg"
+                        alt=""
+                        class="AnimeCover"
+                      />
+                      <h5 class="AnimeTitle">Tower Of God</h5>
+                      <span class="AnimeDate">2020,Action</span>
+                    </div>
               </div>
-            </div>
-            <!-- End Carousel special Cards -->
+             </div>
+          </div>
+            <!-- End Carousel Similar Cards -->
           </div>
           <!-- End Overview -->
 
-          <!-- Start Relations -->
-          <div
-            class="PreviewSection d-none RelationsSection mb-2"
-            data-name="relations-section"
-          >
-            <h2 class="title h3">Chronolgy</h2>
-            <div class="flex flex-wrap gap-3 relative">
-              <div class="card CronolgyCard">
-                <span class="rate-score"
-                  >8.4 <i class="fa-solid fa-star"></i
-                ></span>
-                <img
-                  src="./imgs/home/special/Tower of God.jpeg"
-                  alt=""
-                  class="AnimeCover"
-                />
-                <h5 class="AnimeTitle">Tower Of God</h5>
-                <span class="AnimeDate">2020,Action</span>
+          <!-- Start Specials -->
+          <div class="PreviewSection d-none SpecialSection"
+          data-name="special-section">
+            <h1 class="section-title orangered h3">Special For You :</h1>
+            <div class="carousel-countainer relative">
+              <!-- /* the arrows */ -->
+              <div class="arrows-holder flex-between">
+                <i
+                  class="fa-solid flex-center justify-content-center arrow fa-arrow-left"
+                  data-parentName="SpecialSection"
+                ></i>
+                <i
+                  class="fa-solid flex-center justify-content-center arrow fa-arrow-right"
+                  data-parentName="SpecialSection"
+                ></i>
               </div>
-              <div class="card CronolgyCard">
-                <span class="rate-score"
-                  >8.4 <i class="fa-solid fa-star"></i
-                ></span>
-                <img
-                  src="./imgs/home/special/Tower of God.jpeg"
-                  alt=""
-                  class="AnimeCover"
-                />
-                <h5 class="AnimeTitle">Tower Of God</h5>
-                <span class="AnimeDate">2020,Action</span>
+              <div class="carousel-cards-holder flex-center gap-3 pb-3">
+                <div class="card">
+                  <span class="rate-score"
+                    >8.4 <i class="fa-solid fa-star"></i
+                  ></span>
+                  <img
+                    src="./imgs/home/special/To Your Eternity.jpg"
+                    alt=""
+                    class="AnimeCover"
+                  />
+                  <h5 class="AnimeTitle">To Your Eternity</h5>
+                  <span class="AnimeDate">2021,Adventure</span>
+                  <div class="after-card">
+                    <div class="likes-btns flex-between">
+                      <span class="attitude"
+                        ><i class="fa-regular fa-thumbs-up"></i
+                      ></span>
+                      <span class="attitude"
+                        ><i class="fa-regular fa-thumbs-down"></i
+                      ></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <span class="rate-score"
+                    >8.4 <i class="fa-solid fa-star"></i
+                  ></span>
+                  <img
+                    src="./imgs/home/special/spirited_a_way.jpg"
+                    alt=""
+                    class="AnimeCover"
+                  />
+                  <h5 class="AnimeTitle">Spirited a Way</h5>
+                  <span class="AnimeDate">2001,Adventure</span>
+                </div>
+                <div class="card">
+                  <span class="rate-score"
+                    >8.4 <i class="fa-solid fa-star"></i
+                  ></span>
+                  <img
+                    src="./imgs/home/special/Tokyo Revengers.jpg"
+                    alt=""
+                    class="AnimeCover"
+                  />
+                  <h5 class="AnimeTitle">Tokyo Revengers</h5>
+                  <span class="AnimeDate">2021,Action</span>
+                </div>
+                <div class="card">
+                  <span class="rate-score"
+                    >8.4 <i class="fa-solid fa-star"></i
+                  ></span>
+                  <img
+                    src="./imgs/home/special/Haikyuu!!.jpg"
+                    alt=""
+                    class="AnimeCover"
+                  />
+                  <h5 class="AnimeTitle">Haikyuu!!</h5>
+                  <span class="AnimeDate">2014,Sports</span>
+                </div>
+                <div class="card">
+                  <span class="rate-score"
+                    >8.4 <i class="fa-solid fa-star"></i
+                  ></span>
+                  <img
+                    src="./imgs/home/special/Tower of God.jpeg"
+                    alt=""
+                    class="AnimeCover"
+                  />
+                  <h5 class="AnimeTitle">Tower Of God</h5>
+                  <span class="AnimeDate">2020,Action</span>
+                </div>
+                <div class="card">
+                  <span class="rate-score"
+                    >8.4 <i class="fa-solid fa-star"></i
+                  ></span>
+                  <img
+                    src="./imgs/home/special/goldenKamuy.webp"
+                    alt=""
+                    class="AnimeCover"
+                  />
+                  <h5 class="AnimeTitle">Golden Kamuy</h5>
+                  <span class="AnimeDate">2018,Adventure</span>
+                </div>
               </div>
             </div>
           </div>
-          <!-- End Relations -->
+          <!-- End Specials -->
 
           <!-- Start Characters -->
           <div
@@ -544,71 +695,6 @@
           </div>
           <!-- End Characters -->
 
-          <!-- Start Stuff -->
-          <div
-            class="PreviewSection d-none StuffSection"
-            data-name="stuffs-section"
-          >
-            <h2 class="title h3">Stuff</h2>
-            <div class="cards-holder-countainer flex flex-wrap gap-3 relative">
-              <div class="card" data-id="01">
-                <img
-                  src="./imgs/home/special/Tower of God.jpeg"
-                  alt=""
-                  class="Stuff-Profile"
-                />
-                <h5 class="StuffName">Ooima, Yoshitoki</h5>
-                <span class="Role-job">Orjinal Creator</span>
-              </div>
-              <div class="card" data-id="02">
-                <img
-                  src="./imgs/home/special/Tower of God.jpeg"
-                  alt=""
-                  class="Stuff-Profile"
-                />
-                <h5 class="StuffName">Murata, Masahiko</h5>
-                <span class="Role-job">Director</span>
-              </div>
-              <div class="card" data-id="03">
-                <img
-                  src="./imgs/home/special/Tower of God.jpeg"
-                  alt=""
-                  class="Stuff-Profile"
-                />
-                <h5 class="StuffName">takadera, Takeshi</h5>
-                <span class="Role-job">Sound Director</span>
-              </div>
-              <div class="card" data-id="04">
-                <img
-                  src="./imgs/home/special/Tower of God.jpeg"
-                  alt=""
-                  class="Stuff-Profile"
-                />
-                <h5 class="StuffName">Fujita, Chinzou</h5>
-                <span class="Role-job">Script Series Compose</span>
-              </div>
-              <div class="card" data-id="05">
-                <img
-                  src="./imgs/home/special/Tower of God.jpeg"
-                  alt=""
-                  class="Stuff-Profile"
-                />
-                <h5 class="StuffName">Hamauzu, Masashi</h5>
-                <span class="Role-job">Theme Song</span>
-              </div>
-              <div class="card" data-id="06">
-                <img
-                  src="./imgs/home/special/Tower of God.jpeg"
-                  alt=""
-                  class="Stuff-Profile"
-                />
-                <h5 class="StuffName">Utada, Hikaru</h5>
-                <span class="Role-job">Theme Song</span>
-              </div>
-            </div>
-          </div>
-          <!-- End Stuff -->
-
           <!-- Start Reviews -->
           <div
             class="PreviewSection d-none ReviewsSection"
@@ -617,112 +703,99 @@
             <h2 class="title h3">Reviews</h2>
             <div class="d-grid gap-2 button-add-review">
               <button
-                class="btn btn-light"
+                class="btn btn-light write-review-btn"
                 type="button"
                 title="create review button"
-                onclick="toggleReview()"
+                data-target="user-adding-review-section"
               >
                 <i class="fa-solid fa-plus" style="scale: 0.8; color: #000"></i>
                 Write a Review
               </button>
             </div>
             <div class="Reviews-holder mt-4">
-              <div class="user-review flex gap-3 mb-4">
+              <div class="user-review flex align-items-start gap-3 mb-4">
                 <img
-                  src="./imgs/home/popular/fruitsBasket.jpe"
+                  src="./imgs/Profile/Profile-img.jpg"
                   alt=""
-                  class="user-profile"
+                  class="top-user-cover"
                 />
-                <div class="review-body mt-2">
+                <div class="review-body mt-1">
                   <div class="review-header flex">
-                    <h6 class="user-name h5 me-2">VioletDeGrace</h6>
-                    <span class="released-date">12 October 2022</span>
+                    <h6 class="user-name h5 me-2">ايوب العماري</h6>
+                    <span class="released-date">12 november 2024</span>
                   </div>
                   <p class="user-review-text me-2">
-                    Staring with Tonal Shifts, this anime suffers from a theing
-                    most dramatic anime I'v seen do:Creating a tense or dramatic
-                    situations, just to make a jock right after, Now,I get
-                    adding comedy for the sack of relief ,considering some
-                    series are very heavy on drama, but Type abuses of this
-                    every time they can. Oh, we just revealed that a character
-                    id fated to die?
+                    the first comment for testing.
                   </p>
+                  <div class="media-content">
+                    <img
+                      class="user-media"
+                      src="./imgs/Catalog/appare_ranman.jpeg"
+                      alt=""
+                    />
+                  </div>
                 </div>
               </div>
-              <div class="user-review flex gap-3 mb-4">
-                <img
-                  src="./imgs/home/popular/fruitsBasket.jpe"
-                  alt=""
-                  class="user-profile"
-                />
-                <div class="review-body mt-2">
-                  <div class="review-header flex">
-                    <h6 class="user-name h5 me-2">Morishin</h6>
-                    <span class="released-date">3 October 2022</span>
+            </div>
+            <div class="user-adding-review-section position-fixed d-none">
+              <div
+                class="d-flex align-center justify-content-center"
+                style="margin-top: 30vh"
+              >
+                <div
+                  class="review-main-card d-flex align-center flex-column p-4 bordered-2"
+                >
+                  <h2 class="title h3 mb-2 text text-center">Add Review</h2>
+                  <div class="starts-count user-ratesymbole my-2">
+                    <i class="fa-solid fa-star me-2"></i>
+                    <i class="fa-solid fa-star me-2"></i>
+                    <i class="fa-solid fa-star me-2"></i>
+                    <i class="fa-solid fa-star-half me-2"></i>
                   </div>
-                  <p class="user-review-text me-2">
-                    if you've ever experienced the death of loved one, you know
-                    the feeling that To Your Eternity seeks to evoke in its
-                    audience. Several times I found my self sobbing, and it gave
-                    me an outliet to release the pent-up sadness I've held from
-                    the deaths of poeple I loved. To Your Eternity follows an
-                    immortal being named Fushi who assumes the form of dead
-                    humans and animals he encounters along his journey. He can
-                    transform into them at will.
-                  </p>
+                  <form class="user-review-form mb-2">
+                    <div
+                      class="userCommentInner py-1 d-flex align-center gap-2"
+                    >
+                      <input
+                        type="text"
+                        name="user-review"
+                        id="user_review_holder"
+                        placeholder="enter your review"
+                        class="p-2 user_review_holder"
+                      />
+                      <span class="media-btn cursor-pointer">
+                        <label for="review_media"
+                          ><i class="fa-solid fa-image"></i
+                        ></label>
+                        <input
+                          title="upload media"
+                          type="file"
+                          class="d-none"
+                          name="review_media"
+                          id="review_media"
+                        />
+                      </span>
+                      <span
+                        class="sendReview-btn cursor-pointer"
+                        id="sendReview-btn"
+                        ><i class="fa-solid fa-paper-plane"></i
+                      ></span>
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
           </div>
+          <style>
+            .media-content .user-media {
+              max-height: 15vh;
+              max-width: 15vw;
+            }
+          </style>
           <!-- End Reviews -->
         </div>
       </section>
-      <section
-        id="addingreview-section"
-        class="d-none flex-center justify-content-center"
-      >
-        <div class="add-review-card py-3 px-4 p-relative">
-          <span
-            class="exit-btn flex-center justify-content-center p-absolute top-2 right-2"
-            onclick="toggleReview()"
-            >X</span
-          >
-          <h4 class="title add-review-title text-center my-3">
-            Add a Review ?
-          </h4>
-          <div class="rates my-2">
-            <h6 class="text h6">Rates</h6>
-            <div class="rates-stars my-1 flex-center gap-1">
-              <i class="fab fa-solid fa-star"></i>
-              <i class="fab fa-solid fa-star"></i>
-              <i class="fab fa-solid fa-star"></i>
-              <i class="fab fa-solid fa-star"></i>
-              <i class="fab fa-solid fa-star"></i>
-            </div>
-          </div>
-          <form class="review-form">
-            <label class="h6" for="review-input">Review </label>
-            <textarea
-              name="review-Text"
-              id="review-input"
-              class="bg-secondary"
-              placeholder="add you review.."
-            ></textarea
-            ><br />
-          </form>
-          <div class="d-grid gap-2 button-add-review">
-            <button
-              class="btn btn-light"
-              type="button"
-              title="save btn"
-              onclick="toggleReview();addReview()"
-            >
-              Save
-            </button>
-          </div>
-        </div>
-      </section>
-      <footer>
+      <footer class="container py-3">
         <hr style="width: 100vw; translate: -8%" />
         <div class="footer-body">
           <div class="flex-center footer-text flex-end">
@@ -748,9 +821,8 @@
       </footer>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
-
-    <script src="./Scripts/index.js"></script>
+    <script src="./Scripts/main.js" type="module"></script>
+    <script src="./Scripts/preview.js" type="module"></script>
   </body>
 </html>
