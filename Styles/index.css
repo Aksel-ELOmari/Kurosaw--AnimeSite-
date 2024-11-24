@@ -65,8 +65,6 @@ html,
 }
 /* !¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬ */
 
-
-
 /* Users Previews Style */
 .userCommentInner {
   height: 3rem;
@@ -246,7 +244,9 @@ form button:hover {
 .carousel-cards-holder::-webkit-scrollbar {
   display: none;
 }
-.carousel-cards-holder .card{min-width: 10rem;}
+.carousel-cards-holder .card {
+  min-width: 10rem;
+}
 .card {
   position: relative;
   height: 14rem;
@@ -704,5 +704,3 @@ footer {
 .col-icons li {
   margin: 0 1rem;
 }
-
-.card

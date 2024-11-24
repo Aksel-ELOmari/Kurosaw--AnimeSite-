@@ -42,9 +42,9 @@ const db = getFirestore(app);
 const auth = getAuth();
 const storage = getStorage(app);
 // Import Local Files.
-import { User_space,fetchGenres } from "./preview.js";
+import { User_space, fetchGenres } from "./preview.js";
 import { logoutUser } from "./regester.js";
-import { defaultColl,MainURL,TMDB,isAnimeinColl } from "./App_api.js";
+import { defaultColl, MainURL, TMDB, isAnimeinColl } from "./App_api.js";
 import { main } from "@popperjs/core/index.js";
 
 //! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -72,7 +72,7 @@ logoutUser();
 //               = main_anime;
 //               // fetchGenres(genres);
 //               let MainCard = document.createElement('div');
-//               MainCard.innerHTML = 
+//               MainCard.innerHTML =
 //               `
 //               <div class="hero-Cover">
 //                 <img src="https://image.tmdb.org/t/p/original/${backdrop_path}" alt="" id="HeaderCover" />
@@ -99,10 +99,6 @@ logoutUser();
 // }
 // MainHeroCard();
 
-
-
-
-
 export function Gofarther() {
   window.history.forward();
 }
@@ -114,7 +110,8 @@ export function toggleElement(btn) {
     ? btn.addEventListener("click", () => {
         const el_class = btn.getAttribute("data-target");
         const el_target = document.querySelector(`.${el_class}`);
-        if (el_target) {el_target.classList.toggle("d-none");
+        if (el_target) {
+          el_target.classList.toggle("d-none");
         } else {
           console.error("Sorrywe could not find the item !!!");
         }
@@ -131,7 +128,7 @@ export function isUserIn() {
       const user_name = user.displayName;
       const user_email = user.email;
       User_space(user_name, user_email);
-      console.log("the user loged in ",);
+      console.log("the user loged in ");
       corner_profile ? corner_profile.classList.remove("d-none") : "";
       corner_btns ? corner_btns.classList.toggle("d-none") : "";
     } else {
@@ -149,14 +146,17 @@ async function uploadProfilePhotoToStorage(photoURL) {
     const response = await fetch(photoURL);
     const blob = await response.blob();
     // Define the storage reference
-    const storageRef = ref(storage, `user_profiles/${auth.currentUser.uid}/profile_photo.jpg`);
+    const storageRef = ref(
+      storage,
+      `user_profiles/${auth.currentUser.uid}/profile_photo.jpg`,
+    );
     // Upload the blob to Firebase Storage
     await uploadBytes(storageRef, blob);
     // Get the download URL
     const downloadURL = await getDownloadURL(storageRef);
     return downloadURL;
   } catch (error) {
-    console.error('Error uploading profile photo:', error);
+    console.error("Error uploading profile photo:", error);
     throw error;
   }
 }
@@ -168,20 +168,23 @@ onAuthStateChanged(auth, async (user) => {
       const firebasePhotoURL = await uploadProfilePhotoToStorage(photoURL);
       // console.log('Firebase Storage URL:', firebasePhotoURL);
       // Display the image
-      const userProfile = document.querySelectorAll('.user-profile');
-      userProfile?userProfile.forEach(img =>{
-        img.src = firebasePhotoURL
-      }):'';
-      const NavProfile = document.querySelectorAll('.top-user-cover');
-      NavProfile?NavProfile.forEach(img =>{
-        img.src = firebasePhotoURL
-      }):'';
-
+      const userProfile = document.querySelectorAll(".user-profile");
+      userProfile
+        ? userProfile.forEach((img) => {
+            img.src = firebasePhotoURL;
+          })
+        : "";
+      const NavProfile = document.querySelectorAll(".top-user-cover");
+      NavProfile
+        ? NavProfile.forEach((img) => {
+            img.src = firebasePhotoURL;
+          })
+        : "";
     } catch (error) {
-      console.error('Error processing profile photo:', error);
+      console.error("Error processing profile photo:", error);
     }
   } else {
-    console.log('No user is signed in.');
+    console.log("No user is signed in.");
   }
 });
 export async function addAnimeToCollection(collectionName, animeId) {
@@ -238,6 +241,3 @@ Toggling_btns.map((el) => {
   const btn = document.querySelector(`.${el}`);
   toggleElement(btn);
 });
-
-
-

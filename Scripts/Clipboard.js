@@ -1,10 +1,9 @@
 // install fontawesome Globaly
 // in terminal run => npm install -g @fortawesome/fontawesome-free
-//Way 1 : import '@fortawesome/fontawesome-free/css/all.min.css'; 
+//Way 1 : import '@fortawesome/fontawesome-free/css/all.min.css';
 //Way 2 : Link the global installation of Font Awesome in your HTML file
 // Replace "path/to/global/" with the actual path to your global node_modules directory.
 // <link rel="stylesheet" href="path/to/global/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
-
 
 // ! Getting Coments
 // async function getReviews() {
@@ -81,7 +80,6 @@
 //   }
 // }
 // getReviews();
-
 
 // Function to fetch arrays from Firebase
 const fetchReactedAnimes = async function (arrayName) {

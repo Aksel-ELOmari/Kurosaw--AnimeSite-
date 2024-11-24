@@ -76,35 +76,33 @@ async function getAllDocs() {
   const parentCollection = document.querySelector(".CollectionCountainer");
   querySnapshot.forEach((doc) => {
     const { ids: Animes_ids, name: Coll_name } = doc.data();
-    if(Animes_ids.lenght>0){
- 
-    const Coll_id = doc.id;
-    const CollectionCovers = Animes_ids.slice(0, 3);
-    const collection_card = document.createElement("div");
-    collection_card.className = "collection-card p-3 col-lg-3";
-    collection_card.dataset.collectionName = Coll_name;
-    collection_card.dataset.collectionId = Coll_id;
-    collection_card.innerHTML = `
+    if (Animes_ids.lenght > 0) {
+      const Coll_id = doc.id;
+      const CollectionCovers = Animes_ids.slice(0, 3);
+      const collection_card = document.createElement("div");
+      collection_card.className = "collection-card p-3 col-lg-3";
+      collection_card.dataset.collectionName = Coll_name;
+      collection_card.dataset.collectionId = Coll_id;
+      collection_card.innerHTML = `
       <h5 class="collection-title text-center">${Coll_name}</h5>
       <div class="Cards"></div>
     `;
-    parentCollection?parentCollection.appendChild(collection_card):'';
-    fetch(`${MainURL}`)
-      .then((response) => response.json())
-      .then((res) => {
-        const data = res.results;
-        const cardsContainer = collection_card.querySelector(".Cards");
-        CollectionCovers.forEach((id) => {
-          const match = data.find((el) => el.id === id);
-          if (match) {
-            const mini_card = document.createElement("div");
-            mini_card.className = "Card";
-            mini_card.innerHTML = `<img src="https://image.tmdb.org/t/p/original/${match.poster_path}" height="10rem" width="2rem" alt="${match.title}" class="card-cover" />`;
-            cardsContainer.appendChild(mini_card);
-          }
+      parentCollection ? parentCollection.appendChild(collection_card) : "";
+      fetch(`${MainURL}`)
+        .then((response) => response.json())
+        .then((res) => {
+          const data = res.results;
+          const cardsContainer = collection_card.querySelector(".Cards");
+          CollectionCovers.forEach((id) => {
+            const match = data.find((el) => el.id === id);
+            if (match) {
+              const mini_card = document.createElement("div");
+              mini_card.className = "Card";
+              mini_card.innerHTML = `<img src="https://image.tmdb.org/t/p/original/${match.poster_path}" height="10rem" width="2rem" alt="${match.title}" class="card-cover" />`;
+              cardsContainer.appendChild(mini_card);
+            }
+          });
         });
-      });
-           
     }
   });
 }
@@ -128,7 +126,7 @@ async function ColumnCollection() {
                     </div>
                     <img src="" alt="" class="collection-cover mx-3" />
     `;
-    parentCollection?parentCollection.appendChild(collection_card):'';
+    parentCollection ? parentCollection.appendChild(collection_card) : "";
     fetch(`${MainURL}`)
       .then((response) => response.json())
       .then((res) => {
@@ -160,7 +158,7 @@ Coll_lab_exbtn ? toggleElement(Coll_lab_exbtn) : "";
 
 export function toggleCollections_lab() {
   const Collections_lab = document.querySelector(".Collections_lab");
-  Collections_lab?Collections_lab.classList.toggle("d-none"):'';
+  Collections_lab ? Collections_lab.classList.toggle("d-none") : "";
   const createNewColl_btn = document.querySelector(".createNewColl-btn");
   createNewColl_btn
     ? (createNewColl_btn.onclick = () =>
@@ -175,7 +173,7 @@ export function toggleCollections_lab() {
 const go_back_btn = document.querySelector(".go_back_btn");
 go_back_btn ? (go_back_btn.onclick = () => LabCardsToggler()) : "";
 const OpenNewCollLab = document.querySelector(".OpenNewCollLab");
-OpenNewCollLab?OpenNewCollLab.onclick = () => LabCardsToggler():'';
+OpenNewCollLab ? (OpenNewCollLab.onclick = () => LabCardsToggler()) : "";
 function LabCardsToggler() {
   let save_c = document.querySelector(".SaveCollections_lab");
   let create_c = document.querySelector(".NewCollections_lab");

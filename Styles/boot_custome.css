@@ -34,35 +34,41 @@
     solid 1px var(--text-color),
     #fff;
 }
-.item-status{
+.item-status {
   all: unset;
   border: solid 1px var(--bg-color);
   background: var(--text-color);
-  padding: .7vh 1.25vw;
+  padding: 0.7vh 1.25vw;
   border-radius: 20px;
   font-size: 1rem;
   cursor: pointer;
   transition: 0.5s;
 }
-.item-status:hover{ border: solid 1px var(--text-color);background: var(--bg-color);}
-.item-status i {position: inherit !important;border: none;scale: 1 !important;}
+.item-status:hover {
+  border: solid 1px var(--text-color);
+  background: var(--bg-color);
+}
+.item-status i {
+  position: inherit !important;
+  border: none;
+  scale: 1 !important;
+}
 /* customizing the style of the btns */
 .like-btn.item-status.active {
-  --style-light-main-color: rgba(194, 12, 12, 0.808)!important;
-  --style-main-color: red!important;
-  background-color: var(--style-light-main-color)!important;
-  box-shadow: 0 0 3vw var(--style-main-color)!important;
+  --style-light-main-color: rgba(194, 12, 12, 0.808) !important;
+  --style-main-color: red !important;
+  background-color: var(--style-light-main-color) !important;
+  box-shadow: 0 0 3vw var(--style-main-color) !important;
 }
 .like-btn.item-status.active i {
   color: red !important;
 }
 .save-btn.item-status.active {
-  --style-main-color: green!important;
-  --style-light-main-color: rgba(0, 128, 0, 0.801)!important;
-  background-color: var(--style-light-main-color)!important;
-  box-shadow: 0 0 3vw var(--style-main-color)!important;
+  --style-main-color: green !important;
+  --style-light-main-color: rgba(0, 128, 0, 0.801) !important;
+  background-color: var(--style-light-main-color) !important;
+  box-shadow: 0 0 3vw var(--style-main-color) !important;
 }
 .save-btn.item-status.active i {
-  color: green!important;
+  color: green !important;
 }
-

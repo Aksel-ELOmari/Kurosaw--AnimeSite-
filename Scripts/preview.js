@@ -25,8 +25,11 @@ import {
   uploadBytes,
   getDownloadURL,
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-storage.js";
-import {onAuthStateChanged,getAuth}from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-import { createPopper } from '@popperjs/core';
+import {
+  onAuthStateChanged,
+  getAuth,
+} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
+import { createPopper } from "@popperjs/core";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -34,9 +37,13 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 const auth = getAuth();
 //! _______________________________________________________________________________________________________________________
-import { toggleElement,addAnimeToCollection,remove_from_coll } from "./main.js";
+import {
+  toggleElement,
+  addAnimeToCollection,
+  remove_from_coll,
+} from "./main.js";
 import { toggleCollections_lab } from "./Collections.js";
-import {isAnimeinColl,defaultColl,TMDB,fetchAnimes} from './App_api.js';
+import { isAnimeinColl, defaultColl, TMDB, fetchAnimes } from "./App_api.js";
 toggleCollections_lab(); // the btns withen inside
 function getMainAnime(id, path) {
   fetch(`${path}&api_key=03760268c2411e2d785ed677c960080d&with_genres=16`)
@@ -62,11 +69,13 @@ function getMainAnime(id, path) {
               vote_average,
               vote_count,
             } = el;
-            fetchGenres(genre_ids?genre_ids:'');
-            defaultColl.map(coll =>{
-              isAnimeinColl(id,coll);
+            fetchGenres(genre_ids ? genre_ids : "");
+            defaultColl.map((coll) => {
+              isAnimeinColl(id, coll);
             });
-            const backdropCover = document.querySelector('.hero-backdropCover img');
+            const backdropCover = document.querySelector(
+              ".hero-backdropCover img",
+            );
             backdropCover.src = TMDB.img_url + backdrop_path;
             defaultColl.forEach((Coll) => {
               isAnimeinColl(id, Coll);
@@ -77,7 +86,7 @@ function getMainAnime(id, path) {
               "hero-body_inner",
               "flex",
               "align-items-center",
-              "gap-5"
+              "gap-5",
             );
             Card.innerHTML = `
               <div class="animeCover">
@@ -154,8 +163,8 @@ function getMainAnime(id, path) {
             // Insert anime card into placeholder
             const placeholder = document.getElementById("MainAnimeHolder");
             if (placeholder) {
-                placeholder.innerHTML = "";
-                placeholder.append(Card);
+              placeholder.innerHTML = "";
+              placeholder.append(Card);
             }
           }
         });
@@ -167,41 +176,47 @@ function getMainAnime(id, path) {
 }
 const url = new URL(window.location.href);
 const params = new URLSearchParams(url.search);
-const id = params.get('id');
-const path = params.get('path');
-const page = params.get('page');
-id && path?getMainAnime(id,path):'';
-// Display Anime Genresa 
+const id = params.get("id");
+const path = params.get("path");
+const page = params.get("page");
+id && path ? getMainAnime(id, path) : "";
+// Display Anime Genresa
 export function fetchGenres(genres) {
-  fetch(`https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${TMDB.api_key}`)
-      .then(response => response.json())
-      .then(res => {
-          let Genres = res.genres;
-          Genres.forEach(G => {
-              genres.forEach(g => {
-                  if (G.id === g) {
-                      let gr = document.createElement('span');
-                      gr.classList.add('anime-genre','special-btn');
-                      gr.innerHTML = `${G.name}`;
-                      let placeholder = document.querySelector('.anime-genres');
-                     if(placeholder){
-                        placeholder.innerHTML = '';
-                        placeholder.append(gr);
-                     } 
-                  }
-              });
-          });
+  fetch(
+    `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${TMDB.api_key}`,
+  )
+    .then((response) => response.json())
+    .then((res) => {
+      let Genres = res.genres;
+      Genres.forEach((G) => {
+        genres.forEach((g) => {
+          if (G.id === g) {
+            let gr = document.createElement("span");
+            gr.classList.add("anime-genre", "special-btn");
+            gr.innerHTML = `${G.name}`;
+            let placeholder = document.querySelector(".anime-genres");
+            if (placeholder) {
+              placeholder.innerHTML = "";
+              placeholder.append(gr);
+            }
+          }
+        });
       });
+    });
 }
 // Display similar Content
 export function similar() {
-  const placeholder = document.querySelector('.SimilarSection .carousel-cards-holder');
-  const URL = `https://api.themoviedb.org/3/movie/${id?id:2}/similar?language=en-US&page=${page?page:1}&api_key=${TMDB.api_key}`;
+  const placeholder = document.querySelector(
+    ".SimilarSection .carousel-cards-holder",
+  );
+  const URL = `https://api.themoviedb.org/3/movie/${id ? id : 2}/similar?language=en-US&page=${page ? page : 1}&api_key=${TMDB.api_key}`;
   fetchAnimes(URL, placeholder);
 }
 // Display Special Section
-const special_holder = document.querySelector(".SpecialSection .carousel-cards-holder");
-special_holder?fetchAnimes(TMDB.Disc_api, special_holder):'';
+const special_holder = document.querySelector(
+  ".SpecialSection .carousel-cards-holder",
+);
+special_holder ? fetchAnimes(TMDB.Disc_api, special_holder) : "";
 
 similar();
 export function User_space(user_name, user_email) {
@@ -237,7 +252,7 @@ toggleElements_btns.map((el) => {
   btn ? (btn.onclick = () => toggleElement(btn)) : "";
 });
 // User Comments functions
-export const UserReview = function(){
+export const UserReview = function () {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const uid = user.uid;
@@ -247,31 +262,37 @@ export const UserReview = function(){
       // Comment content
       const commentText = userReviewInput ? userReviewInput.value : "";
       const sendReview_btn = document.querySelector(".sendReview-btn");
-      sendReview_btn?sendReview_btn.onclick = async function uploadReview(uid, commentText) {
-        const comment = {
-          userId: uid,
-          user_name,user_name,
-          user_email:user_email,
-          commentText: commentText,
-          timestamp: new Date().toISOString(),
-        };
-        const fileInput = document.getElementById("review_media");
-        if (fileInput && fileInput.files.length > 0) {
-          const file = fileInput.files[0];
-          const storageRef = ref(storage, "chat-media/" + file.name);
-          await uploadBytes(storageRef, file);
-          const fileURL = await getDownloadURL(storageRef);
-          comment.fileURL = fileURL;
-        }
-        const commentsRef = collection(db, "comments");
-        await setDoc(doc(commentsRef), comment);
-        document.querySelector(".ReviewsOffcanvas")?.classList.add("d-none");
-      }:'';
+      sendReview_btn
+        ? (sendReview_btn.onclick = async function uploadReview(
+            uid,
+            commentText,
+          ) {
+            const comment = {
+              userId: uid,
+              user_name,
+              user_name,
+              user_email: user_email,
+              commentText: commentText,
+              timestamp: new Date().toISOString(),
+            };
+            const fileInput = document.getElementById("review_media");
+            if (fileInput && fileInput.files.length > 0) {
+              const file = fileInput.files[0];
+              const storageRef = ref(storage, "chat-media/" + file.name);
+              await uploadBytes(storageRef, file);
+              const fileURL = await getDownloadURL(storageRef);
+              comment.fileURL = fileURL;
+            }
+            const commentsRef = collection(db, "comments");
+            await setDoc(doc(commentsRef), comment);
+            document
+              .querySelector(".ReviewsOffcanvas")
+              ?.classList.add("d-none");
+          })
+        : "";
     } else {
-      alert('sing up first');
+      alert("sing up first");
     }
   });
-}
+};
 UserReview();
-
-

@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css" />
     <link rel="stylesheet" href="./Styles/index.css" />
     <link rel="stylesheet" href="./Styles/customize.css" />
-    <script src="https://unpkg.com/@popperjs/core@2"></script>
-
+    <!-- @popperjs/core -->
+    <script type="module" src="https://unpkg.com/@popperjs/core@2" defer></script>
     <title>Anime_4U | Home</title>
   </head>
   <body>
@@ -124,11 +124,11 @@
             <div class="arrows-holder flex-between">
               <i
                 class="fa-solid flex-center justify-content-center arrow fa-arrow-left"
-                  data-parentName="special-section"
+                data-parentName="special-section"
               ></i>
               <i
                 class="fa-solid flex-center justify-content-center arrow fa-arrow-right"
-                  data-parentName="special-section"
+                data-parentName="special-section"
               ></i>
             </div>
             <div class="carousel-cards-holder flex-center gap-3 pb-3"></div>
@@ -245,14 +245,16 @@
           <div class="arrows-holder flex-between">
             <i
               class="fa-solid flex-center justify-content-center arrow fa-arrow-left"
-                data-parentName="trending-section"
+              data-parentName="trending-section"
             ></i>
             <i
               class="fa-solid flex-center justify-content-center arrow fa-arrow-right"
-                data-parentName="trending-section"
+              data-parentName="trending-section"
             ></i>
           </div>
-          <div class="carousel-cards-holder flex-center gap-3 flex-center gap-3 pb-3"></div>
+          <div
+            class="carousel-cards-holder flex-center gap-3 flex-center gap-3 pb-3"
+          ></div>
         </div>
       </section>
       <section class="popular-section py-3">
@@ -263,7 +265,9 @@
           ></div>
         </div>
         <div class="d-grid gap-2">
-          <button class="btn btn-light show-more-btn" type="button">Show More</button>
+          <button class="btn btn-light show-more-btn" type="button">
+            Show More
+          </button>
         </div>
       </section>
       <footer>
@@ -294,14 +298,19 @@
 
     <script type="module">
       // Local Importing
-      import { fetchAnimes, TMDB ,MainURL} from "../Scripts/App_api.js";
-      const special_holder = document.querySelector(".special-section .carousel-cards-holder");
-      const trending_holder = document.querySelector(".trending-section .carousel-cards-holder");
-      const popular_holder = document.querySelector(".popular-section .cards-holder");
+      import { fetchAnimes, TMDB, MainURL } from "../Scripts/App_api.js";
+      const special_holder = document.querySelector(
+        ".special-section .carousel-cards-holder",
+      );
+      const trending_holder = document.querySelector(
+        ".trending-section .carousel-cards-holder",
+      );
+      const popular_holder = document.querySelector(
+        ".popular-section .cards-holder",
+      );
       fetchAnimes(TMDB.Disc_api, special_holder);
       fetchAnimes(TMDB.Top_api, trending_holder);
       fetchAnimes(TMDB.Pop_api, popular_holder);
-
     </script>
     <script src="./Scripts/main.js" type="module"></script>
     <script type="module" src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>

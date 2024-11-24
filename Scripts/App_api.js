@@ -36,8 +36,8 @@ const db = getFirestore(app);
 // Main Url
 export const MainURL = TMDB.Disc_api;
 export function fetchAnimes(url, placeholder, page = 1) {
-    const path = `${url}&page=${page}`
-    fetch(path)
+  const path = `${url}&page=${page}`;
+  fetch(path)
     .then((response) => response.json())
     .then((res) => {
       const data = res.results;
@@ -59,7 +59,7 @@ export function fetchAnimes(url, placeholder, page = 1) {
               vote_average,
               vote_count,
             } = el;
-            if(!genre_ids.includes(TMDB.genre))return;
+            if (!genre_ids.includes(TMDB.genre)) return;
             defaultColl.map((Coll) => {
               isAnimeinColl(id, Coll);
             });
@@ -84,25 +84,34 @@ export function fetchAnimes(url, placeholder, page = 1) {
                           </div>
                      </div>
               `;
-              placeholder?placeholder.append(Card):'';
+            placeholder ? placeholder.append(Card) : "";
           })
         : "";
     });
-    scrollBehavier();
+  scrollBehavier();
 }
-export function scrollBehavier(){
-  const Scroll_btns = document.querySelectorAll('.fa-arrow-left, .fa-arrow-right');
-  Scroll_btns.forEach(btn => {
-    btn.addEventListener('click',()=>{
-        const carouName = btn.getAttribute('data-parentname');
-        const carousel_parent = document.querySelector(`.${carouName} .carousel-cards-holder`);
-        const direction = btn.classList.contains('fa-arrow-right') ? 1 : -1;
-        const scrollAmount = 400 * direction;
-        carousel_parent.scrollBy({ left: scrollAmount, behavior: 'smooth'});
-    })
-  })
+export function scrollBehavier() {
+  const Scroll_btns = document.querySelectorAll(
+    ".fa-arrow-left, .fa-arrow-right",
+  );
+  Scroll_btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const carouName = btn.getAttribute("data-parentname");
+      const carousel_parent = document.querySelector(
+        `.${carouName} .carousel-cards-holder`,
+      );
+      const direction = btn.classList.contains("fa-arrow-right") ? 1 : -1;
+      const scrollAmount = 400 * direction;
+      carousel_parent.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
+  });
 }
-export const defaultColl = ["SavedAnimes", "LikedAnimes", "WatchLaterAnimes","WatchedAnimes"];
+export const defaultColl = [
+  "SavedAnimes",
+  "LikedAnimes",
+  "WatchLaterAnimes",
+  "WatchedAnimes",
+];
 export const isAnimeinColl = async function (id, coll_name) {
   try {
     const docRef = doc(db, "Collections", coll_name);
@@ -110,18 +119,30 @@ export const isAnimeinColl = async function (id, coll_name) {
     if (docSnapshot.exists()) {
       const Animes_ids = docSnapshot.data().ids;
       if (Animes_ids.includes(id)) {
+        console.log(Animes_ids);
+        
         const Anime = document.getElementById(id);
         if (Anime && coll_name == "LikedAnimes") {
-           console.log(`this anime (${id}) is bellongs to this collection : ${coll_name}`);
-          Anime.querySelector(".like-btn.item-status").classList.add('active');
+          console.log(
+            `this anime (${id}) is bellongs to this collection : ${coll_name}`,
+          );
+          Anime.querySelector(".like-btn.item-status").classList.add("active");
         } else if (Anime && coll_name == "SavedAnimes") {
-           console.log(`this anime (${id}) is bellongs to this collection : ${coll_name}`);
-          Anime.querySelector(".save-btn.item-status").classList.add('active');
+          console.log(
+            `this anime (${id}) is bellongs to this collection : ${coll_name}`,
+          );
+          Anime.querySelector(".save-btn.item-status").classList.add("active");
         } else if (Anime && coll_name == "WatchLaterAnimes") {
-           console.log(`this anime (${id}) is bellongs to this collection : ${coll_name}`);
-          Anime.querySelector(".watch-later-btn.item-status").classList.add('active');
+          console.log(
+            `this anime (${id}) is bellongs to this collection : ${coll_name}`,
+          );
+          Anime.querySelector(".watch-later-btn.item-status").classList.add(
+            "active",
+          );
         } else {
-          console.log(`this anime (${id}) dos not bellonge to the ${coll_name}`);
+          console.log(
+            `this anime (${id}) dos not bellonge to the ${coll_name}`,
+          );
         }
       }
     } else {
