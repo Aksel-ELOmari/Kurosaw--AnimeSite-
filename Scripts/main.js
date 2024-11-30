@@ -42,69 +42,72 @@ const db = getFirestore(app);
 const auth = getAuth();
 const storage = getStorage(app);
 // Import Local Files.
-import { User_space, fetchGenres } from "./preview.js";
+import { User_space,fetchGenres} from "./preview.js";
 import { logoutUser } from "./regester.js";
-import { defaultColl, MainURL, TMDB, isAnimeinColl } from "./App_api.js";
-import { main } from "@popperjs/core/index.js";
+import { defaultColl, MainURL, TMDB } from "./App_api.js";
 
 //! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 logoutUser();
-// const MainHeroCard = function(){
-//    fetch(`${MainURL}`)
-//    .then(response => response.json())
-//    .then(res =>{
-//      const results = res.total_results;
-//      console.log(results);
-//      const Mainid =  Math.floor(Math.random() * results) + 1;
-//      fetchMainAnime(Mainid);
-//    })
-//    function fetchMainAnime(id){
-//       fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB.api_key}`)
-//       .then(response => response.json())
-//       .then(res =>{
-//         const main_anime = res;
-//        if(main_anime){
-//             const {
-//               adult,backdrop_path,belongs_to_collection,budget,genres,homepage,
-//               id,imdb_id,origin_country,original_language,original_title,overview,
-//               popularity,poster_path,production_companies,production_countries,release_date,
-//               revenue,runtime,spoken_languages,status,tagline,video,vote_average,vote_count}
-//               = main_anime;
-//               // fetchGenres(genres);
-//               let MainCard = document.createElement('div');
-//               MainCard.innerHTML =
-//               `
-//               <div class="hero-Cover">
-//                 <img src="https://image.tmdb.org/t/p/original/${backdrop_path}" alt="" id="HeaderCover" />
-//               </div>
-//               <div class="hero-card mt-5">
-//                 <h1 class="hero-title">${title}</h1>
-//                 <p class="hero-preview">${overview}</p>
-//                 <div class="her-btns">
-//                   <button type="button" class="btn mx-2 btn-dark Login-btn">
-//                     <a href="./preview.html?id=${id}" target="_blanket" title="CLICK TO WATCH" class="text-decoration-none">Learn More</a>
-//                   </button>
-//                   <button type="button" class="btn mx-2 btn-light">
-//                     <i class="fa-regular fa-bookmark"></i> to watch
-//                   </button>
-//                 </div>
-//               </div>
-//               `;
-//               const placeholder = document.getElementById('main_card_holder');
-//               placeholder.innerHTML = '';
-//               placeholder.append(MainCard);
-//        }
-//       })
-//    }
-// }
-// MainHeroCard();
+const MainHeroCard = function(){
+   fetch(`${MainURL}`)
+   .then(response => response.json())
+   .then(res =>{
+     const results = res.total_results;
+     console.log(results);
+     const Mainid =  Math.floor(Math.random() * results) + 1;
+     Mainid?fetchMainAnime(Mainid):MainHeroCard;
+   })
+   function fetchMainAnime(id){
+      fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB.api_key}`)
+      .then(response => response.json())
+      .then(res =>{
+        const main_anime = res;
+       if(main_anime){
+            const {
+              adult,backdrop_path,belongs_to_collection,budget,genres,homepage,
+              id,imdb_id,origin_country,original_language,original_title,overview,
+              popularity,poster_path,production_companies,production_countries,release_date,
+              revenue,runtime,spoken_languages,status,tagline,video,vote_average,vote_count}
+              = main_anime;
+              genres?fetchGenres(genres):"";
+              let MainCard = document.createElement('div');
+              MainCard.innerHTML =
+              `
+              <div class="hero-Cover">
+                <img src="https://image.tmdb.org/t/p/original/${backdrop_path}" alt="" id="HeaderCover" />
+              </div>
+              <div class="hero-card mt-5">
+                <h1 class="hero-title w-auto">${original_title}</h1>
+                <div class="anime-genres d-flex align-items-center my-2 gap-2 flex-wrap">
+                  <span class="anime-genre special-btn" data-id="00000001">Drama</span>
+                </div>
+                <p class="hero-preview line-clamp">${overview}</p>
+                <div class="her-btns">
+                  <a href="./preview.html?id=${id}" title="CLICK TO WATCH" class="text-decoration-none mx-2 btn btn-dark">
+                    <i class="fa-solid fa-eye me-2"></i>
+                    to watch
+                  </a>
+                  <a href="${homepage?homepage:'#'}" class="text-decoration-none mx-2 btn btn-dark">
+                    <i class="fa-regular fa-bookmark me-2"></i>
+                    Learn More
+                  </a>
+                </div>
+              </div>
+              `;
+              const placeholder = document.getElementById('main_card_holder');
+              placeholder.innerHTML = '';
+              placeholder.append(MainCard);
+       }
+      })
+   }
+}
+setInterval(() => {
+  MainHeroCard();
+}, 20000); // 300000 milliseconds = 5 minutes
 
-export function Gofarther() {
-  window.history.forward();
-}
-export function Goback() {
-  window.history.back();
-}
+
+export function Gofarther(){window.history.forward();}
+export function Goback(){window.history.back();}
 export function toggleElement(btn) {
   btn
     ? btn.addEventListener("click", () => {
@@ -112,9 +115,7 @@ export function toggleElement(btn) {
         const el_target = document.querySelector(`.${el_class}`);
         if (el_target) {
           el_target.classList.toggle("d-none");
-        } else {
-          console.error("Sorrywe could not find the item !!!");
-        }
+        } else {console.error("Sorry we could not find the item !!!");}
       })
     : "";
 }
@@ -130,7 +131,7 @@ export function isUserIn() {
       User_space(user_name, user_email);
       console.log("the user loged in ");
       corner_profile ? corner_profile.classList.remove("d-none") : "";
-      corner_btns ? corner_btns.classList.toggle("d-none") : "";
+      corner_btns ? corner_btns.classList.add("d-none") : "";
     } else {
       console.log("the user is singned out");
       corner_btns ? corner_btns.classList.remove("d-none") : "";
@@ -139,7 +140,6 @@ export function isUserIn() {
   });
 }
 isUserIn();
-// Import Firebase modules
 async function uploadProfilePhotoToStorage(photoURL) {
   try {
     // Fetch the photo as a blob
@@ -166,20 +166,9 @@ onAuthStateChanged(auth, async (user) => {
     const photoURL = user.photoURL; // Get the user's Google account profile photo URL
     try {
       const firebasePhotoURL = await uploadProfilePhotoToStorage(photoURL);
-      // console.log('Firebase Storage URL:', firebasePhotoURL);
       // Display the image
-      const userProfile = document.querySelectorAll(".user-profile");
-      userProfile
-        ? userProfile.forEach((img) => {
-            img.src = firebasePhotoURL;
-          })
-        : "";
-      const NavProfile = document.querySelectorAll(".top-user-cover");
-      NavProfile
-        ? NavProfile.forEach((img) => {
-            img.src = firebasePhotoURL;
-          })
-        : "";
+      const userProfile = document.querySelectorAll(".user-profile",".top-user-cover");
+      userProfile? userProfile.forEach((img) => {img.src = firebasePhotoURL;}): "";
     } catch (error) {
       console.error("Error processing profile photo:", error);
     }
@@ -187,7 +176,9 @@ onAuthStateChanged(auth, async (user) => {
     console.log("No user is signed in.");
   }
 });
-export async function addAnimeToCollection(collectionName, animeId) {
+export async function addAnimeToCollection(btn) {
+  const collectionName = btn.getAttribute("data-collection-name");
+  const animeId = btn.getAttribute("data-parent-id");
   try {
     const docRef = doc(db, "Collections", collectionName);
     await updateDoc(docRef, {
@@ -201,7 +192,9 @@ export async function addAnimeToCollection(collectionName, animeId) {
   }
 }
 // remove id widen a documwent object
-export async function remove_from_coll(collectionName, animeId) {
+export async function remove_from_coll(btn) {
+  const collectionName = btn.getAttribute("data-collection-name");
+  const animeId = btn.getAttribute("data-parent-id");
   try {
     const docRef = doc(db, "Collections", collectionName);
     await updateDoc(docRef, {

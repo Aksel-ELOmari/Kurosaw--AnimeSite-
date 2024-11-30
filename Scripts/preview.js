@@ -29,7 +29,6 @@ import {
   onAuthStateChanged,
   getAuth,
 } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-import { createPopper } from "@popperjs/core";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -43,166 +42,128 @@ import {
   remove_from_coll,
 } from "./main.js";
 import { toggleCollections_lab } from "./Collections.js";
-import { isAnimeinColl, defaultColl, TMDB, fetchAnimes } from "./App_api.js";
+import { isAnimeinColl, defaultColl, TMDB, fetchAnimes, } from "./App_api.js";
 toggleCollections_lab(); // the btns withen inside
-function getMainAnime(id, path) {
-  fetch(`${path}&api_key=03760268c2411e2d785ed677c960080d&with_genres=16`)
-    .then((response) => response.json())
-    .then((res) => {
-      const data = res.results;
-      if (data) {
-        data.forEach((el) => {
-          if (el.id == id) {
-            const {
-              adult,
-              backdrop_path,
-              genre_ids,
-              id,
-              original_language,
-              original_title,
-              overview,
-              popularity,
-              poster_path,
-              release_date,
-              title,
-              video,
-              vote_average,
-              vote_count,
-            } = el;
-            fetchGenres(genre_ids ? genre_ids : "");
-            defaultColl.map((coll) => {
-              isAnimeinColl(id, coll);
-            });
-            const backdropCover = document.querySelector(
-              ".hero-backdropCover img",
-            );
-            backdropCover.src = TMDB.img_url + backdrop_path;
-            defaultColl.forEach((Coll) => {
-              isAnimeinColl(id, Coll);
-            });
-            // Create anime card
-            const Card = document.createElement("div");
-            Card.classList.add(
-              "hero-body_inner",
-              "flex",
-              "align-items-center",
-              "gap-5",
-            );
-            Card.innerHTML = `
-              <div class="animeCover">
-                <img
-                  src="${TMDB.img_url + poster_path}"
-                  alt=""
-                  id="main-img"
-                />
-              </div>
-              <div class="hero-content">
-                <h1 class="h1 animeTitle my-3 fw-bolder" id="mainAnimeTitle">
-                  ${title}
-                </h1>
-                <div
-                  class="anime-dethails d-flex align-items-center gap-2 flex-wrap"
-                >
-                  <span class="anime-data anime-rate">${vote_average} (${vote_count})</span>
-                  <span class="anime-data anime-date">${release_date}</span>
-                  <span class="anime-data anime-type">Movie</span>
-                </div>
-                <div
-                  class="anime-genres d-flex align-items-center my-2 gap-2 flex-wrap"
-                >
-                  <span class="anime-genre special-btn">Family</span>
-                  <span class="anime-genre special-btn">Animation</span>
-                  <span class="anime-genre special-btn">Science Fiction</span>
-                </div>
-                <p class="anime-overview fw-400 w-50 line-clamp">${overview}</p>
-                <div class="hero-buttons">
-                  <div class="hero-buttons_inner d-flex align-items-center">
-                    <button
-                      data-anime-id="${id}"
-                     data-collection-name="LikedAnimes"
-                      type="button"
-                      title="btn"
-                      class="item-status like-btn"
-                    >
-                    <i class="fa-solid fa-heart"></i>
-                      Like
-                    </button>
-                    <button
-                      data-anime-id="${id}"
-                     data-collection-name="SavedAnimes"
-                      type="button"
-                      title="btn"
-                      class="item-status  save-btn"
-                    >
-                    <i class="fa-solid fa-bookmark"></i>
-                      Save
-                    </button>
-                    <button
-                      data-anime-id="${id}"
-                     data-collection-name="WatchLaterAnimes"
-                      type="button"
-                      title="btn"
-                      class="item-status watch-later-btn"
-                    >
-                    <i class="fa-solid fa-clock"></i>
-                      Watch later
-                    </button>
-                    <button
-                      data-anime-id="${id}"
-                     data-collection-name=""
-                      type="button"
-                      title="btn"
-                      class="btn btn-light createNewColl-btn"
-                    >
-                      Add To Collection
-                    </button>
-                  </div>
-                </div>
-              </div>
-            `;
-            // Insert anime card into placeholder
-            const placeholder = document.getElementById("MainAnimeHolder");
-            if (placeholder) {
-              placeholder.innerHTML = "";
-              placeholder.append(Card);
-            }
-          }
-        });
-      }
-    })
-    .catch((error) => {
-      console.error("Error fetching data:", error);
+async function getMainAnime(id, api_key) {
+  try {
+    // Construct the API URL
+    const One = `https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`;
+    // Fetch the data
+    const response = await fetch(One);
+
+    // Check if the response is okay
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    // Parse the JSON data
+    const Anime = await response.json();
+    // Destructure the response
+    const {
+      adult,
+      backdrop_path,
+      genres,
+      original_language,
+      original_title,
+      overview,
+      popularity,
+      poster_path,
+      release_date,
+      title,
+      video,
+      vote_average,
+      vote_count,
+    } = Anime;
+    
+    // Call necessary functions (ensure these functions are defined elsewhere in your code)
+    similar();
+    AnimeStatus();
+    SeactionsCards();
+    DisplaySpecialContent();
+    genres?fetchGenres(genres):"";
+    const backdropCover = document.querySelector(".hero-backdropCover img");
+    if (backdropCover) {
+      backdrop_path?backdropCover.src = TMDB.img_url + backdrop_path: TMDB.img_url +  TMDB.DefaultBackdrop;
+    }
+    // Check if anime is in default collections
+    defaultColl.forEach((Coll) => {
+      isAnimeinColl(id, Coll);
     });
+    // Create anime card
+    const Card = document.createElement("div");
+    Card.id = id;
+    Card.classList.add("hero-body_inner", "flex", "align-items-center", "gap-5");
+    Card.innerHTML = `
+      <div class="animeCover">
+        <img src="https://image.tmdb.org/t/p/original/${poster_path?poster_path:TMDB.DefaultCover}" alt="" id="main-img" />
+      </div>
+      <div class="hero-content">
+        <h1 class="h1 animeTitle my-3 fw-bolder" id="mainAnimeTitle">${title}</h1>
+        <div class="anime-dethails d-flex align-items-center gap-2 flex-wrap">
+          <span class="anime-data anime-rate">${vote_average} (${vote_count})</span>
+          <span class="anime-data anime-date">${release_date}</span>
+          <span class="anime-data anime-type">Movie</span>
+        </div>
+        <div class="anime-genres d-flex align-items-center my-2 gap-2 flex-wrap"></div>
+        <p class="anime-overview fw-400 w-50 line-clamp">${overview}</p>
+        <div class="hero-buttons">
+          <div class="hero-buttons_inner d-flex align-items-center">
+            <button data-anime-id="${id}" data-collection-name="LikedAnimes" type="button" title="btn" class="item-status like-btn">
+              <i class="fa-solid fa-heart"></i> Like
+            </button>
+            <button data-anime-id="${id}" data-collection-name="SavedAnimes" type="button" title="btn" class="item-status save-btn">
+              <i class="fa-solid fa-bookmark"></i> Save
+            </button>
+            <button data-anime-id="${id}" data-collection-name="WatchLaterAnimes" type="button" title="btn" class="item-status watch-later-btn">
+              <i class="fa-solid fa-clock"></i> Watch later
+            </button>
+            <button data-anime-id="${id}" data-collection-name="" type="button" title="btn" class="btn btn-light createNewColl-btn">
+              Add To Collection
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+    // Insert anime card into placeholder
+    const placeholder = document.getElementById("MainAnimeHolder");
+    if (placeholder) {
+      placeholder.innerHTML = "";
+      placeholder.append(Card);
+    }
+  } catch (error) {
+    console.error(`Error fetching the item: ${error.message}`);
+  }
 }
 const url = new URL(window.location.href);
 const params = new URLSearchParams(url.search);
 const id = params.get("id");
-const path = params.get("path");
 const page = params.get("page");
-id && path ? getMainAnime(id, path) : "";
-// Display Anime Genresa
-export function fetchGenres(genres) {
-  fetch(
-    `https://api.themoviedb.org/3/genre/movie/list?language=en&api_key=${TMDB.api_key}`,
-  )
-    .then((response) => response.json())
-    .then((res) => {
-      let Genres = res.genres;
-      Genres.forEach((G) => {
-        genres.forEach((g) => {
-          if (G.id === g) {
-            let gr = document.createElement("span");
-            gr.classList.add("anime-genre", "special-btn");
-            gr.innerHTML = `${G.name}`;
-            let placeholder = document.querySelector(".anime-genres");
-            if (placeholder) {
-              placeholder.innerHTML = "";
-              placeholder.append(gr);
-            }
-          }
-        });
+id?getMainAnime(id, TMDB.api_key):'';
+
+// Anime Status
+function AnimeStatus(){
+    let Status_btns = document.querySelectorAll(".item-status");
+    Status_btns.forEach((btn) => {
+      btn.classList.contains("active")
+        ? addAnimeToCollection(btn)
+        : remove_from_coll(btn);
+      btn.addEventListener("click", () => {
+        const id = btn.getAttribute('data-anime-id');
+        const coll_name = btn.getAttribute('data-collection-name');
+        isAnimeinColl(id, coll_name)?true:btn.classList.remove('active');
       });
     });
+}
+// Display Anime Genres
+export function fetchGenres(genres) {
+  genres.forEach(g =>{
+     const {id,name} = g;
+     let gr = document.createElement("span");
+     gr.classList.add("anime-genre", "special-btn");
+     gr.innerHTML = `${name}`;
+     gr.setAttribute('data-id',id);
+     let placeholder = document.querySelector(".anime-genres");
+     placeholder?placeholder.append(gr):'';
+  })
 }
 // Display similar Content
 export function similar() {
@@ -213,12 +174,12 @@ export function similar() {
   fetchAnimes(URL, placeholder);
 }
 // Display Special Section
-const special_holder = document.querySelector(
-  ".SpecialSection .carousel-cards-holder",
-);
-special_holder ? fetchAnimes(TMDB.Disc_api, special_holder) : "";
-
-similar();
+export function DisplaySpecialContent(){
+    const special_holder = document.querySelector(
+      ".SpecialSection .carousel-cards-holder",
+    );
+    special_holder ? fetchAnimes(TMDB.Disc_api, special_holder) : "";
+}
 export function User_space(user_name, user_email) {
   let userName = document.querySelector(".user-name");
   let userEmail = document.querySelector(".user-email_in");
@@ -227,13 +188,14 @@ export function User_space(user_name, user_email) {
   userEmail ? (userEmail.innerHTML = "") : "";
   userEmail ? (userEmail.innerHTML = user_email) : "";
 }
-
-const sections_btns = document.querySelectorAll(".preview-toggle-btn");
-sections_btns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    toggleSections(btn);
-  });
-});
+function SeactionsCards(){
+  const sections_btns = document.querySelectorAll(".preview-toggle-btn");
+  sections_btns?sections_btns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      toggleSections(btn);
+    });
+  }):'';
+}
 export function toggleSections(btn) {
   const btn_target = btn.getAttribute("data-target");
   const allTargets = document.querySelectorAll(".PreviewSection");
@@ -296,3 +258,82 @@ export const UserReview = function () {
   });
 };
 UserReview();
+
+
+
+// // ! Getting Coments
+// async function getReviews() {
+//   const displayedComments = new Set();
+//   const commentsRef = collection(db, "comments");
+//   const querySnapshot = await getDocs(commentsRef);
+//   const ReviewsHolder = document.querySelector(".Reviews-holder");
+
+//   querySnapshot.forEach((doc) => {
+//     const commentData = doc.data();
+//     const userName = commentData.user_name; // Fixed variable to access user_name
+//     const commentId = doc.id;
+//     const commentText = commentData.commentText;
+//     const fileURL = commentData.fileURL;
+//     const timestamp = commentData.timestamp;
+//     const date = new Date(timestamp);
+//     const formattedDate = date.toLocaleDateString("en-GB", {
+//       day: "2-digit",
+//       month: "long",
+//       year: "numeric",
+//     });
+
+//     if (!displayedComments.has(commentId)) {
+//       displayedComments.add(commentId);
+//       const userReview = document.createElement("div");
+//       userReview.classList.add(
+//         "user-review",
+//         "flex",
+//         "align-items-start",
+//         "gap-3",
+//         "mb-4"
+//       );
+//       userReview.innerHTML = `
+//         <img src="./imgs/Profile/Profile-img.jpg" alt="" class="top-user-cover">
+//         <div class="review-body">
+//           <div class="review-header flex">
+//             <h6 class="user-name h5 me-2">${userName}</h6>
+//             <span class="released-date">${formattedDate}</span>
+//           </div>
+//           <p class="user-review-text me-2">${commentText}</p>
+//           <div class="media-content"></div>
+//         </div>
+//       `;
+//       ReviewsHolder?.appendChild(userReview);
+
+//       const mediaContentDiv = userReview.querySelector(".media-content");
+//       appendMediaContent(mediaContentDiv, fileURL);
+//     }
+//   });
+// }
+// async function appendMediaContent(container, url) {
+//   if (!url) return; // Handle case where there's no fileURL
+
+//   try {
+//     const response = await fetch(url, { method: 'HEAD' });
+//     const contentType = response.headers.get('Content-Type');
+
+//     if (contentType.startsWith('image/')) {
+//       let media = document.createElement("img");
+//       media.src = url;
+//       container.appendChild(media);
+//     } else if (contentType.startsWith('video/')) {
+//       let media = document.createElement("video");
+//       media.src = url;
+//       media.controls = true;
+//       media.setAttribute("loop", "muted", "autoplay");
+//       container.appendChild(media);
+//     } else {
+//       container.textContent = "Unsupported media type.";
+//     }
+//   } catch (error) {
+//     console.error('Error fetching media type:', error);
+//     container.textContent = "Error loading media.";
+//   }
+// }
+// getReviews();
+

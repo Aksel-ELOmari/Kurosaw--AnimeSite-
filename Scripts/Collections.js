@@ -136,7 +136,7 @@ async function ColumnCollection() {
         data.forEach((el) => {
           if (Cover_id == el.id) {
             collectionCover.src = `https://image.tmdb.org/t/p/original/${el.poster_path}`;
-            console.log(el.poster_path);
+            // console.log(el.poster_path);
           }
         });
       });

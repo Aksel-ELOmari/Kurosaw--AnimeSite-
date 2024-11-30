@@ -32,9 +32,14 @@
 .review-main-card {
   border:
     solid 1px var(--text-color),
-    #fff;
+    #ffffff;
 }
-.item-status {
+.special-btn
+{
+    background: var(--text-color),#ffffff60 !important;
+    color: var(--bg-color),#000 !important;
+}
+.item-status,.special-btn {
   all: unset;
   border: solid 1px var(--bg-color);
   background: var(--text-color);
@@ -72,3 +77,6 @@
 .save-btn.item-status.active i {
   color: green !important;
 }
+
+.btn.btn-dark:hover{color: #000 !important;background: #fff !important;}
+.btn.btn-light:hover{color: #fff !important;background: #000 !important;}
