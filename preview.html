@@ -37,6 +37,12 @@
         -webkit-box-orient: vertical !important;
         -webkit-line-clamp: var(--max-lines) !important;
       }
+      .anime-genre {
+        color: #000 !important;
+        background-color: #ffffffb4 !important;
+        -webkit-backdrop-filter: blur(30px);
+        backdrop-filter: blur(30px);
+      }
       .hero-section {
         position: relative;
         top: -15vh;
@@ -428,7 +434,7 @@
           </div>
           <!-- Start Overview -->
           <div
-            class="PreviewSection OverviewSection mb-2"
+            class="ToggledSection OverviewSection mb-2"
             data-name="overview-section"
           >
             <div class="row">
@@ -517,7 +523,7 @@
 
           <!-- Start Specials -->
           <div
-            class="PreviewSection d-none SpecialSection"
+            class="ToggledSection d-none SpecialSection"
             data-name="special-section"
           >
             <h1 class="section-title orangered h3">Special For You :</h1>
@@ -623,7 +629,7 @@
 
           <!-- Start Characters -->
           <div
-            class="PreviewSection d-none CharactersSection"
+            class="ToggledSection d-none CharactersSection"
             data-name="characters-section"
           >
             <h2 class="title h3">Characters</h2>
@@ -688,7 +694,7 @@
 
           <!-- Start Reviews -->
           <div
-            class="PreviewSection d-none ReviewsSection"
+            class="ToggledSection d-none ReviewsSection"
             data-name="reviews-section"
           >
             <h2 class="title h3">Reviews</h2>

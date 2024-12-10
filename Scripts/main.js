@@ -42,37 +42,57 @@ const db = getFirestore(app);
 const auth = getAuth();
 const storage = getStorage(app);
 // Import Local Files.
-import { User_space,fetchGenres} from "./preview.js";
+import { User_space, fetchGenres } from "./preview.js";
 import { logoutUser } from "./regester.js";
 import { defaultColl, MainURL, TMDB } from "./App_api.js";
 
 //! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-logoutUser();
-const MainHeroCard = function(){
-   fetch(`${MainURL}`)
-   .then(response => response.json())
-   .then(res =>{
-     const results = res.total_results;
-     console.log(results);
-     const Mainid =  Math.floor(Math.random() * results) + 1;
-     Mainid?fetchMainAnime(Mainid):MainHeroCard;
-   })
-   function fetchMainAnime(id){
-      fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB.api_key}`)
-      .then(response => response.json())
-      .then(res =>{
+const MainHeroCard = function () {
+  fetch(`${MainURL}`)
+    .then((response) => response.json())
+    .then((res) => {
+      const results = res.total_results;
+      console.log(results);
+      const Mainid = Math.floor(Math.random() * results) + 1;
+      Mainid ? fetchMainAnime(Mainid) : MainHeroCard;
+      console.log(`the randome anime id is : ${Mainid}`);
+    });
+  function fetchMainAnime(id) {
+    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB.api_key}`)
+      .then((response) => response.json())
+      .then((res) => {
         const main_anime = res;
-       if(main_anime){
-            const {
-              adult,backdrop_path,belongs_to_collection,budget,genres,homepage,
-              id,imdb_id,origin_country,original_language,original_title,overview,
-              popularity,poster_path,production_companies,production_countries,release_date,
-              revenue,runtime,spoken_languages,status,tagline,video,vote_average,vote_count}
-              = main_anime;
-              genres?fetchGenres(genres):"";
-              let MainCard = document.createElement('div');
-              MainCard.innerHTML =
-              `
+        if (main_anime) {
+          const {
+            adult,
+            backdrop_path,
+            belongs_to_collection,
+            budget,
+            genres,
+            homepage,
+            id,
+            imdb_id,
+            origin_country,
+            original_language,
+            original_title,
+            overview,
+            popularity,
+            poster_path,
+            production_companies,
+            production_countries,
+            release_date,
+            revenue,
+            runtime,
+            spoken_languages,
+            status,
+            tagline,
+            video,
+            vote_average,
+            vote_count,
+          } = main_anime;
+          genres ? fetchGenres(genres) : "";
+          let MainCard = document.createElement("div");
+          MainCard.innerHTML = `
               <div class="hero-Cover">
                 <img src="https://image.tmdb.org/t/p/original/${backdrop_path}" alt="" id="HeaderCover" />
               </div>
@@ -87,27 +107,32 @@ const MainHeroCard = function(){
                     <i class="fa-solid fa-eye me-2"></i>
                     to watch
                   </a>
-                  <a href="${homepage?homepage:'#'}" class="text-decoration-none mx-2 btn btn-dark">
+                  <a href="${homepage ? homepage : "#"}" class="text-decoration-none mx-2 btn btn-dark">
                     <i class="fa-regular fa-bookmark me-2"></i>
                     Learn More
                   </a>
                 </div>
               </div>
               `;
-              const placeholder = document.getElementById('main_card_holder');
-              placeholder.innerHTML = '';
-              placeholder.append(MainCard);
-       }
-      })
-   }
+          const placeholder = document.getElementById("main_card_holder");
+          placeholder.innerHTML = "";
+          placeholder.append(MainCard);
+        }
+      });
+  }
+};
+if (document.location.href == "./index.html") {
+  setInterval(() => {
+    MainHeroCard();
+  }, 20000); // 300000 milliseconds = 5 minutes
 }
-setInterval(() => {
-  MainHeroCard();
-}, 20000); // 300000 milliseconds = 5 minutes
 
-
-export function Gofarther(){window.history.forward();}
-export function Goback(){window.history.back();}
+export function Gofarther() {
+  window.history.forward();
+}
+export function Goback() {
+  window.history.back();
+}
 export function toggleElement(btn) {
   btn
     ? btn.addEventListener("click", () => {
@@ -115,31 +140,81 @@ export function toggleElement(btn) {
         const el_target = document.querySelector(`.${el_class}`);
         if (el_target) {
           el_target.classList.toggle("d-none");
-        } else {console.error("Sorry we could not find the item !!!");}
+        } else {
+          console.error("Sorry we could not find the item !!!");
+        }
       })
     : "";
+}
+export function toggleTwoElements(el1, el2) {
+  el1.classList.toggle("d-none");
+  el2.classList.toggle("d-none");
+}
+export function toggleSections(btn) {
+  const btn_target = btn.getAttribute("data-target");
+  const allTargets = document.querySelectorAll(".ToggledSection");
+  allTargets.forEach((target) => {
+    const targetName = target.getAttribute("data-name");
+    if (targetName && targetName == btn_target) {
+      allTargets.forEach((target) => target.classList.add("d-none"));
+      target.classList.remove("d-none");
+    }
+  });
+}
+export function btn_active_function(btn,func){
+   btn?btn.onclick = _ => func:'';
 }
 // Calling this func to make changes when the user is in;
 export function isUserIn() {
   let corner_btns = document.querySelector(".corner-btns");
   let corner_profile = document.querySelector(".corner-profile");
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      const user_name = user.displayName;
-      const user_email = user.email;
-      User_space(user_name, user_email);
-      console.log("the user loged in ");
-      corner_profile ? corner_profile.classList.remove("d-none") : "";
-      corner_btns ? corner_btns.classList.add("d-none") : "";
-    } else {
-      console.log("the user is singned out");
-      corner_btns ? corner_btns.classList.remove("d-none") : "";
-      corner_profile ? corner_profile.classList.add("d-none") : "";
-    }
-  });
+  onAuthStateChanged(
+    auth,
+    (user) =>
+      async function () {
+        if (user) {
+          toggleLogout_btns(user);
+          console.log(user.displayName);
+          const uid = user.uid;
+          const user_name = user.displayName;
+          const user_email = user.email;
+          const photoURL = user.photoURL; // Get the user's Google account profile photo URL
+          try {
+            const firebasePhotoURL =
+              await uploadProfilePhotoToStorage(photoURL);
+            const userProfile = document.querySelectorAll(
+              ".user-profile",
+              ".top-user-cover",
+            );
+            userProfile
+              ? userProfile.forEach((img) => {
+                  img.src = firebasePhotoURL;
+                })
+              : "";
+          } catch (error) {
+            console.error("Error processing profile photo:", error);
+          }
+          User_space(user_name, user_email);
+          console.log("the user loged in ");
+          corner_profile ? corner_profile.classList.remove("d-none") : "";
+          corner_btns ? corner_btns.classList.add("d-none") : "";
+        } else {
+          console.log("No User loged in !!!");
+          corner_btns ? corner_btns.classList.remove("d-none") : "";
+          corner_profile ? corner_profile.classList.add("d-none") : "";
+        }
+      },
+  );
 }
 isUserIn();
+export function toggleLogout_btns(user) {
+  const LogOut_btns = document.querySelectorAll(".Logout_btn");
+  if (user) {
+    LogOut_btns.forEach((btn) => {
+      btn.classList.toggle("d-none");
+    });
+  }
+}
 async function uploadProfilePhotoToStorage(photoURL) {
   try {
     // Fetch the photo as a blob
@@ -160,22 +235,6 @@ async function uploadProfilePhotoToStorage(photoURL) {
     throw error;
   }
 }
-// Authenticate user and upload profile picture
-onAuthStateChanged(auth, async (user) => {
-  if (user) {
-    const photoURL = user.photoURL; // Get the user's Google account profile photo URL
-    try {
-      const firebasePhotoURL = await uploadProfilePhotoToStorage(photoURL);
-      // Display the image
-      const userProfile = document.querySelectorAll(".user-profile",".top-user-cover");
-      userProfile? userProfile.forEach((img) => {img.src = firebasePhotoURL;}): "";
-    } catch (error) {
-      console.error("Error processing profile photo:", error);
-    }
-  } else {
-    console.log("No user is signed in.");
-  }
-});
 export async function addAnimeToCollection(btn) {
   const collectionName = btn.getAttribute("data-collection-name");
   const animeId = btn.getAttribute("data-parent-id");

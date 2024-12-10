@@ -17,18 +17,28 @@
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css" />
     <link rel="stylesheet" href="./Styles/index.css" />
     <link rel="stylesheet" href="./Styles/customize.css" />
-    <title>Kurosaw | Regester</title>
+    <title>Anime_4U | Regester</title>
   </head>
   <body>
     <main class="container-fluid regester-main">
       <section class="flex-center justify-content-center">
+        <div class="regester-hedear-btns">
+           <div class="d-flex align-items-center justify-content-between">
+              <div class="ex-Coll-btn exit-btn flex-center justify-content-center text-decoration-none">
+                <i class="fa-solid fa-x"></i>
+              </div>
+              <div class="go_back_btn flex-center justify-content-center">
+                <i class="fa-solid fa-arrow-left"></i>
+              </div>
+           </div>
+        </div>
         <div
           class="main-card flex-center justify-content-center flex-column gap-2"
         >
           <a
             href="./index.html"
             class="fw-bolder text-decoration-none h1 text-center Sing-title"
-            >Join Kurosaw</a
+            >Join Anime_4U</a
           >
           <button
             type="button"
@@ -57,14 +67,12 @@
           </button>
           <button
             type="button"
-            id="Login_em_btn"
-            class="login-method btn btn-success btn-lg btn-block mt-2 email-btn"
-            onclick="showLogingbar()"
+            class="login-method btn btn-success btn-lg btn-block mt-2 singUp_email_lg_btn"
           >
             <i class="fa-regular me-3 fa-envelope"></i> Sing up with Email.
           </button>
-          <div id="Singin_form" class="login-mini-card py-2 d-none">
-            <div class="input-card email-input-card mb-2 d-none">
+          <div class="Regester_Card py-2 d-none">
+            <div class="input-card email-input-card mb-2">
               <label for="user-email" style="width: 100%">Email</label>
               <input
                 type="email"
@@ -85,13 +93,9 @@
             <div class="input-card password-input-card mb-2">
               <div class="flex-center justify-content-between">
                 <label for="user-password d-none">Password</label>
-                <a
-                  href="#"
-                  class="forget-btn text-decoration-none"
-                  style="cursor: pointer"
-                  onclick="resetpassword()"
-                  >Forgot Password?</a
-                >
+                <span
+                  class="forget-password-btn text-decoration-none cursor-pointer d-none"
+                  >Forgot Password?</span>
               </div>
               <div class="position-relative">
                 <input
@@ -106,37 +110,35 @@
             <button
               type="button"
               type="button"
-              class="btn btn-light btn-lg btn-block login-lg-btn"
+              class="btn btn-light  submit-form-btn btn-lg btn-block login-lg-btn d-none"
               id="LoginBtn"
             >
               Login
             </button>
             <button
               type="button"
-              class="btn btn-light btn-lg btn-block singup-lg-btn d-none"
+              class="btn submit-form-btn btn-light btn-lg btn-block singup-lg-btn"
               id="SingUpBtn"
             >
               Sing Up
             </button>
             <button
               type="button"
-              class="btn btn-light btn-lg btn-block reset-lg-btn d-none"
+              class="btn submit-form-btn btn-light btn-lg btn-block reset-lg-btn d-none"
             >
               Reset Password
             </button>
           </div>
           <p class="Sing-alert login-alert">
             Already have an acount ?!<span
-              class="login-btn ms-2"
+              class="green-login-btn ms-2"
               style="color: green; cursor: pointer"
-              onclick="showLogingbar()"
               >Log in</span
             >
           </p>
           <p class="Sing-alert singUp-alert d-none">
             Don't have an acount?!<span
-              class="Singup-btn ms-2"
-              onclick="showSingupBar()"
+              class="green-Singup-btn ms-2"
               style="color: green; cursor: pointer"
               >Sing Up</span
             >
@@ -155,69 +157,94 @@
         </div>
       </section>
     </main>
-    <script>
-      function showLogingbar() {
-        document.querySelector(".Sing-title").innerHTML = "Login in";
-        let element = document.querySelector(".login-mini-card");
-        element.classList.toggle("d-none");
-        let email_btn = document.querySelector(".email-btn");
-        email_btn.classList.toggle("d-none");
-        let loginAlert = document.querySelector(".login-alert");
-        loginAlert.classList.toggle("d-none");
-        let SingUpAlert = document.querySelector(".singUp-alert");
-        SingUpAlert.classList.toggle("d-none");
-      }
-
-      function showSingupBar() {
-        console.log("sign up bar");
-        document.querySelector(".Sing-title").innerHTML = "Sign Up";
-        let Allmethods = document.querySelectorAll(".login-method");
-        Allmethods.forEach((method) => (method.style.display = "none"));
-        let Emailinput = document.querySelector(".email-input-card");
-        Emailinput.classList.toggle("d-none");
-        let singup_btn = document.querySelector(".singup-lg-btn");
-        singup_btn.classList.toggle("d-none");
-        let login_btn = document.querySelector(".login-lg-btn");
-        login_btn.classList.toggle("d-none");
-        let alerts = document.querySelectorAll(".Sing-alert");
-        alerts.forEach((alert) => alert.classList.add("d-none"));
-        document.querySelector(".terms-alert").classList.toggle("d-none");
-        document.querySelector(".forget-btn").classList.toggle("d-none");
-      }
-
-      function resetpassword() {
-        document.querySelector(".Sing-title").innerHTML = "Forgot Password";
-        let Allmethods = document.querySelectorAll(".login-method");
-        Allmethods.forEach((method) => (method.style.display = "none"));
-
-        let Allinputs = document.querySelectorAll(".input-card");
-        Allinputs.forEach((input) => {
-          input.classList.toggle("d-none");
-        });
-
-        let Emailinput = document.querySelector(".email-input-card");
-        Emailinput.classList.remove("d-none");
-        let singup_btn = document.querySelector(".singup-lg-btn");
-        singup_btn.classList.add("d-none");
-        let login_btn = document.querySelector(".login-lg-btn");
-        login_btn.classList.add("d-none");
-        document.querySelector(".reset-lg-btn").classList.toggle("d-none");
-        let alerts = document.querySelectorAll(".Sing-alert");
-        alerts.forEach((alert) => alert.classList.add("d-none"));
-        document.querySelector(".forget-btn").classList.toggle("d-none");
-      }
+    <script type="module">import { Goback } from "../Scripts/main.js";
+       document.querySelector('.exit-btn').onclick = Goback;
     </script>
-    <!-- ################ firebase Utilites ############### -->
-    <!-- <script
-      type="module"
-      src="https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js"
-    ></script>
-    <script
-      type="module"
-      src="https://www.gstatic.com/firebasejs/10.11.1/firebase-database.js"
-    ></script> -->
-
+  <script>
+    const q = s => document.querySelector(s);
+    const qAll = s => document.querySelectorAll(s);
+  
+    const loginMethods = qAll('.login-method');
+    const regesterAlerts = qAll('.Sing-alert');
+    const submitBtns = qAll('.submit-form-btn');
+    const inputCards = qAll('.input-card');
+  
+    const regesterCard = q('.Regester_Card');
+    const singUpWithEmailBtn = q('.singUp_email_lg_btn');
+    const loginBtn = q('#LoginBtn');
+    const singUpBtn = q('#SingUpBtn');
+    const emailInputCard = q('.email-input-card');
+    const nameInputCard = q('.name-input-card');
+    const forgetPasswordBtn = q('.forget-password-btn');
+    const resetLgBtn = q('.reset-lg-btn');
+    const singUpAlert = q('.singUp-alert');
+    const termsAlert = q('.terms-alert');
+    const goBackBtn = q('.go_back_btn');
+  
+    const actionStack = []; // Stack to keep track of actions
+  
+    const hideElements = elements => {
+      elements.forEach(el => {
+        el.classList.add('d-none');
+        actionStack.push(() => el.classList.remove('d-none'));
+      });
+    };
+  
+    const showElements = elements => {
+      elements.forEach(el => {
+        el.classList.remove('d-none');
+        actionStack.push(() => el.classList.add('d-none'));
+      });
+    };
+  
+    function showSingUpBar() {
+      hideElements([...regesterAlerts, ...loginMethods, ...submitBtns, forgetPasswordBtn]);
+      showElements([termsAlert, regesterCard, singUpBtn, nameInputCard]);
+    }
+    singUpWithEmailBtn.onclick = showSingUpBar;
+    q('.green-Singup-btn').onclick = showSingUpBar;
+  
+    function showLoginBar() {
+      hideElements([...regesterAlerts, ...loginMethods, ...submitBtns]);
+      regesterCard.classList.toggle('d-none');
+      singUpAlert.classList.toggle('d-none');
+      nameInputCard.classList.add('d-none');
+      showElements([loginBtn, forgetPasswordBtn]);
+  
+      actionStack.push(() => {
+        regesterCard.classList.toggle('d-none');
+        singUpAlert.classList.toggle('d-none');
+        nameInputCard.classList.remove('d-none');
+        hideElements([loginBtn, forgetPasswordBtn]);
+      });
+    }
+    q('.green-login-btn').onclick = showLoginBar;
+  
+    function showForgetenBar() {
+      hideElements([...inputCards, ...regesterAlerts, ...loginMethods, ...submitBtns]);
+      emailInputCard.classList.toggle('d-none');
+      resetLgBtn.classList.toggle('d-none');
+  
+      actionStack.push(() => {
+        emailInputCard.classList.toggle('d-none');
+        resetLgBtn.classList.toggle('d-none');
+        showElements([...inputCards, ...regesterAlerts, ...loginMethods, ...submitBtns]);
+      });
+    }
+    if (forgetPasswordBtn) forgetPasswordBtn.onclick = showForgetenBar;
+  
+    // Go back button functionality
+    if (goBackBtn) {
+      goBackBtn.onclick = () => {
+        if (actionStack.length > 0) {
+          const lastAction = actionStack.pop();
+          lastAction();
+        }
+      };
+    }
+  </script>
+  
     <script src="./bootstrap-5.3.3-dist/js/bootstrap.js"></script>
     <script src="./Scripts/regester.js" type="module"></script>
-  </body>
+</body>
 </html>

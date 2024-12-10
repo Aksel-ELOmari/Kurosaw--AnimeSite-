@@ -40,7 +40,11 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore(app);
 const storage = getStorage(app);
+
+
 import { Goback } from "./main.js";
+import { User_space, fetchGenres } from "./preview.js";
+// import { addListener } from "./process";
 
 //! ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 // Sign-in with Google functionality
@@ -53,8 +57,8 @@ const GoogleSignin = function () {
           .then((result) => {
             const credential = GoogleAuthProvider.credentialFromResult(result);
             const user = result.user;
-            console.log("The user successfully logged in with Google:");
-            Goback();
+            console.log(`The user ${user.displayName} successfully logged in with Google:`);
+            // user ? Goback() : "";
           })
           .catch((error) => {
             console.error(
@@ -65,7 +69,8 @@ const GoogleSignin = function () {
       })
     : "";
 };
-// Sign-in with facebook functionality
+
+// FacebookSignin
 const FacebookSignin = function () {
   const Login_fc_btn = document.getElementById("Login_fc_btn");
   Login_fc_btn
@@ -156,8 +161,7 @@ const registerUser = async function () {
     : "";
 };
 // logout function
-export function logoutUser() {
-  const logout_btn = document.querySelector(".logout_btn");
+export function logoutUser(logout_btn) {
   logout_btn
     ? (logout_btn.onclick = function () {
         signOut(auth)
@@ -170,7 +174,8 @@ export function logoutUser() {
       })
     : "";
 }
-logoutUser();
+const logout_btn = document.querySelector(".logout_btn");
+logoutUser(logout_btn);
 // Calling the singning functions.Methods
 GoogleSignin();
 FacebookSignin();

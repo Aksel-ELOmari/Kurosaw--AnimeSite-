@@ -38,12 +38,18 @@ const auth = getAuth();
 //! _______________________________________________________________________________________________________________________
 import {
   toggleElement,
+  toggleSections,
   addAnimeToCollection,
   remove_from_coll,
 } from "./main.js";
-import { toggleCollections_lab } from "./Collections.js";
-import { isAnimeinColl, defaultColl, TMDB, fetchAnimes, } from "./App_api.js";
-toggleCollections_lab(); // the btns withen inside
+import {} from "./Collections.js";
+import { isAnimeinColl, defaultColl, TMDB, fetchAnimes } from "./App_api.js";
+// fetching the Anime;
+const url = new URL(window.location.href);
+const params = new URLSearchParams(url.search);
+const id = params.get("id");
+const page = params.get("page");
+id ? getMainAnime(id, TMDB.api_key) : "";
 async function getMainAnime(id, api_key) {
   try {
     // Construct the API URL
@@ -73,16 +79,18 @@ async function getMainAnime(id, api_key) {
       vote_average,
       vote_count,
     } = Anime;
-    
+
     // Call necessary functions (ensure these functions are defined elsewhere in your code)
-    similar();
+    similar(page);
     AnimeStatus();
     SeactionsCards();
     DisplaySpecialContent();
-    genres?fetchGenres(genres):"";
+    genres ? fetchGenres(genres) : "";
     const backdropCover = document.querySelector(".hero-backdropCover img");
     if (backdropCover) {
-      backdrop_path?backdropCover.src = TMDB.img_url + backdrop_path: TMDB.img_url +  TMDB.DefaultBackdrop;
+      backdrop_path
+        ? (backdropCover.src = TMDB.img_url + backdrop_path)
+        : TMDB.img_url + TMDB.DefaultBackdrop;
     }
     // Check if anime is in default collections
     defaultColl.forEach((Coll) => {
@@ -91,10 +99,15 @@ async function getMainAnime(id, api_key) {
     // Create anime card
     const Card = document.createElement("div");
     Card.id = id;
-    Card.classList.add("hero-body_inner", "flex", "align-items-center", "gap-5");
+    Card.classList.add(
+      "hero-body_inner",
+      "flex",
+      "align-items-center",
+      "gap-5",
+    );
     Card.innerHTML = `
       <div class="animeCover">
-        <img src="https://image.tmdb.org/t/p/original/${poster_path?poster_path:TMDB.DefaultCover}" alt="" id="main-img" />
+        <img src="https://image.tmdb.org/t/p/original/${poster_path ? poster_path : TMDB.DefaultCover}" alt="" id="main-img" />
       </div>
       <div class="hero-content">
         <h1 class="h1 animeTitle my-3 fw-bolder" id="mainAnimeTitle">${title}</h1>
@@ -133,40 +146,35 @@ async function getMainAnime(id, api_key) {
     console.error(`Error fetching the item: ${error.message}`);
   }
 }
-const url = new URL(window.location.href);
-const params = new URLSearchParams(url.search);
-const id = params.get("id");
-const page = params.get("page");
-id?getMainAnime(id, TMDB.api_key):'';
 
 // Anime Status
-function AnimeStatus(){
-    let Status_btns = document.querySelectorAll(".item-status");
-    Status_btns.forEach((btn) => {
-      btn.classList.contains("active")
-        ? addAnimeToCollection(btn)
-        : remove_from_coll(btn);
-      btn.addEventListener("click", () => {
-        const id = btn.getAttribute('data-anime-id');
-        const coll_name = btn.getAttribute('data-collection-name');
-        isAnimeinColl(id, coll_name)?true:btn.classList.remove('active');
-      });
+function AnimeStatus() {
+  let Status_btns = document.querySelectorAll(".item-status");
+  Status_btns.forEach((btn) => {
+    btn.classList.contains("active")
+      ? addAnimeToCollection(btn)
+      : remove_from_coll(btn);
+    btn.addEventListener("click", () => {
+      const id = btn.getAttribute("data-anime-id");
+      const coll_name = btn.getAttribute("data-collection-name");
+      isAnimeinColl(id, coll_name) ? true : btn.classList.remove("active");
     });
+  });
 }
 // Display Anime Genres
 export function fetchGenres(genres) {
-  genres.forEach(g =>{
-     const {id,name} = g;
-     let gr = document.createElement("span");
-     gr.classList.add("anime-genre", "special-btn");
-     gr.innerHTML = `${name}`;
-     gr.setAttribute('data-id',id);
-     let placeholder = document.querySelector(".anime-genres");
-     placeholder?placeholder.append(gr):'';
-  })
+  genres.forEach((g) => {
+    const { id, name } = g;
+    let gr = document.createElement("span");
+    gr.classList.add("anime-genre", "special-btn");
+    gr.innerHTML = `${name}`;
+    gr.setAttribute("data-id", id);
+    let placeholder = document.querySelector(".anime-genres");
+    placeholder ? placeholder.append(gr) : "";
+  });
 }
 // Display similar Content
-export function similar() {
+export function similar(page) {
   const placeholder = document.querySelector(
     ".SimilarSection .carousel-cards-holder",
   );
@@ -174,11 +182,11 @@ export function similar() {
   fetchAnimes(URL, placeholder);
 }
 // Display Special Section
-export function DisplaySpecialContent(){
-    const special_holder = document.querySelector(
-      ".SpecialSection .carousel-cards-holder",
-    );
-    special_holder ? fetchAnimes(TMDB.Disc_api, special_holder) : "";
+export function DisplaySpecialContent() {
+  const special_holder = document.querySelector(
+    ".SpecialSection .carousel-cards-holder",
+  );
+  special_holder ? fetchAnimes(TMDB.Disc_api, special_holder) : "";
 }
 export function User_space(user_name, user_email) {
   let userName = document.querySelector(".user-name");
@@ -188,25 +196,17 @@ export function User_space(user_name, user_email) {
   userEmail ? (userEmail.innerHTML = "") : "";
   userEmail ? (userEmail.innerHTML = user_email) : "";
 }
-function SeactionsCards(){
+function SeactionsCards() {
   const sections_btns = document.querySelectorAll(".preview-toggle-btn");
-  sections_btns?sections_btns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      toggleSections(btn);
-    });
-  }):'';
+  sections_btns
+    ? sections_btns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          toggleSections(btn);
+        });
+      })
+    : "";
 }
-export function toggleSections(btn) {
-  const btn_target = btn.getAttribute("data-target");
-  const allTargets = document.querySelectorAll(".PreviewSection");
-  allTargets.forEach((target) => {
-    const targetName = target.getAttribute("data-name");
-    if (targetName && targetName == btn_target) {
-      allTargets.forEach((target) => target.classList.add("d-none"));
-      target.classList.remove("d-none");
-    }
-  });
-}
+
 // Toggle the review section
 const toggleElements_btns = ["write-review-btn", "reviews-exbtn"];
 toggleElements_btns.map((el) => {
@@ -252,88 +252,7 @@ export const UserReview = function () {
               ?.classList.add("d-none");
           })
         : "";
-    } else {
-      alert("sing up first");
     }
   });
 };
 UserReview();
-
-
-
-// // ! Getting Coments
-// async function getReviews() {
-//   const displayedComments = new Set();
-//   const commentsRef = collection(db, "comments");
-//   const querySnapshot = await getDocs(commentsRef);
-//   const ReviewsHolder = document.querySelector(".Reviews-holder");
-
-//   querySnapshot.forEach((doc) => {
-//     const commentData = doc.data();
-//     const userName = commentData.user_name; // Fixed variable to access user_name
-//     const commentId = doc.id;
-//     const commentText = commentData.commentText;
-//     const fileURL = commentData.fileURL;
-//     const timestamp = commentData.timestamp;
-//     const date = new Date(timestamp);
-//     const formattedDate = date.toLocaleDateString("en-GB", {
-//       day: "2-digit",
-//       month: "long",
-//       year: "numeric",
-//     });
-
-//     if (!displayedComments.has(commentId)) {
-//       displayedComments.add(commentId);
-//       const userReview = document.createElement("div");
-//       userReview.classList.add(
-//         "user-review",
-//         "flex",
-//         "align-items-start",
-//         "gap-3",
-//         "mb-4"
-//       );
-//       userReview.innerHTML = `
-//         <img src="./imgs/Profile/Profile-img.jpg" alt="" class="top-user-cover">
-//         <div class="review-body">
-//           <div class="review-header flex">
-//             <h6 class="user-name h5 me-2">${userName}</h6>
-//             <span class="released-date">${formattedDate}</span>
-//           </div>
-//           <p class="user-review-text me-2">${commentText}</p>
-//           <div class="media-content"></div>
-//         </div>
-//       `;
-//       ReviewsHolder?.appendChild(userReview);
-
-//       const mediaContentDiv = userReview.querySelector(".media-content");
-//       appendMediaContent(mediaContentDiv, fileURL);
-//     }
-//   });
-// }
-// async function appendMediaContent(container, url) {
-//   if (!url) return; // Handle case where there's no fileURL
-
-//   try {
-//     const response = await fetch(url, { method: 'HEAD' });
-//     const contentType = response.headers.get('Content-Type');
-
-//     if (contentType.startsWith('image/')) {
-//       let media = document.createElement("img");
-//       media.src = url;
-//       container.appendChild(media);
-//     } else if (contentType.startsWith('video/')) {
-//       let media = document.createElement("video");
-//       media.src = url;
-//       media.controls = true;
-//       media.setAttribute("loop", "muted", "autoplay");
-//       container.appendChild(media);
-//     } else {
-//       container.textContent = "Unsupported media type.";
-//     }
-//   } catch (error) {
-//     console.error('Error fetching media type:', error);
-//     container.textContent = "Error loading media.";
-//   }
-// }
-// getReviews();
-

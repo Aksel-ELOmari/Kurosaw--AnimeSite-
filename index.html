@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-lg">
           <!---  bg-body-tertiary -->
           <div class="container-fluid">
-            <a class="navbar-brand nav-link" href="./index.html">Kurosaw</a>
+            <a class="navbar-brand nav-link" href="./index.html">Anime_4U</a>
             <button
               class="navbar-toggler"
               type="button"
@@ -81,7 +81,10 @@
                 >
               </div>
               <div class="corner-profile corner d-none flex ms-4 gap-3">
-                <a href="./user.html" class="prifle-link text-decoration-none hero-user">
+                <a
+                  href="./user.html"
+                  class="prifle-link text-decoration-none hero-user"
+                >
                   <div class="nav-bar-profile">
                     <img
                       src="./imgs/Profile/Profile-img.jpg"
@@ -303,10 +306,16 @@
 
     <script type="module">
       // Local Importing
-      import { fetchAnimes, TMDB, MainURL } from "../Scripts/App_api.js";
-      const special_holder = document.querySelector(".special-section .carousel-cards-holder");
-      const trending_holder = document.querySelector(".trending-section .carousel-cards-holder");
-      const popular_holder = document.querySelector(".popular-section .cards-holder");
+      import { fetchAnimes, TMDB, MainURL } from "./Scripts/App_api.js";
+      const special_holder = document.querySelector(
+        ".special-section .carousel-cards-holder",
+      );
+      const trending_holder = document.querySelector(
+        ".trending-section .carousel-cards-holder",
+      );
+      const popular_holder = document.querySelector(
+        ".popular-section .cards-holder",
+      );
       fetchAnimes(TMDB.Disc_api, special_holder);
       fetchAnimes(TMDB.Top_api, trending_holder);
       fetchAnimes(TMDB.Pop_api, popular_holder);

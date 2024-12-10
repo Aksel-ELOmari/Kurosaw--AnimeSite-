@@ -34,12 +34,12 @@
     solid 1px var(--text-color),
     #ffffff;
 }
-.special-btn
-{
-    background: var(--text-color),#ffffff60 !important;
-    color: var(--bg-color),#000 !important;
+.special-btn {
+  background: var(--text-color), #ffffff60 !important;
+  color: var(--bg-color), #000 !important;
 }
-.item-status,.special-btn {
+.item-status,
+.special-btn {
   all: unset;
   border: solid 1px var(--bg-color);
   background: var(--text-color);
@@ -78,5 +78,11 @@
   color: green !important;
 }
 
-.btn.btn-dark:hover{color: #000 !important;background: #fff !important;}
-.btn.btn-light:hover{color: #fff !important;background: #000 !important;}
+.btn.btn-dark:hover {
+  color: #000 !important;
+  background: #fff !important;
+}
+.btn.btn-light:hover {
+  color: #fff !important;
+  background: #000 !important;
+}

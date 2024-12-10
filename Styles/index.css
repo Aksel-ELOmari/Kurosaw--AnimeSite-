@@ -49,7 +49,7 @@ html,
 .fa-star {
   color: yellow !important;
 }
-.attitude.watched-btn i {
+.status.watched-btn i {
   color: var(--backUp-color) !important;
 }
 .watch-later-btn.fa-bookmark {
@@ -63,6 +63,49 @@ html,
   -webkit-box-orient: vertical !important;
   -webkit-line-clamp: var(--max-lines) !important;
 }
+/* ######## zindex ####### */
+.z-index-posetive-1 {
+  z-index: 1 !important;
+}
+.z-index-posetive-2 {
+  z-index: 2 !important;
+}
+.z-index-posetive-3 {
+  z-index: 6 !important;
+}
+.z-index-posetive-4 {
+  z-index: 8 !important;
+}
+.z-index-posetive-5 {
+  z-index: 10 !important;
+}
+.z-index-hot-posetive {
+  z-index: 100 !important;
+}
+
+.z-index-minus-1 {
+  z-index: -1 !important;
+}
+.z-index-minus-2 {
+  z-index: -2 !important;
+}
+.z-index-minus-3 {
+  z-index: -6 !important;
+}
+.z-index-minus-4 {
+  z-index: -8 !important;
+}
+.z-index-minus-5 {
+  z-index: -10 !important;
+}
+.z-index-hot-minus {
+  z-index: -100 !important;
+}
+/* no item can go under it (z-index:minus) */
+.isolated {
+  isolation: isolate;
+}
+
 /* !¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬ */
 
 /* Users Previews Style */
@@ -84,7 +127,6 @@ html,
   background: var(--Text-color) !important;
   color: var(--bg-color) !important;
 }
-
 .user-profile .scroller-y::-webkit-scrollbar {
   background: transparent;
   width: 6px;
@@ -345,6 +387,7 @@ form button:hover {
 }
 
 /* ! Styling the collections */
+/* styling the regular collections viewer */
 .collection-card {
   flex-grow: 1;
   cursor: pointer;
@@ -393,6 +436,105 @@ form button:hover {
 .CollectionCountainer h5 {
   width: 10rem;
   margin: auto;
+}
+/* styling the collections lab inner */
+.Collections_lab_inner {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  z-index: 100 !important;
+}
+.main-card {
+  background: var(--bg-color), #000 !important;
+}
+.collections-cards {
+  height: 20rem;
+  overflow: hidden scroll;
+}
+.collections-cards::-webkit-scrollbar {
+  background: transparent;
+  width: 6px;
+  border-radius: 20px;
+}
+.collections-cards::-webkit-scrollbar-thumb {
+  background: #fff;
+  width: 6px;
+  border-radius: 20px;
+}
+.collections-creater {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  width: 100%;
+  background: #000 !important;
+  z-index: 100;
+}
+.checkbox-field {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.checkbox-field input[type="checkbox"] {
+  height: 0.9rem;
+  cursor: pointer;
+}
+.checkbox-field label {
+  white-space: nowrap;
+}
+
+.collections-cards {
+  min-width: 100%;
+  max-width: max-content;
+}
+.collections-cards .collection img {
+  height: 100%;
+  max-width: 2.5rem;
+  border-radius: 15px;
+}
+.collections-cards .collection {
+  height: 4rem;
+  min-width: 100%;
+}
+.collections-cards .collection h5 {
+  white-space: nowrap;
+}
+.items-count {
+  color: gray;
+}
+.hide-creater-section i:hover {
+  color: #000;
+}
+.hide-creater-section {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  height: 2rem;
+  width: 2rem;
+  background: #ffffff60;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.go_back_btn {
+  position: absolute;
+  top: 5rem;
+  left: 1rem;
+  height: 2rem;
+  width: 2rem;
+  background: #ffffff60;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.ex-Coll-btn {
+  position: absolute;
+  top: 5rem;
+  right: 1rem;
+  height: 2rem;
+  width: 2rem;
+  background: #ffffff60;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 /* ! Catalog Styling */
@@ -495,7 +637,7 @@ input [type="checkbox"] {
   border: none !important;
   color: #eeee !important;
 }
-.user-main #user-bg-cover {
+.user-main #ProfileBackdropCover {
   position: absolute;
   top: 0;
   left: 0;
@@ -519,7 +661,6 @@ input [type="checkbox"] {
   border-radius: 50%;
   object-fit: cover;
 }
-
 .first-section {
   margin-top: 6%;
 }
@@ -567,91 +708,6 @@ input [type="checkbox"] {
   top: 35%;
   cursor: pointer;
 }
-.collections-cards {
-  height: 20rem;
-  overflow: hidden scroll;
-}
-.collections-cards::-webkit-scrollbar {
-  background: transparent;
-  width: 6px;
-  border-radius: 20px;
-}
-.collections-cards::-webkit-scrollbar-thumb {
-  background: #fff;
-  width: 6px;
-  border-radius: 20px;
-}
-
-.collections-creater {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100dvh;
-  width: 100%;
-  background: #000;
-  z-index: 100;
-}
-#textarea {
-  border: solid 1px #fff;
-  height: 8rem;
-  min-width: 100%;
-}
-.checkbox-field {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-.checkbox-field input[type="checkbox"] {
-  height: 0.9rem;
-  cursor: pointer;
-}
-.checkbox-field label {
-  white-space: nowrap;
-}
-
-.collections-cards {
-  min-width: 100%;
-  max-width: max-content;
-}
-.collections-cards .collection img {
-  height: 100%;
-  max-width: 2.5rem;
-  border-radius: 15px;
-}
-.collections-cards .collection {
-  height: 4rem;
-  min-width: 100%;
-}
-.collections-cards .collection h5 {
-  white-space: nowrap;
-}
-.items-count {
-  color: gray;
-}
-.hide-creater-section i:hover {
-  color: #000;
-}
-.hide-creater-section {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  height: 2rem;
-  width: 2rem;
-  background: #ffffff60;
-  border-radius: 50%;
-  cursor: pointer;
-}
-.go_back_btn {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  height: 2rem;
-  width: 2rem;
-  background: #ffffff60;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
 #user-email {
   height: 2.6rem;
   /* width: 70%; */

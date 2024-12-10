@@ -2,6 +2,16 @@
   .footer-body {
     flex-direction: column;
   }
+  p,
+  a,
+  h6,
+  h5,
+  span,
+  div,
+  button,
+  .btn {
+    font-size: 1.5vh !important;
+  }
 }
 @media (max-width: 320px) {
   .main-card {
@@ -42,6 +52,16 @@
 @media (max-width: 375px) {
   .hero-card {
     left: 2%;
+  }
+  p,
+  a,
+  h6,
+  h5,
+  span,
+  div,
+  button,
+  .btn {
+    font-size: 1vh !important;
   }
 }
 @media (max-width: 768px) {
