@@ -14,6 +14,7 @@
       referrerpolicy="no-referrer"
     />
     <!-- bootstrap-5 -->
+<<<<<<< HEAD
     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css" />
     <link rel="stylesheet" href="./Styles/index.css" />
     <link rel="stylesheet" href="./Styles/customize.css" />
@@ -80,6 +81,43 @@
                 name="user-email"
                 id="user-email"
               />
+=======
+     <link rel="stylesheet" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./Styles/index.css">
+    <title>Anime_4U | Regester</title>
+</head>
+<body>
+    <main class="container-fluid regester-main">
+        <section class="flex-center justify-content-center">
+            <div class="main-card flex-center justify-content-center flex-column gap-2">
+                <h2 class="fw-bolder text-center Sing-title">Join Anime_4U</h2>
+                <button type="button" class="login-method btn btn-light btn-lg btn-block"><i class="fa-brands  me-3 fa-apple"></i> Continue with Apple.</button>
+                <button type="button" class="login-method btn btn-light btn-lg btn-block"><i class="fa-brands  me-3 fa-google"></i> Continue with Google.</button>
+                <button type="button" class="login-method btn btn-light btn-lg btn-block mt-2 email-btn" onclick="showLogingbar()"><i class="fa-regular me-3  fa-envelope"></i> Sing up with Email.</button>
+                <div class="login-mini-card py-2 d-none">
+                    <div class="input-card email-input-card mb-2 d-none">
+                        <label for="user-email" style="width: 100%;">Email</label>
+                        <input type="email" placeholder="12l23u@gmail.com" name="user-email" id="user-email">
+                    </div>
+                    <div class="input-card name-input-card mb-2">
+                        <label for="user-name" style="width: 100%;">User name</label>
+                        <input type="text" placeholder="Ayoub Elomari" name="user-name" id="user-name">
+                    </div>
+                    <div class="input-card password-input-card mb-2">
+                        <div class="flex-center justify-content-between"><label for="user-password d-none">Password</label> <a href="#" class="forget-btn text-decoration-none" style="cursor: pointer;" onclick="resetpassword()">Forgot Password?</a></div>
+                        <div class="position-relative">
+                            <input type="password" placeholder="enter your password" name="user-password" id="user-password">
+                            <i class="fa-regular fa-eye position-absolute"></i>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-light btn-lg btn-block login-lg-btn">Login</button>
+                    <button type="button" class="btn btn-light btn-lg btn-block singup-lg-btn d-none">Sing Up</button>
+                    <button type="button" class="btn btn-light btn-lg btn-block reset-lg-btn d-none">Reset Password</button>
+                </div>
+                <p class="Sing-alert login-alert">Already have an acount ?!<span class="login-btn" style="color: green;cursor: pointer;" onclick="showLogingbar()">Log in</span></p>
+                <p class="Sing-alert singUp-alert d-none">Don't have an acount?!<span class="Singup-btn" onclick="showSingupBar()" style="color: green;cursor: pointer;">Sing Up</span></p>
+                <p class="Sing-alert terms-alert d-none">By singing up you agree to <span class="text-center"><a href="#" class="text-decoration-none terms-btn" style="color: green;cursor: pointer;">Terms & Privecy</a></span></p>
+>>>>>>> 486dd4ccf7e4916193a34fc15f786a525611e35c
             </div>
             <div class="input-card name-input-card mb-2">
               <label for="user-name" style="width: 100%">User name</label>

@@ -15,20 +15,52 @@ html,
   transition: All 0.4s linear;
 }
 /* Star Global Variables */
+<<<<<<< HEAD
 .fa-solid {
   color: var(--Text-color);
 }
 .colred {
   color: var(--main-color);
 }
+=======
+>>>>>>> 486dd4ccf7e4916193a34fc15f786a525611e35c
 .flex,
-.flex-column,
-.flex-center,
 .flex-between,
 .flex-around,
+<<<<<<< HEAD
 .flex-evenly {
   display: flex;
   align-items: center;
+=======
+.flex-evenly,
+.flex-center,
+.flex-column,
+.flex-wrap
+.flex{display: flex;align-items: center;}
+.flex-column{flex-direction: column;}
+.flex-center{justify-content:center;}
+.flex-between{justify-content:space-between;}
+.flex-around{justify-content:space-around;}
+.flex-evenly{justify-content:space-evenly;}
+.flex-wrap{flex-wrap: wrap;}
+
+.fa-solid{color: var(--Text-color);}
+.scroller-y::-webkit-scrollbar{background: transparent;width: 6px;border-radius: 20px;}
+.scroller-y::-webkit-scrollbar-thumb{background: transparent;width: 6px;border-radius: 20px;}
+.scroller-x::-webkit-scrollbar{background: transparent;height: 6px;border-radius: 20px;}
+.scroller-x::-webkit-scrollbar-thumb{background: transparent;height: 6px;border-radius: 20px;}
+.card,.Card,.news-card{cursor: pointer;}
+body
+{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    min-height:100vh;
+    min-height:100dvh;
+    width: 100vw;
+    background: var(--bg-color) !important;
+    color: var(--Text-color) !important;
+    overflow-x: hidden !important;
+    scroll-behavior: smooth;
+>>>>>>> 486dd4ccf7e4916193a34fc15f786a525611e35c
 }
 .flex-between {
   justify-content: space-between;
@@ -86,8 +118,16 @@ html,
 .z-index-minus-1 {
   z-index: -1 !important;
 }
+<<<<<<< HEAD
 .z-index-minus-2 {
   z-index: -2 !important;
+=======
+nav input{color: var(--Text-color) !important;}
+.nav-link
+{
+    color: #fff;
+    font-weight: bold;
+>>>>>>> 486dd4ccf7e4916193a34fc15f786a525611e35c
 }
 .z-index-minus-3 {
   z-index: -6 !important;
@@ -196,9 +236,25 @@ a {
 .logo a,
 .fa-bars,
 .navbar-brand,
+<<<<<<< HEAD
 .footer-logo .nav-link {
   color: var(--Text-color) !important;
   text-decoration: none !important;
+=======
+.footer-logo
+.nav-link{color: var(--Text-color) !important; text-decoration: none !important;}
+form {position:relative;width: 18em}
+form input{background: transparent !important;width: 100%;}
+form input::placeholder{color: gray !important;}
+form input:focus{outline: solid 1px yellow !important;}
+form button{position: absolute;right: .5rem;top: 50%;translate: 0 -50%;color: #ffffffb7 !important;}
+form button:hover{color: #ffffff !important;}
+.hero-section
+{
+    height: 100vh;
+    height: 100dvh;
+    margin-bottom:100vh; /*! incase some thein happend to the hero section delet this line */
+>>>>>>> 486dd4ccf7e4916193a34fc15f786a525611e35c
 }
 form {
   position: relative;
@@ -238,6 +294,7 @@ form button:hover {
   max-width: 100vw;
   white-space: wrap;
 }
+<<<<<<< HEAD
 
 .News-main .hero-card {
   width: 40rem;
@@ -252,6 +309,94 @@ form button:hover {
   z-index: -10 !important;
   object-fit: cover;
   filter: brightness(40%);
+=======
+.News-main .hero-card{width: 40rem;}
+#HeaderCover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -10 !important;
+    object-fit: cover;
+    filter: brightness(40%);
+}
+.carousel-cards-holder{overflow-x: scroll !important;display: flex;gap: .6rem;}
+.cards-holder{flex-wrap: wrap;}
+.carousel-countainer{position:relative;display: flex;flex-wrap: wrap;}
+.arrows-holder
+{
+    position: absolute;
+    top: 42%;
+    left: 0;
+    min-width: 100%;
+    height: 0;
+    z-index: 100;
+}
+.arrow:hover{opacity: 1;}
+.arrow
+{
+    cursor: pointer;
+    height: 1.8rem;
+    width: 1.8rem;
+    border-radius: 50%;
+    background: #fff;
+    color: #000;
+    opacity: .2;
+    transition: .3s linear;
+}
+.carousel-cards-holder::-webkit-scrollbar{display: none;}
+.carousel-cards-holder .card{min-width: 10rem;}
+.card,.CharacterCard,.CronolgyCard
+{
+    position: relative;
+    height: 14rem;
+    width: 10rem;
+    background: transparent !important;
+    border-radius: 12px;
+    overflow: hidden;
+}
+/* ! */
+.card::before
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to top,#000,transparent);
+    z-index: 1 !important;
+}
+/* ! */
+.rate-score
+{
+    position: absolute;
+    top: 0;right: 0;
+    height: fit-content;
+    width: 50%;
+    translate: 45% 0;
+    padding: .1rem .7rem; 
+    border-radius: 6px;
+    background: rgb(41, 39, 39);
+    z-index: 5;
+    font-weight: lighter;
+    display: none;
+}
+.card:hover>.rate-score{display: block;}
+
+.special-section{margin-top: -20%;}
+@media (max-width:320px) {
+    .catalog-main .card,
+    .card,.CronolgyCard{
+        height: 9rem !important;
+        width: 5rem !important;
+    }
+    .carousel-cards-holder .card{min-width: 5rem;}
+   .card h5{font-size: .9rem !important;}
+   .card span{font-size: .6rem !important;}
+   .footer-link{font-size: .8rem;}
+>>>>>>> 486dd4ccf7e4916193a34fc15f786a525611e35c
 }
 .carousel-cards-holder {
   overflow-x: scroll !important;
@@ -679,10 +824,22 @@ input [type="checkbox"] {
   padding-bottom: 0.3rem;
 }
 
+<<<<<<< HEAD
 /* / ! styling the Regester Page  / */
 .main-card button {
   font-weight: bolder;
   width: 100%;
+=======
+.collections-creater
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 100%;
+    background: #000;
+    z-index: 100;
+>>>>>>> 486dd4ccf7e4916193a34fc15f786a525611e35c
 }
 .main-card {
   border: solid 1px #fff;
@@ -737,6 +894,7 @@ input [type="checkbox"] {
   color: rgb(218, 55, 182) !important;
 }
 
+<<<<<<< HEAD
 footer {
   margin-top: 5rem;
 }
@@ -744,6 +902,129 @@ footer {
   text-decoration: none !important;
   translate: 0 -20% !important;
 }
+=======
+/* ! Styling the Preview Card page */
+.hero-section{height: fit-content;}
+.hero-body
+{
+    margin-top: 20vh;
+}
+.hero-bg-cover
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 40vh;
+    width: 100%;
+}
+.hero-bg-cover img 
+{
+    object-fit: cover;
+    filter: brightness(20%);
+}
+.trailer-btn
+{
+    position: absolute;
+    bottom: 1.4rem;
+    right: 2.4rem;
+    z-index: 100 !important;
+}
+.Collections-btns
+{
+    min-width: 100% !important;
+    display: flex;align-items: center;
+    justify-content: space-between;
+    gap: 10rem;
+} 
+.Collections-btns button {white-space: nowrap;}
+@media (max-width:768px)
+{
+    .anime-cover img{height: 10rem;width: 6.44rem;}
+    .Collections-btns
+    {
+        flex-direction: column;
+        display: flex;align-items: center;
+        justify-content:center;
+        gap: 2rem;
+    } 
+   .Collections-btns button {margin-top:.2rem}
+   .Collections-btns .add-coll{margin: 0;}
+   .hero-body{gap: .6rem;margin-top: 70%;}
+}
+.RelationsSection .card
+{
+  height: 14rem;
+  width: 10rem;
+}
+.ReviewsSection
+{
+  max-width: 100%;
+}
+  @media (min-width:768px){
+      .ReviewsSection{width: 70%;}.choosen-coll button{width: max-content;}
+  }
+@media (max-width:320px){
+  .hero-body,.choosen-coll
+  {flex-direction: column;}
+}
+.user-profile
+{
+  height: 3rem !important;
+  max-width: 3rem !important;
+  border-radius: 50%;
+  align-self: baseline;
+}
+#addingreview-section
+{
+    background: #000000ce;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 100 !important;
+}
+.add-review-card
+{
+    position: relative;
+    border: solid 1px #fff;
+    background: #000;
+    border-radius: 12px;
+}
+.exit-btn
+{
+    position: absolute;
+    top: .6rem;
+    right: 1rem;
+    cursor: pointer;
+}
+.add-review-card form
+{
+   display: flex;
+   align-items: start;
+   justify-content: space-between;
+   flex-direction: column;
+}
+.add-review-card form textarea
+{
+    width: 100%;
+    color: #fff;
+    background: transparent !important;
+    padding: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+footer{margin-top: 5rem;}
+.footer-logo{text-decoration: none !important;}
+>>>>>>> 486dd4ccf7e4916193a34fc15f786a525611e35c
 .footer-body,
 .footer-text {
   display: flex;
